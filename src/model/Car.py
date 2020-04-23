@@ -1,9 +1,9 @@
-from src.models.Entity import Entity
+from src.model.Entity import Entity
 
 
 class Car(Entity):
     def __init__(self, name: str, chassis: str, fuel: str, color: str, price: str, doors: int, plate: str):
-        super().__init__()
+        super().__init__(None)
         self.name = name
         self.chassis = chassis
         self.fuel = fuel

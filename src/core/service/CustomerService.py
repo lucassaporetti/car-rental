@@ -1,7 +1,7 @@
 from src.core.base.Service import Service
 from src.core.repository.CustomerRepository import CustomerRepository
 
-from src.models.Customer import Customer
+from src.model.Customer import Customer
 
 
 class CustomerService(Service):

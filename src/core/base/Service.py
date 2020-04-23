@@ -1,7 +1,7 @@
 from abc import ABC
 
 from src.core.base.Repository import Repository
-from src.models.Entity import Entity
+from src.model.Entity import Entity
 
 
 class Service(ABC):

@@ -34,10 +34,10 @@ class ListingUi(Menu):
         elif str_op == 'B':
             print('List Customers')
             print(str(self.customer_service.list()))
-        elif str_op == 'B':
+        elif str_op == 'C':
             print('List Cars')
             print(str(self.car_service.list()))
-        elif str_op == 'B':
+        elif str_op == 'D':
             print('List Rentals')
             print(str(self.rentals_service.list()))
         elif str_op == 'E':

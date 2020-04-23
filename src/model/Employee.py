@@ -1,4 +1,4 @@
-from src.models.User import User
+from src.model.User import User
 
 
 class Employee(User):

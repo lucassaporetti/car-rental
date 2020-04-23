@@ -1,5 +1,5 @@
 from src.core.base.Repository import Repository
-from src.models.Employee import Employee
+from src.model.Employee import Employee
 
 
 class EmployeeRepository(Repository):

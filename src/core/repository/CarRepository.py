@@ -1,5 +1,5 @@
 from src.core.base.Repository import Repository
-from src.models.Car import Car
+from src.model.Car import Car
 
 
 class CarRepository(Repository):

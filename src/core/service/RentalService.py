@@ -1,6 +1,6 @@
 from src.core.base.Service import Service
 from src.core.repository.RentalRepository import RentalRepository
-from src.models import Rental
+from src.model import Rental
 
 
 class RentalService(Service):

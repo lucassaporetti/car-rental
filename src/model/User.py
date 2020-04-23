@@ -1,9 +1,9 @@
-from src.models.Entity import Entity
+from src.model.Entity import Entity
 
 
 class User(Entity):
     def __init__(self, name: str = None, age: int = None, address: str = None, phone: str = None, email: str = None):
-        super().__init__()
+        super().__init__(None)
         self.name = name
         self.age = age
         self.address = address

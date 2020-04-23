@@ -1,5 +1,5 @@
 from src.core.base.Repository import Repository
-from src.models import Rental
+from src.model import Rental
 
 
 class RentalRepository(Repository):

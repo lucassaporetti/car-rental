@@ -1,7 +1,7 @@
 from src.core.base.Service import Service
 from src.core.repository.CarRepository import CarRepository
 
-from src.models.Car import Car
+from src.model.Car import Car
 
 
 class CarService(Service):

@@ -1,6 +1,6 @@
 from src.core.base.Service import Service
 from src.core.repository.EmployeeRepository import EmployeeRepository
-from src.models.Employee import Employee
+from src.model.Employee import Employee
 
 
 class EmployeeService(Service):

@@ -1,10 +1,10 @@
-from src.models.Employee import Employee
-from src.models.Entity import Entity
+from src.model.Employee import Employee
+from src.model.Entity import Entity
 
 
 class User(Entity):
     def __init__(self, date: str = None, price: float = None, pending: bool = None, attendant: Employee = None):
-        super().__init__()
+        super().__init__(None)
         self.date = date
         self.price = price
         self.pending = pending

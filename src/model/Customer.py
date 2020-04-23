@@ -1,12 +1,12 @@
-from src.models.User import User
+from src.model.User import User
 
 
 class Customer(User):
-    def __init__(self, name: str, age: int, address: str, phone: str, email: str, drv_license: str,
-                 rentals: list):
+    def __init__(self, name: str = None, age: int = None, address: str = None, phone: str = None,
+                 email: str = None, drv_license: str = None, rentals=None):
         super().__init__(name, age, address, phone, email)
         self.drv_license = drv_license
-        self.rentals = rentals
+        self.rentals = rentals if rentals else []
 
     def __str__(self):
         return "{}{}"\

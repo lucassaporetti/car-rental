@@ -1,5 +1,5 @@
 from src.core.base.Repository import Repository
-from src.models.Customer import Customer
+from src.model.Customer import Customer
 
 
 class CustomerRepository(Repository):
