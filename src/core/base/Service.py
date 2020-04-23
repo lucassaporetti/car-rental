@@ -1,11 +1,22 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+
+from src.core.base.Repository import Repository
+from src.models.Entity import Entity
 
 
 class Service(ABC):
-    @abstractmethod
-    def save(self, data):
-        pass
+    def __init__(self, dao: Repository):
+        self.dao = dao
 
-    @abstractmethod
+    def save(self, data: Entity):
+        existing = self.dao.find_by_id(data.uuid)
+        if existing is None:
+            self.dao.insert(data)
+        else:
+            self.dao.update(data)
+
     def list(self):
-        pass
+        return self.dao.find_all()
+
+    def get(self, uuid: str):
+        return self.dao.find_by_id(uuid)

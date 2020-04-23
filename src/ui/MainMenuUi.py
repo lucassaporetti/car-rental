@@ -1,4 +1,5 @@
 from src.core.base.Menu import Menu
+from src.ui.ListingUi import ListingUi
 from src.ui.UserUi import UserUi
 
 MENU = """\033[2J
@@ -16,7 +17,7 @@ class MainMenuUi(Menu):
     def __init__(self):
         super().__init__()
         self.menu = str(MENU)
-        self.options = range(0, 6)
+        self.options = range(0, 7)
 
     def __str__(self):
         return self.menu
@@ -38,5 +39,6 @@ class MainMenuUi(Menu):
             print('Car Information')
         elif int_op == 6:
             print('Listing')
+            return ListingUi()
 
         return Menu.SAME_MENU

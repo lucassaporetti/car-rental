@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["Menu", "Repository", "Service"]
+__all__ = ["Menu", "Repository", "Service", "LocalDB"]
