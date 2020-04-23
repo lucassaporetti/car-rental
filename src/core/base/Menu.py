@@ -1,0 +1,31 @@
+from abc import ABC, abstractmethod
+
+
+class Menu(ABC):
+    EXIT_REQUEST = None
+    MAIN_MENU = 0
+    SAME_MENU = 1
+
+    def __init__(self):
+        self.done = False
+        self.op = None
+        self.menu = ''
+        self.options = []
+
+    def execute(self):
+        while not self.op == Menu.MAIN_MENU and not self.done:
+            print(self.menu)
+            self.op = input("$ ")
+            if self.op.isalnum() and self.op_in_options():
+                self.op = self.op
+                return self.trigger_menu_item()
+            else:
+                print("### Error: Invalid option \"{}\"".format(self.op))
+                self.op = None
+
+    @abstractmethod
+    def trigger_menu_item(self):
+        pass
+
+    def op_in_options(self):
+        return int(self.op) in self.options
