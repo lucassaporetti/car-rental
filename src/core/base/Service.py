@@ -7,9 +7,5 @@ class Service(ABC):
         pass
 
     @abstractmethod
-    def update(self, data):
-        pass
-
-    @abstractmethod
     def list(self):
         pass

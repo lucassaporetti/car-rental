@@ -11,13 +11,13 @@ class Repository(ABC):
         pass
 
     @abstractmethod
-    def delete(self):
+    def delete(self, data):
         pass
 
     @abstractmethod
-    def find_all(self, data):
+    def find_all(self):
         pass
 
     @abstractmethod
-    def find_by_id(self, data):
+    def find_by_id(self, uuid):
         pass
