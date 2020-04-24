@@ -1,6 +1,8 @@
 import uuid
 
 from src.core.enum.access_type import AccessType
+from src.core.enum.color import Color
+from src.core.enum.fuel import Fuel
 from src.core.tools import print_error
 from src.core.validators import validate_string, validate_int, validate_enum, validate_date, validate_float
 from src.model.car import Car
@@ -17,11 +19,11 @@ def create_car():
             car.name = print_error('Invalid name', car.name)
             continue
         car.chassis = input("Chassis: ").strip() if car.chassis is None else car.chassis
-        if not validate_string(car.chassis, "[0-9]+", min_len=11, max_len=11):
+        if not validate_string(car.chassis, "[a-zA-Z0-9]+", min_len=11, max_len=11):
             car.chassis = print_error('Invalid chassis', car.chassis)
             continue
         car.color = input("Color: ").strip() if car.color is None else car.color
-        if not validate_string(car.color, "[a-zA-Z]+", min_len=3, max_len=15):
+        if not validate_enum(car.color, Color):
             car.color = print_error('Invalid color', car.color)
             continue
         car.doors = input("Doors: ").strip() if car.doors is None else car.doors
@@ -29,11 +31,11 @@ def create_car():
             car.doors = print_error('Invalid doors', car.doors)
             continue
         car.fuel = input("Fuel: ").strip() if car.fuel is None else car.fuel
-        if not validate_string(car.fuel, "[a-zA-Z]+", min_len=6, max_len=8):
+        if not  validate_enum(car.fuel, Fuel):
             car.fuel = print_error('Invalid fuel', car.fuel)
             continue
         car.plate = input("Plate: ").strip() if car.plate is None else car.plate
-        if not validate_string(car.plate, "[0-9]+", min_len=7, max_len=7):
+        if not validate_string(car.plate, "[a-zA-Z0-9]+", min_len=7, max_len=7):
             car.plate = print_error('Invalid plate', car.plate)
             continue
         car.price = input("Price: ").strip() if car.price is None else car.price
