@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["AccessType"]
+__all__ = ["access_type"]

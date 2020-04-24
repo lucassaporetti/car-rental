@@ -1,12 +1,12 @@
-from src.core.base.Service import Service
-from src.core.repository.RentalRepository import RentalRepository
-from src.model import Rental
+from src.core.base.service import Service
+from src.core.repository.rental_repository import RentalRepository
+from src.model import rental
 
 
 class RentalService(Service):
     def __init__(self):
         super().__init__(RentalRepository())
 
-    def save(self, rental: Rental):
+    def save(self, rental: rental):
         super().save(rental)
 

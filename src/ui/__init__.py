@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["MainMenuUi", "UserUi", "ListingUi"]
+__all__ = ["main_menu_ui", "user_ui", "listing_ui"]

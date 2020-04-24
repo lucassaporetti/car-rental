@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["User", "Entity", "Customer", "Car", "Employee", "Rental"]
+__all__ = ["user", "entity", "customer", "car", "employee", "rental"]

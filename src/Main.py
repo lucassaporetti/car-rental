@@ -8,11 +8,11 @@
    @author: <B>H</B>ugo <B>S</B>aporetti <B>J</B>unior
    @mailto: yorevs@hotmail.com
 """
-
+import os
 import sys
 
-from src.core.base.Menu import Menu
-from src.ui.MainMenuUi import MainMenuUi
+from src.core.base.menu import Menu
+from src.ui.main_menu_ui import MainMenuUi
 
 
 class Main:
@@ -21,6 +21,7 @@ class Main:
         self.ui = MainMenuUi()
 
     def run(self):
+        print("PYTHONPATH = " + os.environ.get('PYTHONPATH'))
         while not self.done:
             next_ui = self.ui.execute()
             if next_ui is None:

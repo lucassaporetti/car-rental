@@ -1,5 +1,5 @@
-from src.model.Employee import Employee
-from src.model.Entity import Entity
+from src.model.employee import Employee
+from src.model.entity import Entity
 
 
 class User(Entity):

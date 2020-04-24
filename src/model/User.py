@@ -1,4 +1,4 @@
-from src.model.Entity import Entity
+from src.model.entity import Entity
 
 
 class User(Entity):

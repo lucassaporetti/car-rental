@@ -1,7 +1,7 @@
 from abc import ABC
 
-from src.core.base.LocalDB import LocalDB
-from src.model.Entity import Entity
+from src.core.base.local_db import LocalDB
+from src.model.entity import Entity
 
 
 class Repository(ABC):
