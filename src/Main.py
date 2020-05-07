@@ -21,7 +21,6 @@ class Main:
         self.ui = MainMenuUi()
 
     def run(self):
-        print("PYTHONPATH = " + os.environ.get('PYTHONPATH'))
         while not self.done:
             next_ui = self.ui.execute()
             if next_ui is None:

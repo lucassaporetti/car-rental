@@ -3,7 +3,7 @@ from src.model.entity import Entity
 
 class User(Entity):
     def __init__(self, name: str = None, age: int = None, address: str = None, phone: str = None, email: str = None):
-        super().__init__(None)
+        super().__init__()
         self.name = name
         self.age = age
         self.address = address

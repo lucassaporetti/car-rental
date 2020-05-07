@@ -28,4 +28,7 @@ class Menu(ABC):
         pass
 
     def op_in_options(self):
-        return int(self.op) in self.options
+        if self.op.isdigit():
+            return int(self.op) in self.options
+        else:
+            return False

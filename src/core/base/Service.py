@@ -1,6 +1,6 @@
 from abc import ABC
 
-from src.core.base.repository import Repository
+from src.core.base.interfaces.repository import Repository
 from src.model.entity import Entity
 
 
@@ -9,8 +9,7 @@ class Service(ABC):
         self.dao = dao
 
     def save(self, data: Entity):
-        existing = self.dao.find_by_id(data.uuid)
-        if existing is None:
+        if data.uuid is None or self.dao.find_by_id(data.uuid) is None:
             self.dao.insert(data)
         else:
             self.dao.update(data)

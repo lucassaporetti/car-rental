@@ -31,11 +31,11 @@ def create_car():
             car.doors = print_error('Invalid doors', car.doors)
             continue
         car.fuel = input("Fuel: ").strip() if car.fuel is None else car.fuel
-        if not  validate_enum(car.fuel, Fuel):
+        if not validate_enum(car.fuel, Fuel):
             car.fuel = print_error('Invalid fuel', car.fuel)
             continue
         car.plate = input("Plate: ").strip() if car.plate is None else car.plate
-        if not validate_string(car.plate, "[a-zA-Z0-9]+", min_len=7, max_len=7):
+        if not validate_string(car.plate, "[a-zA-Z]{3}-[0-9]{4}", min_len=8, max_len=8):
             car.plate = print_error('Invalid plate', car.plate)
             continue
         car.price = input("Price: ").strip() if car.price is None else car.price

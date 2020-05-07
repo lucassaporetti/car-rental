@@ -1,6 +1,8 @@
 from src.core.base.menu import Menu
 from src.core.builders import create_car
 from src.core.service.CarService import CarService
+from src.ui.car_info_ui import CarInfoUi
+from src.ui.car_rental_ui import CarRentalUi
 from src.ui.listing_ui import ListingUi
 from src.ui.user_ui import UserUi
 
@@ -35,11 +37,11 @@ class MainMenuUi(Menu):
         elif int_op == 2:
             return UserUi()
         elif int_op == 3:
-            print('Rent a Car')
+            return CarRentalUi()
         elif int_op == 4:
             print('Return a Car')
         elif int_op == 5:
-            print('Car Information')
+            return CarInfoUi()
         elif int_op == 6:
             return ListingUi()
 
