@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-export PYTHONPATH=/Users/hjunior/GIT-Repository/Car-Rental
+export PYTHONPATH=$(pwd)
 
 python3 src/main.py
