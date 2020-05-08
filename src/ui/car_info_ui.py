@@ -1,5 +1,5 @@
 from src.core.base.menu import Menu
-from src.core.service.CarService import CarService
+from src.core.service.car_service import CarService
 
 MENU = """\033[2J\033[H
 [A] Search model

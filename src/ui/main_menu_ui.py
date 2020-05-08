@@ -1,6 +1,6 @@
 from src.core.base.menu import Menu
 from src.core.builders import create_car
-from src.core.service.CarService import CarService
+from src.core.service.car_service import CarService
 from src.ui.car_info_ui import CarInfoUi
 from src.ui.car_rental_ui import CarRentalUi
 from src.ui.listing_ui import ListingUi

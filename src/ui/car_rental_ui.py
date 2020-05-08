@@ -1,6 +1,6 @@
 from src.core.base.menu import Menu
-from src.core.service.CarService import CarService
-from src.core.service.EmployeeService import EmployeeService
+from src.core.service.car_service import CarService
+from src.core.service.employee_service import EmployeeService
 from src.model.rental import Rental
 
 MENU = """\033[2J\033[H
