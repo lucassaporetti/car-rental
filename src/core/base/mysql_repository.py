@@ -45,6 +45,7 @@ class MySqlRepository(DbRepository):
         return self.connector
 
     def count(self):
+
         pass
 
     def insert(self, entity: Entity):
