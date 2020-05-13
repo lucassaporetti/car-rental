@@ -2,7 +2,7 @@ from src.model.entity import Entity
 
 
 class Car(Entity):
-    def __init__(self, name: str = None, chassis: str  = None, fuel: str = None, color: str = None, price: str = None, doors: int = None, plate: str = None):
+    def __init__(self, name: str = None, chassis: str = None, fuel: str = None, color: str = None, price: str = None, doors: int = None, plate: str = None):
         super().__init__()
         self.name = name
         self.chassis = chassis

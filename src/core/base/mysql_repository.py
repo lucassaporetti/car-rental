@@ -1,10 +1,22 @@
-from src.core.base.interfaces.repository import Repository
+from src.core.base.interfaces.db_repository import DbRepository
 from src.model.entity import Entity
 
 
-class DbRepository(Repository):
+class MySqlRepository(DbRepository):
     def __init__(self, filename):
         super().__init__(filename)
+
+    def connect(self):
+        pass
+
+    def disconnect(self):
+        pass
+
+    def is_connected(self):
+        pass
+
+    def count(self):
+        pass
 
     def insert(self, entity: Entity):
         pass
@@ -20,4 +32,3 @@ class DbRepository(Repository):
 
     def find_by_id(self, entity_id: str):
         pass
-

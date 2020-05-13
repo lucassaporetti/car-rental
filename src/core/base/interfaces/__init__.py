@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["repository"]
+__all__ = ["repository", "db_repository"]

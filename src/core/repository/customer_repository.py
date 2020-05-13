@@ -1,7 +1,7 @@
 import pathlib
 import sys
 
-from src.core.base.db_repository import DbRepository
+from src.core.base.interfaces.db_repository import DbRepository
 from src.model.customer import Customer
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()

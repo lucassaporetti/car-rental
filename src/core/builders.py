@@ -83,7 +83,6 @@ def create_employee():
         if not validate_float(employee.salary, min_value=450.00, max_value=20000.00):
             employee.salary = print_error("Invalid salary", employee.salary)
             continue
-        employee.uuid = str(uuid.uuid4())[:2]
         valid = True
 
     return employee
@@ -115,9 +114,8 @@ def create_customer():
             continue
         customer.drv_license = input("Driver License: ")
         if validate_string(customer.drv_license, "[a-zA-Z0-9]+", 8, 8):
-            customer.email = print_error("Invalid driver license", customer.email)
+            customer.drv_license = print_error("Invalid driver license", customer.drv_license)
             continue
-        customer.uuid = str(uuid.uuid4())[:2]
         valid = True
 
     return customer
