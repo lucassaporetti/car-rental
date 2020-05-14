@@ -4,7 +4,7 @@ import pymysql
 
 
 class MySqlRepository(DbRepository):
-    def __init__(self, filename, user, password, hostname, port, database):
+    def __init__(self, filename, user, password, hostname, port, database, table_name):
         super().__init__(filename)
         self.db_name = filename
         self.user = user
@@ -12,6 +12,7 @@ class MySqlRepository(DbRepository):
         self.hostname = hostname
         self.port = port
         self.database = database
+        self.table_name = table_name
         self.connector = None
 
     def is_connected(self):
@@ -30,7 +31,6 @@ class MySqlRepository(DbRepository):
                                                                                            self.port, self.database)
             print('Connection with {}@{}:{}/{} established.'.format(self.user, self.hostname,
                                                                     self.port, self.database))
-
         return self.connector
 
     def disconnect(self):
@@ -38,15 +38,22 @@ class MySqlRepository(DbRepository):
             self.connector.close()
             print('Disconnected from {}@{}:{}/{}.'.format(self.user, self.hostname,
                                                           self.port, self.database))
+            self.connector = None
         else:
             print('ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname,
                                                                                    self.port, self.database))
-
         return self.connector
 
     def count(self):
-
-        pass
+        if self.is_connected():
+            my_cursor = self.connector.cursor()
+            my_cursor.execute("SELECT COUNT(UUID) FROM {}".format(self.table_name))
+            my_result = my_cursor.fetchall()
+            for x in my_result:
+                print(x)
+        else:
+            print('ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname,
+                                                                                   self.port, self.database))
 
     def insert(self, entity: Entity):
         pass
@@ -65,7 +72,9 @@ class MySqlRepository(DbRepository):
 
 
 cars = None
-ob = MySqlRepository(cars, 'root', '123G@biroba4', 'localhost', 3306, 'car_rental_db')
+ob = MySqlRepository(cars, 'root', '123G@biroba4', 'localhost', 3306, 'car_rental_db', 'CARS')
 ob.connect()
 ob.is_connected()
+ob.count()
 ob.disconnect()
+ob.count()
