@@ -1,5 +1,6 @@
 from abc import abstractmethod
 from src.core.base.interfaces.repository import Repository
+from src.model.entity import Entity
 
 
 class DbRepository(Repository):

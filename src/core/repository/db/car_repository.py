@@ -1,15 +1,15 @@
-import pathlib
-import sys
 
-from src.core.base.interfaces.db_repository import DbRepository
+from src.core.base.mysql_repository import MySqlRepository
 from src.model.car import Car
 
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 
-
-class CarRepository(DbRepository):
+class CarRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(f"{CUR_DIR}/../data/cars.dat")
+        super().__init__()
+        self.cursor = self.connector.cursor()
+
+    def count(self):
+        super().count()
 
     def insert(self, car: Car):
         super().insert(car)

@@ -1,19 +1,26 @@
+import pathlib
+import sys
+
 from src.core.base.interfaces.db_repository import DbRepository
+from src.core.properties import Properties
 from src.model.entity import Entity
 import pymysql
 
+CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
+DB_PROPERTIES = Properties(f"{CUR_DIR}/db.properties").read()
+SQL_TEMPLATES = f"{CUR_DIR}/sql/ddl/mysql_templates.properties"
+
 
 class MySqlRepository(DbRepository):
-    def __init__(self, filename, user, password, hostname, port, database, table_name):
-        super().__init__(filename)
-        self.db_name = filename
-        self.user = user
-        self.password = password
-        self.hostname = hostname
-        self.port = port
-        self.database = database
-        self.table_name = table_name
+    def __init__(self):
+        super().__init__(SQL_TEMPLATES)
+        self.hostname = DB_PROPERTIES.get('db.hostname')
+        self.port = DB_PROPERTIES.get_int('db.port')
+        self.user = DB_PROPERTIES.get('db.user')
+        self.password = DB_PROPERTIES.get('db.password')
+        self.database = DB_PROPERTIES.get('db.database')
         self.connector = None
+        self.connect()
 
     def is_connected(self):
         return self.connector is not None
@@ -27,33 +34,22 @@ class MySqlRepository(DbRepository):
                 password=self.password,
                 database=self.database
             )
-            assert self.is_connected(), 'ERROR: Unable to connect with {}@{}:{}/{}'.format(self.user, self.hostname,
-                                                                                           self.port, self.database)
-            print('Connection with {}@{}:{}/{} established.'.format(self.user, self.hostname,
-                                                                    self.port, self.database))
+            assert self.is_connected(), 'ERROR: Unable to connect with {}@{}:{}/{}'\
+                .format(self.user, self.hostname, self.port, self.database)
+            print('Connection with {}@{}:{}/{} established.'.format(self.user, self.hostname, self.port, self.database))
         return self.connector
 
     def disconnect(self):
         if self.is_connected():
             self.connector.close()
-            print('Disconnected from {}@{}:{}/{}.'.format(self.user, self.hostname,
-                                                          self.port, self.database))
+            print('Disconnected from {}@{}:{}/{}.'.format(self.user, self.hostname, self.port, self.database))
             self.connector = None
         else:
-            print('ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname,
-                                                                                   self.port, self.database))
+            print('ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname, self.port, self.database))
         return self.connector
 
     def count(self):
-        if self.is_connected():
-            my_cursor = self.connector.cursor()
-            my_cursor.execute("SELECT COUNT(UUID) FROM {}".format(self.table_name))
-            my_result = my_cursor.fetchall()
-            for x in my_result:
-                print(x)
-        else:
-            print('ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname,
-                                                                                   self.port, self.database))
+        pass
 
     def insert(self, entity: Entity):
         pass
@@ -69,12 +65,3 @@ class MySqlRepository(DbRepository):
 
     def find_by_id(self, entity_id: str):
         pass
-
-
-cars = None
-ob = MySqlRepository(cars, 'root', '123G@biroba4', 'localhost', 3306, 'car_rental_db', 'CARS')
-ob.connect()
-ob.is_connected()
-ob.count()
-ob.disconnect()
-ob.count()

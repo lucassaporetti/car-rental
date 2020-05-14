@@ -1,5 +1,5 @@
 from src.core.base.service import Service
-from src.core.repository.rental_repository import RentalRepository
+from src.core.repository.db.rental_repository import RentalRepository
 from src.model import rental
 
 

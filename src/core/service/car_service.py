@@ -1,5 +1,5 @@
 from src.core.base.service import Service
-from src.core.repository.car_repository import CarRepository
+from src.core.repository.db.car_repository import CarRepository
 
 from src.model.car import Car
 

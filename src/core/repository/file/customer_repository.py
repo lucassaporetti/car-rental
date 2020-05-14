@@ -1,13 +1,13 @@
 import pathlib
 import sys
 
-from src.core.base.interfaces.db_repository import DbRepository
+from src.core.base.file_repository import FileRepository
 from src.model.customer import Customer
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 
 
-class CustomerRepository(DbRepository):
+class CustomerRepository(FileRepository):
     def __init__(self):
         super().__init__(f"{CUR_DIR}/../data/customers.dat")
 

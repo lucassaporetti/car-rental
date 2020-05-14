@@ -14,3 +14,4 @@ def print_error(msg: str, arg: str):
     sleep(1)
     print('\033[2A\033[J', end='')
 
+

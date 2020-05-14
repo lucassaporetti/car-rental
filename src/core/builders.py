@@ -1,5 +1,3 @@
-import uuid
-
 from src.core.enum.access_type import AccessType
 from src.core.enum.color import Color
 from src.core.enum.fuel import Fuel
