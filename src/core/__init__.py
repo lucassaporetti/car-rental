@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["base", "enum", "repository", "service", "builders", "properties", "tools", "validators"]
+__all__ = ["enum", "repository", "service", "builders", "factories", "properties", "tools", "validators"]

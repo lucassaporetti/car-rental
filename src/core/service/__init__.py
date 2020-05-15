@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["service", "employee_service", "car_service", "customer_service", "rental_service"]
+__all__ = ["car_service", "customer_service", "employee_service", "rental_service", "service"]
