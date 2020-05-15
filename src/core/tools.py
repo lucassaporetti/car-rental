@@ -3,7 +3,7 @@ import os
 
 from time import sleep
 
-# Default log file format
+
 DEFAULT_LOG_FMT = '%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s ::%(funcName)s(@line-%(lineno)d) %(message)s '
 
 # default log file size
@@ -58,17 +58,27 @@ def print_list(the_list: list):
         print('')
     print('-='*80)
     print('')
-    press_enter()
+    wait_enter()
 
 
 def print_one(entity):
     print(str(entity))
-    press_enter()
+    wait_enter()
 
 
-def press_enter():
+def prompt(message: str = '', end: str = '', clear=False):
+    try:
+        if clear:
+            print('\033[2J\033[H', end='')
+        input_data = input('{}{}'.format(message, end))
+        return input_data
+    except EOFError:
+        return None
+
+
+def wait_enter():
     print('')
-    input('Press \033[0;32m[Enter]\033[0;0;0m to continue ...')
+    prompt('Press \033[0;32m[Enter]\033[0;0;0m to continue ...')
 
 
 def check_criteria(partial_value, whole_value):

@@ -1,6 +1,6 @@
 from src.core.service.car_service import CarService
 from src.core.service.employee_service import EmployeeService
-from src.core.tools import press_enter, print_warning, print_error, print_list
+from src.core.tools import print_warning, print_error, print_list, prompt, wait_enter
 from src.model.rental import Rental
 from src.ui.menu import Menu
 
@@ -45,7 +45,7 @@ class CarRentalUi(Menu):
 
     def do_rent(self):
         rental = Rental()
-        entity_id = input("Car UUID: ")
+        entity_id = prompt("Car UUID: ", clear=True)
         if entity_id:
             found = self.car_service.get(entity_id)
             if found is not None:
@@ -56,11 +56,11 @@ class CarRentalUi(Menu):
                         for next_att in all_attendants:
                             print('{} {}'.format(idx, next_att))
                             idx += 1
-                        idx = int(input('Attendant: '))
-                        rental.attendant = all_attendants[idx]
+                        # idx = int(input('Attendant: '))
+                        # rental.attendant = all_attendants[idx]
                         # TODO Finish the implementation
-                        print('TODO')
-                    press_enter()
+                        print('##TODO##')
+                    wait_enter()
                 else:
                     print_warning('There are no attendants yet')
             else:

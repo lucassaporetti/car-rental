@@ -1,7 +1,7 @@
 from pymysql import InternalError
 
 from src.core.service.car_service import CarService
-from src.core.tools import press_enter, print_list, print_warning, print_error, print_one
+from src.core.tools import print_list, print_warning, print_error, print_one, prompt
 from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
@@ -37,8 +37,7 @@ class CarInfoUi(Menu):
 
     def search_model(self):
         criteria_hint = '* or criteria_1, ... criteria_N ([name|chassis|fuel|color|price|doors|plate]=value)'
-        print("Please type the search criteria: {}".format(criteria_hint))
-        criteria = input('$ ')
+        criteria = prompt("Please type the search criteria: {}\n$ ".format(criteria_hint), clear=True)
         try:
             if criteria or criteria == '*':
                 found = self.car_service.list(filters=criteria if criteria != '*' else None)
@@ -50,7 +49,7 @@ class CarInfoUi(Menu):
             print_error('Invalid criteria {}'.format(criteria))
 
     def get_information(self):
-        entity_id = input("Car UUID: ")
+        entity_id = prompt("Car UUID: ", clear=True)
         if entity_id:
             found = self.car_service.get(entity_id)
             if found is not None:

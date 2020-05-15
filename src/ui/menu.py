@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.core.tools import print_error
+from src.core.tools import print_error, prompt
 
 
 class Menu(ABC):
@@ -17,7 +17,7 @@ class Menu(ABC):
     def execute(self):
         while not self.op == Menu.MAIN_MENU and not self.done:
             print(self.menu)
-            self.op = input("$ ")
+            self.op = prompt("$ ", end='')
             if self.op.isalnum() and self.op_in_options():
                 self.op = self.op
                 return self.trigger_menu_item()
