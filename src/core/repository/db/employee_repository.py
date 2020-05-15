@@ -25,3 +25,5 @@ class EmployeeRepository(MySqlRepository):
     def delete(self, employee: Employee):
         super().delete(employee)
 
+    def row_to_entity(self, row: tuple) -> dict:
+        return Employee.of(list(row)).__dict__

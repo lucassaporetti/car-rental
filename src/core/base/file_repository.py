@@ -29,10 +29,10 @@ class FileRepository(Repository):
         self.localDb.commit()
         print("{} has been deleted !".format(entity.__class__.__name__))
 
-    def find_all(self):
+    def find_all(self) -> list:
         return self.localDb.data
 
-    def find_by_id(self, entity_id: str):
+    def find_by_id(self, entity_id: str) -> Entity:
         if entity_id:
             found = [c for c in self.localDb.data if entity_id == c['uuid']]
             return found if len(found) > 0 else None

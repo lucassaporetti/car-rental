@@ -15,7 +15,7 @@ class SqlFactory:
     def insert(self, values: dict):
         return self.sql_templates.get('insert').format(dict_to_values(values))
 
-    def update(self, values: dict, filters: dict = None):
+    def update(self,  values: dict = None, filters: dict = None):
         return self.sql_templates.get('update')\
             .format(
                 dict_to_values(values) if values is not None else '',
@@ -28,10 +28,10 @@ class SqlFactory:
                 dict_to_filters(filters) if filters is not None else '',
             )
 
-    def select(self, values: dict = None, filters: dict = None):
+    def select(self, columns: list = None, filters: dict = None):
         return self.sql_templates.get('select')\
             .format(
-                dict_to_values(values) if values is not None else '*',
+                dict_to_values(columns) if columns is not None else '*',
                 dict_to_filters(filters) if filters is not None else '',
             )
 

@@ -25,3 +25,5 @@ class CustomerRepository(MySqlRepository):
     def delete(self, customer: Customer):
         super().delete(customer)
 
+    def row_to_entity(self, row: tuple) -> dict:
+        return Customer.of(list(row)).__dict__

@@ -1,6 +1,7 @@
 import pathlib
 import sys
 import uuid
+from abc import abstractmethod
 
 from src.core.base.interfaces.db_repository import DbRepository
 from src.core.factories import SqlFactory
@@ -52,7 +53,12 @@ class MySqlRepository(DbRepository):
         return self.connector
 
     def count(self):
-        pass
+        count_stm = self.sql_factory.count()
+        print('Executing SQL statement: {}'.format(count_stm))
+        self.cursor.execute(count_stm)
+        ret_val = self.cursor.fetchall()
+
+        return ret_val
 
     def insert(self, entity: Entity):
         entity.uuid = entity.uuid if entity.uuid is not None else uuid.uuid4()
@@ -62,21 +68,40 @@ class MySqlRepository(DbRepository):
         self.connector.commit()
 
     def update(self, entity: Entity):
-        pass
+        update_stm = self.sql_factory.update(entity.__dict__, filters=[
+            'UUID = {}'.format(entity.uuid)
+        ])
+        print('Executing SQL statement: {}'.format(update_stm))
+        self.cursor.execute(update_stm)
+        self.connector.commit()
 
     def delete(self, entity: Entity):
-        pass
+        delete_stm = self.sql_factory.delete(entity.__dict__)
+        print('Executing SQL statement: {}'.format(delete_stm))
+        self.cursor.execute(delete_stm)
+        self.connector.commit()
 
-    def find_all(self):
+    def find_all(self) -> list:
         select_stm = self.sql_factory.select()
         print('Executing SQL statement: {}'.format(select_stm))
         self.cursor.execute(select_stm)
         result = self.cursor.fetchall()
         ret_val = []
         for next_row in result:
-            ret_val.append(next_row)
+            ret_val.append(self.row_to_entity(next_row))
 
         return ret_val
 
-    def find_by_id(self, entity_id: str):
+    def find_by_id(self, entity_id: str) -> Entity:
+        select_stm = self.sql_factory.select(filters=[
+            'UUID = {}'.format(entity_id)
+        ])
+        print('Executing SQL statement: {}'.format(select_stm))
+        self.cursor.execute(select_stm)
+        ret_val = self.cursor.fetchall()[0]
+
+        return ret_val
+
+    @abstractmethod
+    def row_to_entity(self, row: tuple) -> dict:
         pass

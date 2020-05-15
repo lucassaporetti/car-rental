@@ -21,9 +21,9 @@ class Repository(ABC):
         pass
 
     @abstractmethod
-    def find_all(self):
+    def find_all(self) -> list:
         pass
 
     @abstractmethod
-    def find_by_id(self, entity_id: str):
+    def find_by_id(self, entity_id: str) -> Entity:
         pass

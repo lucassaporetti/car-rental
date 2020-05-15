@@ -25,3 +25,5 @@ class RentalRepository(MySqlRepository):
     def delete(self, rental: Rental):
         super().delete(rental)
 
+    def row_to_entity(self, row: tuple) -> dict:
+        return Rental.of(list(row)).__dict__

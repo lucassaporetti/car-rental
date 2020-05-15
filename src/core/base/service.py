@@ -14,8 +14,8 @@ class Service(ABC):
         else:
             self.dao.update(data)
 
-    def list(self):
+    def list(self) -> list:
         return self.dao.find_all()
 
-    def get(self, uuid: str):
+    def get(self, uuid: str) -> Entity:
         return self.dao.find_by_id(uuid)

@@ -2,8 +2,8 @@ from src.model.entity import Entity
 
 
 class User(Entity):
-    def __init__(self, name: str = None, age: int = None, address: str = None, phone: str = None, email: str = None):
-        super().__init__()
+    def __init__(self, entity_id: str = None, name: str = None, age: int = None, address: str = None, phone: str = None, email: str = None):
+        super().__init__(entity_id)
         self.name = name
         self.age = age
         self.address = address

@@ -21,3 +21,6 @@ class CarRepository(MySqlRepository):
 
     def delete(self, car: Car):
         super().delete(car)
+
+    def row_to_entity(self, row: tuple) -> dict:
+        return Car.of(list(row)).__dict__
