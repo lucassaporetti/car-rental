@@ -5,12 +5,12 @@ from abc import abstractmethod
 from typing import Optional
 
 import pymysql
-from pymysql import ProgrammingError
+from pymysql import ProgrammingError, OperationalError
 
 from src.core.factories import SqlFactory
 from src.core.properties import Properties
 from src.core.repository.db.db_repository import DbRepository
-from src.core.tools import log_init
+from src.core.tools import log_init, print_error
 from src.main import Main
 from src.model.entity import Entity
 
@@ -31,34 +31,41 @@ class MySqlRepository(DbRepository):
         self.cursor = None
         self.connect()
 
+    def __str__(self):
+        return "{}@{}:{}/{}".format(self.user, self.hostname, self.port, self.database)
+
     def is_connected(self):
         return self.connector is not None
 
     def connect(self):
         if not self.is_connected():
-            self.connector = pymysql.connect(
-                host=self.hostname,
-                user=self.user,
-                port=self.port,
-                password=self.password,
-                database=self.database
-            )
-            assert self.is_connected(), 'ERROR: Unable to connect with {}@{}:{}/{}' \
-                .format(self.user, self.hostname, self.port, self.database)
-            self.cursor = self.connector.cursor()
-            LOG.info(
-                'Connection with {}@{}:{}/{} established.'.format(self.user, self.hostname, self.port, self.database))
+            try:
+                self.connector = pymysql.connect(
+                    host=self.hostname,
+                    user=self.user,
+                    port=self.port,
+                    password=self.password,
+                    database=self.database
+                )
+                assert self.is_connected(), "Not connected to the database"
+                self.cursor = self.connector.cursor()
+                LOG.info('Connected to {} established'.format(str(self)))
+            except OperationalError:
+                LOG.error('Unable to connect to {}'.format(str(self)))
+                print_error('Unable to connect to {}'.format(str(self)))
+                sys.exit(1)
+
         return self.connector
 
     def disconnect(self):
         if self.is_connected():
             self.connector.close()
-            LOG.info('Disconnected from {}@{}:{}/{}.'.format(self.user, self.hostname, self.port, self.database))
             self.connector = None
+            LOG.info('Disconnected from {}.'.format(str(self)))
         else:
-            LOG.info(
-                'ERROR: Connection with {}@{}:{}/{} was not established.'.format(self.user, self.hostname, self.port,
-                                                                                 self.database))
+            LOG.error('Unable to disconnect from {}'.format(str(self)))
+            sys.exit(1)
+
         return self.connector
 
     def count(self):
