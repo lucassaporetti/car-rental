@@ -19,8 +19,9 @@ class Car(Entity):
         self.fuel = fuel
         self.plate = plate
         self.price = price
-        self.available = available
+        self.available = YesNo(available)
 
     def __str__(self):
-        return "Name: {}\tChassis: {}\tColor: {}\tDoors: {}\tFuel: {}\tPlate: {}\tPrice: {}\tAvailable: {}".format(
-            self.name, self.chassis, self.color, self.doors, self.fuel, self.plate, self.price, self.available.name)
+        return "{} | {} | {} | {} | {} | {} | {} | {} | {}".format(
+            super().__str__(), self.name, self.chassis, self.color, self.doors, self.fuel, self.plate, self.price,
+            self.available)

@@ -4,6 +4,7 @@ import sys
 from src.core.factories import SqlFactory
 from src.core.repository.db.mysql_repository import MySqlRepository
 from src.model.employee import Employee
+from src.model.entity import Entity
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 EMPLOYEE_TEMPLATES = f"{CUR_DIR}/sql/mysql/ddl/employee_templates.properties"
@@ -25,5 +26,5 @@ class EmployeeRepository(MySqlRepository):
     def delete(self, employee: Employee):
         super().delete(employee)
 
-    def row_to_entity(self, row: tuple) -> dict:
-        return Employee.of(list(row)).__dict__
+    def row_to_entity(self, row: tuple) -> Entity:
+        return Employee.of(list(row))

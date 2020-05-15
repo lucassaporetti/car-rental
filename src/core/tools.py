@@ -34,13 +34,13 @@ def is_float(number):
 
 def print_error(msg: str, arg: str = None):
     print(f"\033[0;31m### Error: {msg} \"{arg}\"\033[0;0;0m")
-    sleep(2.5)
+    sleep(2)
     print('\033[2A\033[J', end='')
 
 
 def print_warning(msg: str, arg: str = None):
     print(f"\033[0;93m### Warn: {msg} \"{arg}\"\033[0;0;0m")
-    sleep(2.5)
+    sleep(2)
     print('\033[2A\033[J', end='')
 
 
@@ -51,7 +51,7 @@ def print_list(the_list: list):
         for next_item in the_list:
             if the_list.index(next_item) > 0:
                 print('-+'*80)
-            print('\033[0;36m{}\033[0;0;0m'.format(next_item))
+            print('\033[0;36m{}\033[0;0;0m'.format(str(next_item)))
     else:
         print('')
         print('\033[0;93mNo data to display\033[0;0;0m')
@@ -62,7 +62,7 @@ def print_list(the_list: list):
 
 
 def print_one(entity):
-    print_list(entity)
+    print(str(entity))
     press_enter()
 
 

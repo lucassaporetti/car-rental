@@ -4,6 +4,7 @@ import sys
 from src.core.factories import SqlFactory
 from src.core.repository.db.mysql_repository import MySqlRepository
 from src.model.car import Car
+from src.model.entity import Entity
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 CAR_TEMPLATES = f"{CUR_DIR}/sql/mysql/ddl/car_templates.properties"
@@ -22,5 +23,5 @@ class CarRepository(MySqlRepository):
     def delete(self, car: Car):
         super().delete(car)
 
-    def row_to_entity(self, row: tuple) -> dict:
-        return Car.of(list(row)).__dict__
+    def row_to_entity(self, row: tuple) -> Entity:
+        return Car.of(list(row))

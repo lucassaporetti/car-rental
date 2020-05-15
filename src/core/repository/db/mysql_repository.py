@@ -120,5 +120,5 @@ class MySqlRepository(DbRepository):
             return None
 
     @abstractmethod
-    def row_to_entity(self, row: tuple) -> dict:
+    def row_to_entity(self, row: tuple) -> Entity:
         pass

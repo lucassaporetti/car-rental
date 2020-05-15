@@ -19,6 +19,5 @@ class Rental(Entity):
         self.attendant = attendant
 
     def __str__(self):
-        return "Date: {}\tPrice: {}\tPending: {}\tAttendant: {}\t".format(
-            self.date, self.price, self.pending, self.attendant)
-
+        return "{} | {} | {} | {} | {} | {}".format(
+            super().__str__(), self.date, self.return_date, self.price, self.pending, self.attendant)
