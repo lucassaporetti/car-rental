@@ -1,9 +1,10 @@
 import re
 import uuid
+
 from typing import Optional
 
-from src.core.base.local_db import LocalDB
-from src.core.base.interfaces.repository import Repository
+from src.core.repository.file.file_db import LocalDB
+from src.core.repository.repository import Repository
 from src.core.tools import check_criteria
 from src.model.entity import Entity
 
@@ -32,7 +33,7 @@ class FileRepository(Repository):
         self.localDb.commit()
         print("{} has been deleted !".format(entity.__class__.__name__))
 
-    def find_all(self, filters: str = None) -> list:
+    def find_all(self, filters: str = None) -> Optional[list]:
         if filters is not None:
             file_filters = filters.split(',')
             filtered = []

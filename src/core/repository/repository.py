@@ -22,7 +22,7 @@ class Repository(ABC):
         pass
 
     @abstractmethod
-    def find_all(self, filters: str = None) -> list:
+    def find_all(self, filters: str = None) -> Optional[list]:
         pass
 
     @abstractmethod

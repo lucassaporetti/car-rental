@@ -1,6 +1,6 @@
 from abc import ABC
 
-from src.core.base.interfaces.repository import Repository
+from src.core.repository.repository import Repository
 from src.model.entity import Entity
 
 

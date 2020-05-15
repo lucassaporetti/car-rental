@@ -1,7 +1,7 @@
-from src.core.base.menu import Menu
 from src.core.builders import create_employee, create_customer
 from src.core.service.customer_service import CustomerService
 from src.core.service.employee_service import EmployeeService
+from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Employee

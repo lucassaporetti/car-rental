@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["employee_service.py", "car_service.py", "customer_service.py"]
+__all__ = ["service", "employee_service", "car_service", "customer_service", "rental_service"]

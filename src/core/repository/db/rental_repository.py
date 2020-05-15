@@ -1,8 +1,8 @@
 import pathlib
 import sys
 
-from src.core.base.mysql_repository import MySqlRepository
 from src.core.factories import SqlFactory
+from src.core.repository.db.mysql_repository import MySqlRepository
 from src.model.rental import Rental
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()

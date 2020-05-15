@@ -2,4 +2,5 @@
 #
 # Package: base
 
-__all__ = ["car_repository", "customer_repository", "employee_repository", "rental_repository"]
+__all__ = ["db_repository", "mysql_repository", "car_repository", "customer_repository", "employee_repository",
+           "rental_repository"]

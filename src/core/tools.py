@@ -1,4 +1,27 @@
+import logging as log
+import os
+
 from time import sleep
+
+# Default log file format
+DEFAULT_LOG_FMT = '%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s ::%(funcName)s(@line-%(lineno)d) %(message)s '
+
+# default log file size
+MAX_LOG_FILE_SIZE = 1 * 1024 * 1024
+
+
+def log_init(log_file, level=log.DEBUG, log_fmt=DEFAULT_LOG_FMT, max_log_size=MAX_LOG_FILE_SIZE):
+    with open(log_file, 'a'):
+        os.utime(log_file, None)
+    f_size = os.path.getsize(log_file)
+    f_mode = "a" if f_size < max_log_size else "w"
+    log.basicConfig(
+        filename=log_file,
+        format=log_fmt,
+        level=level,
+        filemode=f_mode)
+
+    return log
 
 
 def is_integer(number):
@@ -24,10 +47,15 @@ def print_warning(msg: str, arg: str = None):
 def print_list(the_list: list):
     print('\033[2J\033[H')
     print('-='*80)
-    for next_item in the_list:
-        if the_list.index(next_item) > 0:
-            print('-+'*80)
-        print('\033[0;36m{}\033[0;0;0m'.format(next_item))
+    if len(the_list) > 0:
+        for next_item in the_list:
+            if the_list.index(next_item) > 0:
+                print('-+'*80)
+            print('\033[0;36m{}\033[0;0;0m'.format(next_item))
+    else:
+        print('')
+        print('\033[0;93mNo data to display\033[0;0;0m')
+        print('')
     print('-='*80)
     print('')
     press_enter()

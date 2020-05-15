@@ -1,6 +1,6 @@
 from abc import abstractmethod
-from src.core.base.interfaces.repository import Repository
 from src.core.factories import SqlFactory
+from src.core.repository.repository import Repository
 
 
 class DbRepository(Repository):

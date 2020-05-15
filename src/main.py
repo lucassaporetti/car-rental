@@ -8,14 +8,18 @@
    @author: <B>H</B>ugo <B>S</B>aporetti <B>J</B>unior
    @mailto: yorevs@hotmail.com
 """
+import pathlib
 import signal
 import sys
 
-from src.core.base.menu import Menu
-from src.ui.main_menu_ui import MainMenuUi
+from src.ui.main_menu_ui import *
+
+CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 
 
 class Main:
+    log_file = f"{CUR_DIR}/../log/car-rental.log"
+
     def __init__(self):
         self.done = False
         self.ui = MainMenuUi()

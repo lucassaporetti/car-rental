@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["main"]
+__all__ = ["main", "core", "model", "sql", "ui"]

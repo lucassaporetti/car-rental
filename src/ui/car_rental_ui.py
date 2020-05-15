@@ -1,8 +1,8 @@
-from src.core.base.menu import Menu
 from src.core.service.car_service import CarService
 from src.core.service.employee_service import EmployeeService
 from src.core.tools import press_enter, print_warning, print_error, print_list
 from src.model.rental import Rental
+from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Available cars

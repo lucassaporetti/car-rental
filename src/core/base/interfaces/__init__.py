@@ -1,5 +1,0 @@
-# _*_ coding: utf-8 _*_
-#
-# Package: base
-
-__all__ = ["repository", "db_repository"]

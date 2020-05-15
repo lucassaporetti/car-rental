@@ -1,5 +1,5 @@
-from src.core.base.service import Service
 from src.core.repository.db.employee_repository import EmployeeRepository
+from src.core.service.service import Service
 from src.model.employee import Employee
 
 
