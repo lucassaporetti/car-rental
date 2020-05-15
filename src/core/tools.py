@@ -1,6 +1,5 @@
 import logging as log
 import os
-import sys
 
 from time import sleep
 
