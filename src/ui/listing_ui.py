@@ -3,13 +3,14 @@ from src.core.service.car_service import CarService
 from src.core.service.customer_service import CustomerService
 from src.core.service.employee_service import EmployeeService
 from src.core.service.rental_service import RentalService
+from src.core.tools import press_enter, print_list
 
 MENU = """\033[2J\033[H
-[A] Employees
-[B] Customers
-[C] Cars
-[D] Rentals
-[E] Previous Menu
+\033[0;32m[A]\033[0;0;0m Employees
+\033[0;32m[B]\033[0;0;0m Customers
+\033[0;32m[C]\033[0;0;0m Cars
+\033[0;32m[D]\033[0;0;0m Rentals
+\033[0;32m[E]\033[0;0;0m Previous Menu
 """
 
 
@@ -29,18 +30,15 @@ class ListingUi(Menu):
     def trigger_menu_item(self):
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
-            print(str(self.employee_service.list()))
+            print_list(self.employee_service.list())
         elif str_op == 'B':
-            print(str(self.customer_service.list()))
+            print_list(self.customer_service.list())
         elif str_op == 'C':
-            print(str(self.car_service.list()))
+            print_list(self.car_service.list())
         elif str_op == 'D':
-            print(str(self.rentals_service.list()))
+            print_list(self.rentals_service.list())
         elif str_op == 'E':
             return Menu.MAIN_MENU
-
-        print('')
-        input('Press  [Enter] to continue ...')
 
         return Menu.SAME_MENU
 

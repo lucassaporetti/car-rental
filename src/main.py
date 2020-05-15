@@ -8,7 +8,7 @@
    @author: <B>H</B>ugo <B>S</B>aporetti <B>J</B>unior
    @mailto: yorevs@hotmail.com
 """
-import os
+import signal
 import sys
 
 from src.core.base.menu import Menu
@@ -31,11 +31,18 @@ class Main:
                 continue
             else:
                 self.ui = next_ui
-        print('Done.')
+
+
+def exit_app(sig=None, frame=None):
+    print('\033[2J\033[H')
+    print('Bye.')
+    print('')
+    exit(sig)
 
 
 # Application entry point
 if __name__ == "__main__":
     main = Main()
+    signal.signal(signal.SIGINT, exit_app)
     main.run()
-    sys.exit(0)
+    exit_app(0)

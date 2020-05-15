@@ -5,17 +5,17 @@ from src.model.entity import Entity
 
 
 class Service(ABC):
-    def __init__(self, dao: Repository):
-        self.dao = dao
+    def __init__(self, repository: Repository):
+        self.repository = repository
 
     def save(self, data: Entity):
-        if data.uuid is None or self.dao.find_by_id(data.uuid) is None:
-            self.dao.insert(data)
+        if data.uuid is None or self.repository.find_by_id(data.uuid) is None:
+            self.repository.insert(data)
         else:
-            self.dao.update(data)
+            self.repository.update(data)
 
-    def list(self) -> list:
-        return self.dao.find_all()
+    def list(self, filters: str = None) -> list:
+        return self.repository.find_all(filters=filters)
 
     def get(self, uuid: str) -> Entity:
-        return self.dao.find_by_id(uuid)
+        return self.repository.find_by_id(uuid)

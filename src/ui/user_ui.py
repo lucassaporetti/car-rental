@@ -4,9 +4,9 @@ from src.core.service.customer_service import CustomerService
 from src.core.service.employee_service import EmployeeService
 
 MENU = """\033[2J\033[H
-[A] Employee
-[B] Customer
-[C] Previous Menu
+\033[0;32m[A]\033[0;0;0m Employee
+\033[0;32m[B]\033[0;0;0m Customer
+\033[0;32m[C]\033[0;0;0m Previous Menu
 """
 
 

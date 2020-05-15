@@ -2,6 +2,7 @@ import pathlib
 import sys
 import uuid
 from abc import abstractmethod
+from typing import Optional
 
 from src.core.base.interfaces.db_repository import DbRepository
 from src.core.factories import SqlFactory
@@ -81,8 +82,12 @@ class MySqlRepository(DbRepository):
         self.cursor.execute(delete_stm)
         self.connector.commit()
 
-    def find_all(self) -> list:
-        select_stm = self.sql_factory.select()
+    def find_all(self, filters: str = None) -> list:
+        if filters is not None:
+            sql_filters = filters.upper().replace(',', ', OR ').split(',')
+        else:
+            sql_filters = None
+        select_stm = self.sql_factory.select(filters=sql_filters)
         print('Executing SQL statement: {}'.format(select_stm))
         self.cursor.execute(select_stm)
         result = self.cursor.fetchall()
@@ -92,15 +97,17 @@ class MySqlRepository(DbRepository):
 
         return ret_val
 
-    def find_by_id(self, entity_id: str) -> Entity:
-        select_stm = self.sql_factory.select(filters=[
-            'UUID = {}'.format(entity_id)
-        ])
-        print('Executing SQL statement: {}'.format(select_stm))
-        self.cursor.execute(select_stm)
-        ret_val = self.cursor.fetchall()[0]
-
-        return ret_val
+    def find_by_id(self, entity_id: str) -> Optional[Entity]:
+        if entity_id:
+            select_stm = self.sql_factory.select(filters=[
+                "UUID = '{}'".format(entity_id)
+            ])
+            print('Executing SQL statement: {}'.format(select_stm))
+            self.cursor.execute(select_stm)
+            result = self.cursor.fetchall()
+            return result[0] if len(result) > 0 else None
+        else:
+            return None
 
     @abstractmethod
     def row_to_entity(self, row: tuple) -> dict:

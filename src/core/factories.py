@@ -1,6 +1,6 @@
 
 from src.core.properties import Properties
-from src.core.tools import dict_to_values, dict_to_filters
+from src.core.tools import dict_to_values, list_to_filters, list_to_columns
 
 
 class SqlFactory:
@@ -19,19 +19,19 @@ class SqlFactory:
         return self.sql_templates.get('update')\
             .format(
                 dict_to_values(values) if values is not None else '',
-                dict_to_filters(filters) if filters is not None else '',
+                list_to_filters(filters) if filters is not None else '',
             )
 
     def delete(self, filters: dict = None):
         return self.sql_templates.get('delete')\
             .format(
-                dict_to_filters(filters) if filters is not None else '',
+                list_to_filters(filters) if filters is not None else '',
             )
 
-    def select(self, columns: list = None, filters: dict = None):
+    def select(self, columns: list = None, filters: list = None):
         return self.sql_templates.get('select')\
             .format(
-                dict_to_values(columns) if columns is not None else '*',
-                dict_to_filters(filters) if filters is not None else '',
+                list_to_columns(columns) if columns is not None else '*',
+                list_to_filters(filters) if filters is not None else '',
             )
 

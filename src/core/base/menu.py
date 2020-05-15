@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from src.core.tools import print_error
+
 
 class Menu(ABC):
     EXIT_REQUEST = None
@@ -20,7 +22,7 @@ class Menu(ABC):
                 self.op = self.op
                 return self.trigger_menu_item()
             else:
-                print("### Error: Invalid option \"{}\"".format(self.op))
+                print_error("### Error: Invalid option \"{}\"".format(self.op))
                 self.op = None
 
     @abstractmethod

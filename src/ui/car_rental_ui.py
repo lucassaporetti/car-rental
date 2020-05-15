@@ -1,12 +1,13 @@
 from src.core.base.menu import Menu
 from src.core.service.car_service import CarService
 from src.core.service.employee_service import EmployeeService
+from src.core.tools import press_enter, print_warning, print_error, print_list
 from src.model.rental import Rental
 
 MENU = """\033[2J\033[H
-[A] Search available cars
-[B] Rent
-[C] Previous Menu
+\033[0;32m[A]\033[0;0;0m Available cars
+\033[0;32m[B]\033[0;0;0m Rent
+\033[0;32m[C]\033[0;0;0m Previous Menu
 """
 
 
@@ -36,12 +37,11 @@ class CarRentalUi(Menu):
         return str(self.op).upper() in self.options
 
     def search_available(self):
-        all_cars = self.car_service.list()
-        available_cars = [c for c in all_cars if c['available']]
+        available_cars = self.car_service.list(filters='AVAILABLE = 1')
         if len(available_cars) > 0:
-            print(available_cars)
+            print_list(available_cars)
         else:
-            print('There are no cars available at the moment')
+            print_warning('There are no cars available at the moment')
 
     def do_rent(self):
         rental = Rental()
@@ -59,7 +59,9 @@ class CarRentalUi(Menu):
                         idx = int(input('Attendant: '))
                         rental.attendant = all_attendants[idx]
                         # TODO Finish the implementation
+                        print('TODO')
+                    press_enter()
                 else:
-                    print('There are no attendants yet')
+                    print_warning('There are no attendants yet')
             else:
-                print('Model with uuid={} was not found'.format(entity_id))
+                print_error('Model with uuid={} was not found'.format(entity_id))

@@ -7,13 +7,13 @@ from src.ui.listing_ui import ListingUi
 from src.ui.user_ui import UserUi
 
 MENU = """\033[2J\033[H
-[0] Exit
-[1] Add Car Model
-[2] Add User
-[3] Rent a Car
-[4] Return a Car
-[5] Car Information
-[6] Listing
+\033[0;32m[0]\033[0;0;0m Exit
+\033[0;32m[1]\033[0;0;0m Add Car Model
+\033[0;32m[2]\033[0;0;0m Add User
+\033[0;32m[3]\033[0;0;0m Rent a Car
+\033[0;32m[4]\033[0;0;0m Return a Car
+\033[0;32m[5]\033[0;0;0m Car Information
+\033[0;32m[6]\033[0;0;0m Listing
 """
 
 

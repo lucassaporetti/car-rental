@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from src.model.entity import Entity
 
@@ -21,9 +22,9 @@ class Repository(ABC):
         pass
 
     @abstractmethod
-    def find_all(self) -> list:
+    def find_all(self, filters: str = None) -> list:
         pass
 
     @abstractmethod
-    def find_by_id(self, entity_id: str) -> Entity:
+    def find_by_id(self, entity_id: str) -> Optional[Entity]:
         pass

@@ -1,10 +1,13 @@
+from pymysql import InternalError
+
 from src.core.base.menu import Menu
 from src.core.service.car_service import CarService
+from src.core.tools import press_enter, print_list, print_warning, print_error, print_one
 
 MENU = """\033[2J\033[H
-[A] Search model
-[B] Get Information
-[C] Previous Menu
+\033[0;32m[A]\033[0;0;0m Search model
+\033[0;32m[B]\033[0;0;0m Get Information
+\033[0;32m[C]\033[0;0;0m Previous Menu
 """
 
 SEARCH_CRITERIA = 'criteria_1 .. criteria_N ([name|chassis|fuel|color|price|doors|plate]=value)'
@@ -35,23 +38,23 @@ class CarInfoUi(Menu):
         return str(self.op).upper() in self.options
 
     def search_model(self):
-        results = []
-        all_cars = self.car_service.list()
         print("Please type the search criteria: {}".format(SEARCH_CRITERIA))
-        criteria = input('> ')
+        criteria = input('$ ')
         if criteria:
-            for next_crit in criteria.strip().split(','):
-                fields = next_crit.split('=')
-                found = [c for c in all_cars if fields[1] in c[fields[0]]]
-                results.extend(found)
-            if len(results) > 0:
-                print(results)
+            try:
+                found = self.car_service.list(filters=criteria)
+                if len(found) > 0:
+                    print_list(found)
+                else:
+                    print_warning('No cars found for the matching criteria {}'.format(criteria))
+            except InternalError:
+                print_error('Invalid criteria {}'.format(criteria))
 
     def get_information(self):
         entity_id = input("Car UUID: ")
         if entity_id:
             found = self.car_service.get(entity_id)
             if found is not None:
-                print(found)
+                print_one(found)
             else:
-                print('Model with uuid={}  was not found'.format(entity_id))
+                print_warning('Model with uuid={}  was not found'.format(entity_id))
