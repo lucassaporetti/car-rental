@@ -1,25 +1,27 @@
 import pathlib
 import sys
+import uuid
 
 from src.core.base.interfaces.db_repository import DbRepository
+from src.core.factories import SqlFactory
 from src.core.properties import Properties
 from src.model.entity import Entity
 import pymysql
 
 CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 DB_PROPERTIES = Properties(f"{CUR_DIR}/db.properties").read()
-SQL_TEMPLATES = f"{CUR_DIR}/sql/ddl/mysql_templates.properties"
 
 
 class MySqlRepository(DbRepository):
-    def __init__(self):
-        super().__init__(SQL_TEMPLATES)
+    def __init__(self, sql_factory: SqlFactory):
+        super().__init__(sql_factory)
         self.hostname = DB_PROPERTIES.get('db.hostname')
         self.port = DB_PROPERTIES.get_int('db.port')
         self.user = DB_PROPERTIES.get('db.user')
         self.password = DB_PROPERTIES.get('db.password')
         self.database = DB_PROPERTIES.get('db.database')
         self.connector = None
+        self.cursor = None
         self.connect()
 
     def is_connected(self):
@@ -36,6 +38,7 @@ class MySqlRepository(DbRepository):
             )
             assert self.is_connected(), 'ERROR: Unable to connect with {}@{}:{}/{}'\
                 .format(self.user, self.hostname, self.port, self.database)
+            self.cursor = self.connector.cursor()
             print('Connection with {}@{}:{}/{} established.'.format(self.user, self.hostname, self.port, self.database))
         return self.connector
 
@@ -52,7 +55,11 @@ class MySqlRepository(DbRepository):
         pass
 
     def insert(self, entity: Entity):
-        pass
+        entity.uuid = entity.uuid if entity.uuid is not None else uuid.uuid4()
+        insert_stm = self.sql_factory.insert(entity.__dict__)
+        print('Executing SQL statement: {}'.format(insert_stm))
+        self.cursor.execute(insert_stm)
+        self.connector.commit()
 
     def update(self, entity: Entity):
         pass
@@ -61,7 +68,15 @@ class MySqlRepository(DbRepository):
         pass
 
     def find_all(self):
-        pass
+        select_stm = self.sql_factory.select()
+        print('Executing SQL statement: {}'.format(select_stm))
+        self.cursor.execute(select_stm)
+        result = self.cursor.fetchall()
+        ret_val = []
+        for next_row in result:
+            ret_val.append(next_row)
+
+        return ret_val
 
     def find_by_id(self, entity_id: str):
         pass

@@ -25,6 +25,6 @@ class Properties:
                 key = parts[0].strip().upper()
                 value = parts[1].strip()
                 self.properties[key] = value
-            print('Successfully read {} properties'.format(len(self.properties)))
+            print('Successfully read {} properties from {}'.format(len(self.properties), self.filename))
 
         return self

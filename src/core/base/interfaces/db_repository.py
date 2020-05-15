@@ -1,11 +1,12 @@
 from abc import abstractmethod
 from src.core.base.interfaces.repository import Repository
-from src.model.entity import Entity
+from src.core.factories import SqlFactory
 
 
 class DbRepository(Repository):
-    def __init__(self, filename):
-        super().__init__(filename)
+    def __init__(self, sql_factory: SqlFactory):
+        super().__init__(sql_factory.sql_template_file)
+        self.sql_factory = sql_factory
 
     @abstractmethod
     def connect(self):

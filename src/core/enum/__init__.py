@@ -2,4 +2,4 @@
 #
 # Package: base
 
-__all__ = ["access_type"]
+__all__ = ["access_type", "color", "fuel", "yes_no"]

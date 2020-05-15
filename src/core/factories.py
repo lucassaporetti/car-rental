@@ -1,33 +1,37 @@
+
 from src.core.properties import Properties
-from src.model.entity import Entity
+from src.core.tools import dict_to_values, dict_to_filters
 
 
 class SqlFactory:
-    @staticmethod
-    def dict_to_values(values: dict) -> str:
-        str_values = ''
-        for key, value in values.items():
-            str_values += "{}'{}'".format(value, ', ' if str_values else '')
-        return str_values
-
     def __init__(self, sql_template_file):
+        self.sql_template_file = sql_template_file
         self.sql_templates = Properties(sql_template_file)
         self.sql_templates.read()
 
-    def count(self, table_name: str):
-        return self.sql_templates\
-            .get('count')\
-            .replace('{TABLE_NAME}', table_name.upper())
+    def count(self):
+        return self.sql_templates.get('count')
 
-    def insert(self, table_name: str, values: dict):
-        return self.sql_templates\
-            .get('insert') \
-            .replace('{TABLE_NAME}', table_name.upper()) \
-            .replace('{INSERT_VALUES}', SqlFactory.dict_to_values(values))
+    def insert(self, values: dict):
+        return self.sql_templates.get('insert').format(dict_to_values(values))
 
+    def update(self, values: dict, filters: dict = None):
+        return self.sql_templates.get('update')\
+            .format(
+                dict_to_values(values) if values is not None else '',
+                dict_to_filters(filters) if filters is not None else '',
+            )
 
-class CarFactory(SqlFactory):
-    def __init__(self, sql_template_file):
-        super().__init__(sql_template_file)
+    def delete(self, filters: dict = None):
+        return self.sql_templates.get('delete')\
+            .format(
+                dict_to_filters(filters) if filters is not None else '',
+            )
 
+    def select(self, values: dict = None, filters: dict = None):
+        return self.sql_templates.get('select')\
+            .format(
+                dict_to_values(values) if values is not None else '*',
+                dict_to_filters(filters) if filters is not None else '',
+            )
 

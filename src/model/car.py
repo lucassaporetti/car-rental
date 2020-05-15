@@ -1,3 +1,4 @@
+from src.core.enum.available import Available
 from src.model.entity import Entity
 
 
@@ -11,9 +12,9 @@ class Car(Entity):
         self.price = price
         self.doors = doors
         self.plate = plate
-        self.available = True
+        self.available = Available.YES
 
     def __str__(self):
-        return "Name: {}\tChassis: {}\tFuel: {}\tColor: {}\tPrice: {}\tDoors: {}\tPlate: {}\t".format(
-            self.name, self.chassis, self.fuel, self.color, self.price, self.doors, self.plate)
+        return "Name: {}\tChassis: {}\tFuel: {}\tColor: {}\tPrice: {}\tDoors: {}\tPlate: {}\tAvailable: {}".format(
+            self.name, self.chassis, self.fuel, self.color, self.price, self.doors, self.plate, self.available)
 

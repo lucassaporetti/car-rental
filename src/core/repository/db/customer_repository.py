@@ -1,11 +1,17 @@
+import pathlib
+import sys
 
 from src.core.base.mysql_repository import MySqlRepository
+from src.core.factories import SqlFactory
 from src.model.customer import Customer
+
+CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
+CUSTOMER_TEMPLATES = f"{CUR_DIR}/sql/mysql/ddl/customer_templates.properties"
 
 
 class CustomerRepository(MySqlRepository):
     def __init__(self):
-        super().__init__()
+        super().__init__(SqlFactory(CUSTOMER_TEMPLATES))
 
     def count(self):
         pass

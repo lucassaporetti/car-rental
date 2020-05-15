@@ -14,3 +14,6 @@ class Color(Enum):
     WHITE = '\033[0;97m'
     YELLOW = '\033[0;93m'
     VIOLET = '\033[0;95m'
+
+    def __str__(self):
+        return "{}".format(self.name.upper())

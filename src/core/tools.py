@@ -15,3 +15,15 @@ def print_error(msg: str, arg: str):
     print('\033[2A\033[J', end='')
 
 
+def dict_to_values(values: dict) -> str:
+    str_values = ''
+    for key, value in values.items():
+        if value is not None:
+            sep = ', ' if str_values else ''
+            str_values += "{}'{}'".format(sep, value)
+    return str_values
+
+
+def dict_to_filters(values: dict) -> str:
+    return ''
+
