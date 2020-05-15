@@ -47,7 +47,7 @@ def print_warning(msg: str, arg: str = None):
 def print_list(the_list: list):
     print('\033[2J\033[H')
     print('-='*80)
-    if len(the_list) > 0:
+    if the_list and len(the_list) > 0:
         for next_item in the_list:
             if the_list.index(next_item) > 0:
                 print('-+'*80)

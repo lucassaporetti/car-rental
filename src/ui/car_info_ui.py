@@ -40,12 +40,12 @@ class CarInfoUi(Menu):
         print("Please type the search criteria: {}".format(criteria_hint))
         criteria = input('$ ')
         try:
-            criteria = criteria if criteria and criteria != '*' else None
-            found = self.car_service.list(filters=criteria)
-            if found and len(found) > 0:
-                print_list(found)
-            else:
-                print_warning('No cars found for the matching criteria {}'.format(criteria))
+            if criteria or criteria == '*':
+                found = self.car_service.list(filters=criteria if criteria != '*' else None)
+                if found and len(found) > 0:
+                    print_list(found)
+                else:
+                    print_warning('No cars found for the matching criteria {}'.format(criteria))
         except InternalError:
             print_error('Invalid criteria {}'.format(criteria))
 
