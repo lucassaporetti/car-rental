@@ -13,7 +13,7 @@ from src.core.tools import log_init, print_error
 from src.main import Main
 from src.model.entity import Entity
 
-DB_PROPERTIES = Properties(f"{Main.cur_dir}/db.properties").read()
+DB_PROPERTIES = Properties(f"{Main.cur_dir}/application.properties").read()
 LOG = log_init(Main.log_file)
 
 
