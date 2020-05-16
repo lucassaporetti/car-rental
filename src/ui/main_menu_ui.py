@@ -33,7 +33,7 @@ class MainMenuUi(Menu):
     def trigger_menu_item(self):
         int_op = int(str(self.op).strip())
         if int_op == 0:
-            return Menu.EXIT_REQUEST
+            return MenuReturn.EXIT_REQUEST
         elif int_op == 1:
             self.car_service.save(CarBuilder.build())
         elif int_op == 2:
@@ -47,4 +47,4 @@ class MainMenuUi(Menu):
         elif int_op == 6:
             return ListingUi()
 
-        return Menu.SAME_MENU
+        return MenuReturn.SAME_MENU

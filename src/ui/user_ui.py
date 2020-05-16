@@ -1,3 +1,4 @@
+from src.core.enum.MenuReturn import MenuReturn
 from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
 from src.core.enum.repository_type import RepositoryType
@@ -33,10 +34,9 @@ class UserUi(Menu):
             customer = CustomerBuilder.build()
             self.customer_service.save(customer)
         elif str_op == 'C':
-            return Menu.MAIN_MENU
+            return MenuReturn.MAIN_MENU
 
-        return Menu.SAME_MENU
+        return MenuReturn.SAME_MENU
 
     def op_in_options(self):
         return str(self.op).upper() in self.options
-

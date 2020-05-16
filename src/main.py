@@ -35,9 +35,9 @@ class Main:
             next_ui = self.ui.execute()
             if next_ui is None:
                 self.done = True
-            elif next_ui == Menu.MAIN_MENU:
+            elif next_ui == MenuReturn.MAIN_MENU:
                 self.ui = MainMenuUi()
-            elif next_ui == Menu.SAME_MENU:
+            elif next_ui == MenuReturn.SAME_MENU:
                 continue
             else:
                 self.ui = next_ui

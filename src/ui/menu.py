@@ -1,12 +1,10 @@
 from abc import ABC, abstractmethod
 
+from src.core.enum.MenuReturn import MenuReturn
 from src.core.tools import print_error, prompt
 
 
 class Menu(ABC):
-    EXIT_REQUEST = None
-    MAIN_MENU = 0
-    SAME_MENU = 1
 
     def __init__(self):
         self.done = False
@@ -15,7 +13,7 @@ class Menu(ABC):
         self.options = []
 
     def execute(self):
-        while not self.op == Menu.MAIN_MENU and not self.done:
+        while not self.op == MenuReturn.MAIN_MENU and not self.done:
             print(self.menu)
             self.op = prompt("$ ", end='')
             if self.op and self.op.isalnum() and self.op_in_options():

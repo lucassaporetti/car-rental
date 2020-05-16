@@ -1,3 +1,4 @@
+from src.core.enum.MenuReturn import MenuReturn
 from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
 from src.core.enum.repository_type import RepositoryType
@@ -38,9 +39,9 @@ class ListingUi(Menu):
         elif str_op == 'D':
             print_list(self.rentals_service.list())
         elif str_op == 'E':
-            return Menu.MAIN_MENU
+            return MenuReturn.MAIN_MENU
 
-        return Menu.SAME_MENU
+        return MenuReturn.SAME_MENU
 
     def op_in_options(self):
         return str(self.op).upper() in self.options
