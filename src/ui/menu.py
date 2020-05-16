@@ -18,8 +18,7 @@ class Menu(ABC):
         while not self.op == Menu.MAIN_MENU and not self.done:
             print(self.menu)
             self.op = prompt("$ ", end='')
-            if self.op.isalnum() and self.op_in_options():
-                self.op = self.op
+            if self.op and self.op.isalnum() and self.op_in_options():
                 return self.trigger_menu_item()
             else:
                 print_error("### Error: Invalid option \"{}\"".format(self.op))
