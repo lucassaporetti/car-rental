@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.core.enum.MenuReturn import MenuReturn
+from src.core.enum.menu_return import MenuReturn
 from src.core.tools import print_error, prompt
 
 

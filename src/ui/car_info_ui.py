@@ -1,6 +1,6 @@
 from pymysql import InternalError
 
-from src.core.enum.MenuReturn import MenuReturn
+from src.core.enum.menu_return import MenuReturn
 from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
 from src.core.enum.repository_type import RepositoryType

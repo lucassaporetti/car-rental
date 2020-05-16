@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class MenuReturn(Enum):
-    EXIT_REQUEST = None
+    MENU_EXIT = None
     MAIN_MENU = 0
     SAME_MENU = 1
 

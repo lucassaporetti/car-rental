@@ -39,6 +39,8 @@ class Main:
                 self.ui = MainMenuUi()
             elif next_ui == MenuReturn.SAME_MENU:
                 continue
+            elif next_ui == MenuReturn.MENU_EXIT:
+                break
             else:
                 self.ui = next_ui
 
