@@ -83,32 +83,3 @@ def check_criteria(partial_value, whole_value):
         return int(partial_value) == whole_value
     else:
         return False
-
-
-def dict_to_values(values: dict) -> str:
-    str_values = ''
-    for key, value in values.items():
-        if value is not None:
-            sep = ', ' if str_values else ''
-            str_values += "{}'{}'".format(sep, value)
-
-    return str_values
-
-
-def list_to_filters(filters: list) -> str:
-    str_filters = ''
-    for sql_filter in filters:
-        sep = ', ' if str_filters else ''
-        str_filters += "{}AND {}".format(sep, sql_filter)
-
-    return str_filters
-
-
-def list_to_columns(columns: list) -> str:
-    str_columns = ''
-    for key, value in columns:
-        if value is not None:
-            sep = ', ' if str_columns else ''
-            str_columns += "{}{}".format(sep, key.upper(), value)
-
-    return str_columns

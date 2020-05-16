@@ -1,5 +1,7 @@
-from src.core.service.car_service import CarService
-from src.core.service.employee_service import EmployeeService
+from src.core.enum.database_type import DatabaseType
+from src.core.enum.model import Model
+from src.core.enum.repository_type import RepositoryType
+from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_warning, print_error, print_list, prompt, wait_enter
 from src.model.rental import Rental
 from src.ui.menu import Menu
@@ -16,8 +18,8 @@ class CarRentalUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C']
-        self.car_service = CarService()
-        self.employee_service = EmployeeService()
+        self.car_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CAR)
+        self.employee_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.EMPLOYEE)
 
     def __str__(self):
         return self.menu

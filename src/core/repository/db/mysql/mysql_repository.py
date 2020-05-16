@@ -1,4 +1,3 @@
-import pathlib
 import sys
 import uuid
 from abc import abstractmethod
@@ -7,15 +6,14 @@ from typing import Optional
 import pymysql
 from pymysql import ProgrammingError, OperationalError
 
-from src.core.factories import SqlFactory
+from src.core.factory.sql_factory import SqlFactory
 from src.core.properties import Properties
 from src.core.repository.db.db_repository import DbRepository
 from src.core.tools import log_init, print_error
 from src.main import Main
 from src.model.entity import Entity
 
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
-DB_PROPERTIES = Properties(f"{CUR_DIR}/db.properties").read()
+DB_PROPERTIES = Properties(f"{Main.cur_dir}/db.properties").read()
 LOG = log_init(Main.log_file)
 
 

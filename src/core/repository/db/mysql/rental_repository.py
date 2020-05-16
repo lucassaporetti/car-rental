@@ -1,18 +1,12 @@
-import pathlib
-import sys
-
-from src.core.factories import SqlFactory
-from src.core.repository.db.mysql_repository import MySqlRepository
+from src.core.factory.mysql.rental_factory import RentalFactory
+from src.core.repository.db.mysql.mysql_repository import MySqlRepository
 from src.model.entity import Entity
 from src.model.rental import Rental
-
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
-RENTAL_TEMPLATES = f"{CUR_DIR}/sql/mysql/ddl/rental_templates.properties"
 
 
 class RentalRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(SqlFactory(RENTAL_TEMPLATES))
+        super().__init__(RentalFactory())
 
     def count(self):
         pass

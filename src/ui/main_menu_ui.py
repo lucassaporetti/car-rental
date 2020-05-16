@@ -1,4 +1,7 @@
-from src.core.service.car_service import CarService
+from src.core.enum.database_type import DatabaseType
+from src.core.enum.model import Model
+from src.core.enum.repository_type import RepositoryType
+from src.core.service.service_facade import ServiceFacade
 from src.ui.builders.car_builder import CarBuilder
 from src.ui.car_info_ui import CarInfoUi
 from src.ui.car_rental_ui import CarRentalUi
@@ -22,7 +25,7 @@ class MainMenuUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = range(0, 7)
-        self.car_service = CarService()
+        self.car_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CAR)
 
     def __str__(self):
         return self.menu

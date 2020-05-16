@@ -1,5 +1,6 @@
 from abc import abstractmethod
-from src.core.factories import SqlFactory
+
+from src.core.factory.sql_factory import SqlFactory
 from src.core.repository.repository import Repository
 
 

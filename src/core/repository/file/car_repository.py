@@ -1,15 +1,11 @@
-import pathlib
-import sys
-
-from src.core.base.file_repository import FileRepository
+from src.core.repository.file.file_repository import FileRepository
+from src.main import Main
 from src.model.car import Car
-
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
 
 
 class CarRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{CUR_DIR}/../data/cars.dat")
+        super().__init__(f"{Main.cur_dir}/../data/cars.dat")
 
     def insert(self, car: Car):
         super().insert(car)

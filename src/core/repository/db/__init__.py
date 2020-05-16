@@ -2,5 +2,4 @@
 #
 # Package: src.core.repository.db
 
-__all__ = ["car_repository", "customer_repository", "db_repository", "employee_repository", "mysql_repository",
-           "rental_repository"]
+__all__ = ["mysql", "postgres", "db_repository"]

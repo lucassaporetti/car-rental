@@ -1,18 +1,12 @@
-import pathlib
-import sys
-
-from src.core.factories import SqlFactory
-from src.core.repository.db.mysql_repository import MySqlRepository
+from src.core.factory.mysql.employee_factory import EmployeeFactory
+from src.core.repository.db.mysql.mysql_repository import MySqlRepository
 from src.model.employee import Employee
 from src.model.entity import Entity
-
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
-EMPLOYEE_TEMPLATES = f"{CUR_DIR}/sql/mysql/ddl/employee_templates.properties"
 
 
 class EmployeeRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(SqlFactory(EMPLOYEE_TEMPLATES))
+        super().__init__(EmployeeFactory())
 
     def count(self):
         pass

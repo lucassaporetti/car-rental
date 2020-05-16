@@ -2,4 +2,4 @@
 #
 # Package: src.core.service
 
-__all__ = ["car_service", "customer_service", "employee_service", "rental_service", "service"]
+__all__ = ["car_service", "customer_service", "employee_service", "rental_service", "service", "service_facade"]

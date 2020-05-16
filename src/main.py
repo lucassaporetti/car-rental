@@ -16,11 +16,10 @@ from datetime import datetime
 from src.core.tools import log_init
 from src.ui.main_menu_ui import *
 
-CUR_DIR = pathlib.Path(sys.argv[0]).parent.absolute()
-
 
 class Main:
-    log_file = f"{CUR_DIR}/../log/car-rental.log"
+    cur_dir = pathlib.Path(sys.argv[0]).parent.absolute()
+    log_file = f"{cur_dir}/../log/car-rental.log"
     log = log_init(log_file)
     log.info('Car Rental started {}'.format(datetime.now()))
 

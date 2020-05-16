@@ -1,7 +1,7 @@
-from src.core.service.car_service import CarService
-from src.core.service.customer_service import CustomerService
-from src.core.service.employee_service import EmployeeService
-from src.core.service.rental_service import RentalService
+from src.core.enum.database_type import DatabaseType
+from src.core.enum.model import Model
+from src.core.enum.repository_type import RepositoryType
+from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_list
 from src.ui.menu import Menu
 
@@ -19,10 +19,10 @@ class ListingUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C', 'D', 'E']
-        self.employee_service = EmployeeService()
-        self.customer_service = CustomerService()
-        self.car_service = CarService()
-        self.rentals_service = RentalService()
+        self.employee_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.EMPLOYEE)
+        self.customer_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CUSTOMER)
+        self.car_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CAR)
+        self.rentals_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.RENTAL)
 
     def __str__(self):
         return self.menu

@@ -1,6 +1,9 @@
 from pymysql import InternalError
 
-from src.core.service.car_service import CarService
+from src.core.enum.database_type import DatabaseType
+from src.core.enum.model import Model
+from src.core.enum.repository_type import RepositoryType
+from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_list, print_warning, print_error, print_one, prompt
 from src.ui.menu import Menu
 
@@ -16,7 +19,7 @@ class CarInfoUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C']
-        self.car_service = CarService()
+        self.car_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CAR)
 
     def __str__(self):
         return self.menu
