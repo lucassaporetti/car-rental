@@ -77,7 +77,7 @@ class MySqlRepository(DbRepository):
         return ret_val
 
     def insert(self, entity: Entity):
-        entity.uuid = entity.uuid if entity.uuid is not None else uuid.uuid4()
+        entity.uuid = entity.uuid if entity.uuid is not None else str(uuid.uuid4())
         insert_stm = self.sql_factory.insert(entity.__dict__)
         LOG.info('Executing SQL statement: {}'.format(insert_stm))
         self.cursor.execute(insert_stm)

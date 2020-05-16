@@ -1,6 +1,7 @@
-from src.core.builders import create_employee, create_customer
 from src.core.service.customer_service import CustomerService
 from src.core.service.employee_service import EmployeeService
+from src.ui.builders.customer_builder import CustomerBuilder
+from src.ui.builders.employee_builder import EmployeeBuilder
 from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
@@ -24,10 +25,10 @@ class UserUi(Menu):
     def trigger_menu_item(self):
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
-            employee = create_employee()
+            employee = EmployeeBuilder.build()
             self.employee_service.save(employee)
         elif str_op == 'B':
-            customer = create_customer()
+            customer = CustomerBuilder.build()
             self.customer_service.save(customer)
         elif str_op == 'C':
             return Menu.MAIN_MENU

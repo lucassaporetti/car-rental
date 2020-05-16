@@ -1,5 +1,5 @@
-from src.core.builders import create_car
 from src.core.service.car_service import CarService
+from src.ui.builders.car_builder import CarBuilder
 from src.ui.car_info_ui import CarInfoUi
 from src.ui.car_rental_ui import CarRentalUi
 from src.ui.listing_ui import ListingUi
@@ -32,8 +32,7 @@ class MainMenuUi(Menu):
         if int_op == 0:
             return Menu.EXIT_REQUEST
         elif int_op == 1:
-            car = create_car()
-            self.car_service.save(car)
+            self.car_service.save(CarBuilder.build())
         elif int_op == 2:
             return UserUi()
         elif int_op == 3:

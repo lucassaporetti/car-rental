@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
 #
-# Package: base
+# Package: src.core.enum
 
 __all__ = ["access_type", "color", "fuel", "yes_no"]
