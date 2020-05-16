@@ -1,9 +1,3 @@
-from src.core.tools import log_init
-from src.main import Main
-
-LOG = log_init(Main.log_file)
-
-
 class Properties:
     def __init__(self, filename):
         self.filename = filename
@@ -30,6 +24,8 @@ class Properties:
                 key = parts[0].strip().upper()
                 value = parts[1].strip()
                 self.properties[key] = value
-            LOG.info('Successfully read {} properties from {}'.format(len(self.properties), self.filename))
 
         return self
+
+    def size(self):
+        return len(self.properties)
