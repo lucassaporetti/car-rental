@@ -25,6 +25,8 @@ class Main:
     log.info('Car Rental started {}'.format(datetime.now()))
     app_properties = Properties(f"{cur_dir}/resources/application.properties").read()
     log.info('Successfully read {} properties'.format(app_properties.size()))
+    repository_type = RepositoryType[app_properties.get('persistence.repository.type').upper()]
+    database_type = DatabaseType[app_properties.get('persistence.database.type').upper()]
 
     def __init__(self):
         self.done = False

@@ -3,6 +3,7 @@ from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
 from src.core.enum.repository_type import RepositoryType
 from src.core.service.service_facade import ServiceFacade
+from src.main import Main
 from src.ui.builders.customer_builder import CustomerBuilder
 from src.ui.builders.employee_builder import EmployeeBuilder
 from src.ui.menu import Menu
@@ -19,8 +20,8 @@ class UserUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C']
-        self.employee_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.EMPLOYEE)
-        self.customer_service = ServiceFacade.get(RepositoryType.DATABASE, DatabaseType.MYSQL, Model.CUSTOMER)
+        self.employee_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.EMPLOYEE)
+        self.customer_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.CUSTOMER)
 
     def __str__(self):
         return self.menu

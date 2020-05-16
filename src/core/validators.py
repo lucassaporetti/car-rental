@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-from typing import Type
+from enum import Enum
 
 from src.core.tools import is_integer, is_float
 
@@ -18,7 +18,7 @@ def validate_float(number: str, min_value: float = 0, max_value: float = 1000000
     return is_float(number) and min_value <= float(number) <= max_value
 
 
-def validate_enum(name: str, enum_type: Type):
+def validate_enum(name: str, enum_type: Enum):
     return name.upper() in enum_type.__dict__
 
 
