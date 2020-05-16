@@ -15,4 +15,3 @@ class RentalRepository(FileRepository):
 
     def delete(self, rental: Rental):
         super().delete(rental)
-

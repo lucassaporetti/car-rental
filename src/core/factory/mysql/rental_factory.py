@@ -9,4 +9,3 @@ class RentalFactory(MySqlFactory):
 
     def __init__(self):
         super().__init__(RentalFactory.sql_template_file)
-

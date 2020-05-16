@@ -44,4 +44,3 @@ class ListingUi(Menu):
 
     def op_in_options(self):
         return str(self.op).upper() in self.options
-

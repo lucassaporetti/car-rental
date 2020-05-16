@@ -13,4 +13,3 @@ class RentalService(Service):
 
     def save(self, rental: Rental):
         super().save(rental)
-

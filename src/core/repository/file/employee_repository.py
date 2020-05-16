@@ -15,4 +15,3 @@ class EmployeeRepository(FileRepository):
 
     def delete(self, employee: Employee):
         super().delete(employee)
-

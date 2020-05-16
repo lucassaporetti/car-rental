@@ -15,4 +15,3 @@ class CustomerRepository(FileRepository):
 
     def delete(self, customer: Customer):
         super().delete(customer)
-

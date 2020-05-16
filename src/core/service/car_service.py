@@ -13,4 +13,3 @@ class CarService(Service):
 
     def save(self, car: Car):
         super().save(car)
-

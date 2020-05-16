@@ -9,4 +9,3 @@ class CarFactory(MySqlFactory):
 
     def __init__(self):
         super().__init__(CarFactory.sql_template_file)
-

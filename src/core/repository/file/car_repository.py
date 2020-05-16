@@ -15,4 +15,3 @@ class CarRepository(FileRepository):
 
     def delete(self, car: Car):
         super().delete(car)
-
