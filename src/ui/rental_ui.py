@@ -1,7 +1,5 @@
 from src.core.enum.menu_return import MenuReturn
-from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
-from src.core.enum.repository_type import RepositoryType
 from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_warning, print_error, print_list, prompt, wait_enter
 from src.main import Main
@@ -10,8 +8,9 @@ from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Available cars
-\033[0;32m[B]\033[0;0;0m Rent
-\033[0;32m[C]\033[0;0;0m Previous Menu
+\033[0;32m[B]\033[0;0;0m Rent a Car
+\033[0;32m[C]\033[0;0;0m Return a Car
+\033[0;32m[D]\033[0;0;0m Previous Menu
 """
 
 
@@ -19,7 +18,7 @@ class CarRentalUi(Menu):
     def __init__(self):
         super().__init__()
         self.menu = str(MENU)
-        self.options = ['A', 'B', 'C']
+        self.options = ['A', 'B', 'C', 'D']
         self.car_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.CAR)
         self.employee_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.EMPLOYEE)
 
@@ -33,6 +32,8 @@ class CarRentalUi(Menu):
         elif str_op == 'B':
             self.do_rent()
         elif str_op == 'C':
+            self.do_return()
+        elif str_op == 'D':
             return MenuReturn.MAIN_MENU
 
         return MenuReturn.SAME_MENU
@@ -69,3 +70,6 @@ class CarRentalUi(Menu):
                     print_warning('There are no attendants yet')
             else:
                 print_error('Model with uuid={} was not found'.format(entity_id))
+
+    def do_return(self):
+        pass

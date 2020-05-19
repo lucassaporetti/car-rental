@@ -33,6 +33,16 @@ class SqlFactory:
 
         return str_columns
 
+    @staticmethod
+    def dict_to_field_set(values: dict) -> str:
+        str_field_set = ''
+        for key, value in values.items():
+            if value is not None:
+                sep = ', ' if str_field_set else ''
+                str_field_set += "{}{} = '{}'".format(sep, key.upper(), value)
+
+        return str_field_set
+
     def __init__(self, sql_template_file: str):
         self.sql_template_file = sql_template_file
         self.sql_templates = Properties(sql_template_file)

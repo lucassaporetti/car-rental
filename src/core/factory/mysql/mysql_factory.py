@@ -14,7 +14,7 @@ class MySqlFactory(SqlFactory):
     def update(self,  values: dict = None, filters: list = None):
         return self.sql_templates.get('update')\
             .format(
-                SqlFactory.dict_to_values(values) if values is not None else '',
+                SqlFactory.dict_to_field_set(values) if values is not None else '',
                 SqlFactory.list_to_filters(filters) if filters is not None else '',
             )
 

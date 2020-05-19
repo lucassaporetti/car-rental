@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class Properties:
     def __init__(self, filename):
         self.filename = filename
@@ -6,11 +9,23 @@ class Properties:
     def get(self, key: str) -> str:
         return self.properties[key.strip().upper()] if key.strip().upper() in self.properties else None
 
-    def get_int(self, key: str) -> int:
+    def get_int(self, key: str) -> Optional[int]:
         try:
             return int(self.get(key))
         except TypeError:
-            return 0
+            return None
+
+    def get_float(self, key: str) -> Optional[float]:
+        try:
+            return float(self.get(key))
+        except TypeError:
+            return None
+
+    def get_bool(self, key: str) -> Optional[bool]:
+        try:
+            return bool(self.get(key))
+        except TypeError:
+            return None
 
     def read(self):
         with open(self.filename, 'r') as f_properties:
@@ -27,5 +42,5 @@ class Properties:
 
         return self
 
-    def size(self):
+    def size(self) -> int:
         return len(self.properties)

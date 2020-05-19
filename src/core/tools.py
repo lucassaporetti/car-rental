@@ -1,12 +1,13 @@
 import logging as log
 import os
-
 from time import sleep
+
+from src.model.entity import Entity
 
 DEFAULT_LOG_FMT = '%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s ::%(funcName)s(@line-%(lineno)d) %(message)s '
 
 
-def log_init(log_file, level=log.DEBUG, log_fmt=DEFAULT_LOG_FMT):
+def log_init(log_file: str, level: int = log.DEBUG, log_fmt: str = DEFAULT_LOG_FMT):
     with open(log_file, 'w'):
         os.utime(log_file, None)
     f_mode = "a"
@@ -19,12 +20,12 @@ def log_init(log_file, level=log.DEBUG, log_fmt=DEFAULT_LOG_FMT):
     return log
 
 
-def is_integer(number):
-    return str(number).isdigit()
+def is_integer(number: str):
+    return number.isdigit()
 
 
-def is_float(number):
-    return str(number).isdecimal()
+def is_float(number: str):
+    return number.isdecimal()
 
 
 def print_error(msg: str, arg: str = None):
@@ -41,27 +42,27 @@ def print_warning(msg: str, arg: str = None):
 
 def print_list(the_list: list):
     print('\033[2J\033[H')
-    print('-='*80)
+    print('-=' * 80)
     if the_list and len(the_list) > 0:
         for next_item in the_list:
             if the_list.index(next_item) > 0:
-                print('-+'*80)
+                print('-+' * 80)
             print('\033[0;36m{}\033[0;0;0m'.format(str(next_item)))
     else:
         print('')
         print('\033[0;93mNo data to display\033[0;0;0m')
         print('')
-    print('-='*80)
+    print('-=' * 80)
     print('')
     wait_enter()
 
 
-def print_one(entity):
+def print_one(entity: Entity):
     print(str(entity))
     wait_enter()
 
 
-def prompt(message: str = '', end: str = '', clear=False):
+def prompt(message: str = '', end: str = '', clear: bool = False):
     try:
         if clear:
             print('\033[2J\033[H', end='')
@@ -81,5 +82,9 @@ def check_criteria(partial_value, whole_value):
         return str(partial_value).upper() in whole_value.upper()
     elif isinstance(whole_value, int):
         return int(partial_value) == whole_value
+    elif isinstance(whole_value, float):
+        return float(partial_value) == whole_value
+    elif isinstance(whole_value, bool):
+        return bool(partial_value) == whole_value
     else:
         return False

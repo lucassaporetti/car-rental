@@ -13,3 +13,12 @@ class CustomerService(Service):
 
     def save(self, customer: Customer):
         super().save(customer)
+
+    def remove(self, customer: Customer):
+        super().remove(customer)
+
+    def get(self, uuid: str) -> Customer:
+        entity = super().get(uuid)
+        customer = Customer()
+        customer.__dict__ = entity.__dict__
+        return customer

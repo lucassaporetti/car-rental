@@ -1,18 +1,19 @@
 from pymysql import InternalError
 
 from src.core.enum.menu_return import MenuReturn
-from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
-from src.core.enum.repository_type import RepositoryType
 from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_list, print_warning, print_error, print_one, prompt
 from src.main import Main
+from src.ui.builders.car_builder import CarBuilder
 from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Search model
-\033[0;32m[B]\033[0;0;0m Get Information
-\033[0;32m[C]\033[0;0;0m Previous Menu
+\033[0;32m[B]\033[0;0;0m Add model
+\033[0;32m[C]\033[0;0;0m Remove model
+\033[0;32m[D]\033[0;0;0m Car Information
+\033[0;32m[E]\033[0;0;0m Previous Menu
 """
 
 
@@ -20,7 +21,7 @@ class CarInfoUi(Menu):
     def __init__(self):
         super().__init__()
         self.menu = str(MENU)
-        self.options = ['A', 'B', 'C']
+        self.options = ['A', 'B', 'C', 'D', 'E']
         self.car_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.CAR)
 
     def __str__(self):
@@ -31,8 +32,12 @@ class CarInfoUi(Menu):
         if str_op == 'A':
             self.search_model()
         elif str_op == 'B':
-            self.get_information()
+            self.car_service.save(CarBuilder.build())
         elif str_op == 'C':
+            self.remove_model()
+        elif str_op == 'D':
+            self.get_information()
+        elif str_op == 'E':
             return MenuReturn.MAIN_MENU
 
         return MenuReturn.SAME_MENU
@@ -52,6 +57,15 @@ class CarInfoUi(Menu):
                     print_warning('No cars found for the matching criteria {}'.format(criteria))
         except InternalError:
             print_error('Invalid criteria {}'.format(criteria))
+
+    def remove_model(self):
+        entity_id = prompt("Car UUID: ", clear=True)
+        if entity_id:
+            found = self.car_service.get(entity_id)
+            if found is not None:
+                self.car_service.remove(found)
+            else:
+                print_warning('Model with uuid={}  was not found'.format(entity_id))
 
     def get_information(self):
         entity_id = prompt("Car UUID: ", clear=True)

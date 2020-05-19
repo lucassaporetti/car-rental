@@ -13,3 +13,12 @@ class CarService(Service):
 
     def save(self, car: Car):
         super().save(car)
+
+    def remove(self, car: Car):
+        super().remove(car)
+
+    def get(self, uuid: str) -> Car:
+        entity = super().get(uuid)
+        car = Car()
+        car.__dict__ = entity.__dict__
+        return car

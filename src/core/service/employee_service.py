@@ -13,3 +13,12 @@ class EmployeeService(Service):
 
     def save(self, employee: Employee):
         super().save(employee)
+
+    def remove(self, employee: Employee):
+        super().remove(employee)
+
+    def get(self, uuid: str) -> Employee:
+        entity = super().get(uuid)
+        employee = Employee()
+        employee.__dict__ = entity.__dict__
+        return employee

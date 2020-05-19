@@ -13,6 +13,8 @@ import signal
 import sys
 from datetime import datetime
 
+from src.core.enum.database_type import DatabaseType
+from src.core.enum.repository_type import RepositoryType
 from src.core.properties import Properties
 from src.core.tools import log_init
 from src.ui.main_menu_ui import *
