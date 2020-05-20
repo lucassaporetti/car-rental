@@ -51,7 +51,6 @@ def exit_app(sig=None, frame=None):
 
 # Application entry point
 if __name__ == "__main__":
-    print(os.environ.get("PYTHONPATH"))
     main = CarRental()
     main.run()
     signal.signal(signal.SIGINT, exit_app)

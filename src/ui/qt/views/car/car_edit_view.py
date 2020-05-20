@@ -6,3 +6,7 @@ from src.ui.qt.qt_view import QtView
 class CarEditView(QtView):
     def __init__(self, window: QDialog):
         super().__init__(window)
+
+    def setup_ui(self):
+        pass
+

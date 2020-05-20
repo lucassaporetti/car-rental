@@ -12,11 +12,11 @@ from src.ui.qt.views.user.user_search_view import UserSearchView
 
 
 class MainMenuUi(QtView):
-    form, window = uic\
+    form, window = uic \
         .loadUiType(f"{AppConfigs.cur_dir}/ui/qt/forms/car_rental.ui")
 
     def __init__(self):
-        super().__init__(MainMenuUi.window)
+        super().__init__(MainMenuUi.window())
         self.form = MainMenuUi.form()
         self.form.setupUi(self.window)
         self.tabPanel = self.qt.find_widget(self.window, QTabWidget, 'tabPanel')
@@ -35,7 +35,7 @@ class MainMenuUi(QtView):
         self.window.show()
 
     def tab_changed(self, idx: int):
-        self.car_search.stackPanelCarModels.setCurrentIndex(0)
-        self.user_search.stackPanelUsers.setCurrentIndex(0)
-        self.rental_search.stackPanelRentals.setCurrentIndex(0)
+        self.car_search.stackedPanelCarModels.setCurrentIndex(0)
+        self.user_search.stackedPanelUsers.setCurrentIndex(0)
+        self.rental_search.stackedPanelRentals.setCurrentIndex(0)
         self.log.info('Tab: tabPanel changed to {}'.format(idx))

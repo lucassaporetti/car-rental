@@ -13,7 +13,7 @@ import signal
 from src.ui.main_menu_ui import *
 
 
-class Main:
+class CarRental:
     def __init__(self):
         self.done = False
         self.ui = MainMenuUi()
@@ -42,7 +42,7 @@ def exit_app(sig=None, frame=None):
 
 # Application entry point
 if __name__ == "__main__":
-    main = Main()
+    main = CarRental()
     signal.signal(signal.SIGINT, exit_app)
     main.run()
     exit_app(0)
