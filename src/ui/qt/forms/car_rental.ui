@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>dialogMain</class>
+ <widget class="QDialog" name="dialogMain">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>889</width>
-    <height>598</height>
+    <width>858</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Car Rental</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>12</number>
+   </property>
+   <property name="topMargin">
+    <number>12</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>12</number>
+   </property>
    <item>
-    <widget class="QTabWidget" name="tabWidget">
+    <widget class="QTabWidget" name="tabPanel">
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
@@ -49,7 +67,7 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="QStackedWidget" name="stackPanelCarModels">
+           <widget class="QStackedWidget" name="stackedPanelCarModels">
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -113,7 +131,7 @@
                      <number>5</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="toolButtonSearchModel">
+                     <widget class="QToolButton" name="btnSearchModel">
                       <property name="text">
                        <string/>
                       </property>
@@ -538,7 +556,7 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget">
+           <widget class="QStackedWidget" name="stackedPanelUsers">
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -599,7 +617,7 @@
                      <number>5</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="toolButtonSearchUser">
+                     <widget class="QToolButton" name="btnSearchUser">
                       <property name="text">
                        <string/>
                       </property>
@@ -995,7 +1013,7 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget_2">
+           <widget class="QStackedWidget" name="stackedPanelRentals">
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -1056,7 +1074,7 @@
                      <number>5</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="toolButtonSearchRental">
+                     <widget class="QToolButton" name="btnSearchRental">
                       <property name="text">
                        <string/>
                       </property>
@@ -1342,19 +1360,19 @@
   <tabstop>btnRentCar</tabstop>
   <tabstop>btnReturnCar</tabstop>
   <tabstop>editSearchRental</tabstop>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>toolButtonSearchRental</tabstop>
+  <tabstop>tabPanel</tabstop>
+  <tabstop>btnSearchRental</tabstop>
   <tabstop>editSearchModel</tabstop>
   <tabstop>btnAddCarModel</tabstop>
   <tabstop>btnRemoveCarModel</tabstop>
   <tabstop>btnUpdateCarModel</tabstop>
-  <tabstop>toolButtonSearchModel</tabstop>
+  <tabstop>btnSearchModel</tabstop>
   <tabstop>tableUsers</tabstop>
   <tabstop>tableViewRentals</tabstop>
   <tabstop>tableCarModels</tabstop>
   <tabstop>btnAddUser</tabstop>
   <tabstop>btnRemoveUser</tabstop>
-  <tabstop>toolButtonSearchUser</tabstop>
+  <tabstop>btnSearchUser</tabstop>
   <tabstop>editSearchUser</tabstop>
   <tabstop>btnUpdateUser</tabstop>
  </tabstops>
