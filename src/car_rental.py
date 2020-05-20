@@ -20,7 +20,7 @@ from src.core.enum.database_type import DatabaseType
 from src.core.enum.repository_type import RepositoryType
 from src.core.properties import Properties
 from src.core.tools import log_init
-from src.qt.main_menu_ui import *
+from src.ui.qt.main_menu_ui import MainMenuUi
 
 
 class CarRental:

@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="resources">
+    <file>resources/images/icn-magnifier.png</file>
+    <file>resources/images/icn-new.png</file>
+    <file>resources/images/icn-rent.png</file>
+    <file>resources/images/icn-return.png</file>
+    <file>resources/images/icn-save.png</file>
+    <file>resources/images/icn-trash.png</file>
+  </qresource>
+</RCC>

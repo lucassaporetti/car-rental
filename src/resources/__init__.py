@@ -2,4 +2,4 @@
 #
 # Package: src
 
-__all__ = ["icons_rc", "images"]
+__all__ = []

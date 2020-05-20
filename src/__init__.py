@@ -2,4 +2,12 @@
 #
 # Package: src
 
-__all__ = ["core", "model", "sql", "ui", "qt", "main", "car_rental", "resources"]
+__all__ = [
+    "core",
+    "model",
+    "sql",
+    "ui",
+    "main",
+    "car_rental",
+    "resources"
+]

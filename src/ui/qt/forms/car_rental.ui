@@ -118,8 +118,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-magnifier.png</normaloff>:/icons/icn-magnifier.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-magnifier.png</normaloff>:/resources/resources/images/icn-magnifier.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -140,7 +140,14 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchModel"/>
+                     <widget class="QLineEdit" name="editSearchModel">
+                      <property name="minimumSize">
+                       <size>
+                        <width>289</width>
+                        <height>21</height>
+                       </size>
+                      </property>
+                     </widget>
                     </item>
                     <item>
                      <widget class="QToolButton" name="btnAddCarModel">
@@ -148,8 +155,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-new.png</normaloff>:/icons/icn-new.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-new.png</normaloff>:/resources/resources/images/icn-new.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -171,8 +178,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-trash.png</normaloff>:/icons/icn-trash.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-trash.png</normaloff>:/resources/resources/images/icn-trash.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -197,8 +204,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-save.png</normaloff>:/icons/icn-save.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-save.png</normaloff>:/resources/resources/images/icn-save.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -597,8 +604,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-magnifier.png</normaloff>:/icons/icn-magnifier.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-magnifier.png</normaloff>:/resources/resources/images/icn-magnifier.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -619,7 +626,14 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchUser"/>
+                     <widget class="QLineEdit" name="editSearchUser">
+                      <property name="minimumSize">
+                       <size>
+                        <width>289</width>
+                        <height>21</height>
+                       </size>
+                      </property>
+                     </widget>
                     </item>
                     <item>
                      <widget class="QToolButton" name="btnAddUser">
@@ -627,8 +641,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-new.png</normaloff>:/icons/icn-new.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-new.png</normaloff>:/resources/resources/images/icn-new.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -644,8 +658,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-trash.png</normaloff>:/icons/icn-trash.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-trash.png</normaloff>:/resources/resources/images/icn-trash.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -661,8 +675,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-save.png</normaloff>:/icons/icn-save.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-save.png</normaloff>:/resources/resources/images/icn-save.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -1047,8 +1061,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-magnifier.png</normaloff>:/icons/icn-magnifier.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-magnifier.png</normaloff>:/resources/resources/images/icn-magnifier.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -1069,7 +1083,14 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchRental"/>
+                     <widget class="QLineEdit" name="editSearchRental">
+                      <property name="minimumSize">
+                       <size>
+                        <width>289</width>
+                        <height>21</height>
+                       </size>
+                      </property>
+                     </widget>
                     </item>
                     <item>
                      <widget class="QToolButton" name="btnRentCar">
@@ -1077,8 +1098,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-rent.png</normaloff>:/icons/icn-rent.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-rent.png</normaloff>:/resources/resources/images/icn-rent.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -1094,8 +1115,8 @@
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset>
-                        <normaloff>:/icons/icn-return.png</normaloff>:/icons/icn-return.png</iconset>
+                       <iconset resource="../../../resources.qrc">
+                        <normaloff>:/resources/resources/images/icn-return.png</normaloff>:/resources/resources/images/icn-return.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -1338,7 +1359,7 @@
   <tabstop>btnUpdateUser</tabstop>
  </tabstops>
  <resources>
-  <include location="../../resources/icons.qrc"/>
+  <include location="../../../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

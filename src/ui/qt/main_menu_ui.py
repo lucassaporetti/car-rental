@@ -3,7 +3,7 @@ from PyQt5 import uic
 
 class MainMenuUi:
     def __init__(self):
-        form, window = uic.loadUiType('forms/car_rental.ui')
+        form, window = uic.loadUiType('ui/qt/forms/car_rental.ui', import_from='')
         self.window = window()
         self.form = form()
         self.form.setupUi(self.window)
