@@ -1,10 +1,10 @@
 from pymysql import InternalError
 
+from src.configs import AppConfigs
 from src.core.enum.menu_return import MenuReturn
 from src.core.enum.model import Model
 from src.core.service.service_facade import ServiceFacade
 from src.core.tools import print_list, print_warning, print_error, print_one, prompt
-from src.main import Main
 from src.ui.builders.car_builder import CarBuilder
 from src.ui.menu import Menu
 
@@ -22,7 +22,7 @@ class CarInfoUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C', 'D', 'E']
-        self.car_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.CAR)
+        self.car_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.CAR)
 
     def __str__(self):
         return self.menu

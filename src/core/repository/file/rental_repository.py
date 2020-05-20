@@ -1,11 +1,11 @@
 from src.core.repository.file.file_repository import FileRepository
-from src.main import Main
+from src.configs import AppConfigs
 from src.model.rental import Rental
 
 
 class RentalRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{Main.cur_dir}/../data/rentals.dat")
+        super().__init__(f"{AppConfigs.cur_dir}/../data/rentals.dat")
 
     def insert(self, rental: Rental):
         super().insert(rental)

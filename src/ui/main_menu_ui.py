@@ -1,10 +1,10 @@
+from src.configs import AppConfigs
 from src.core.enum.model import Model
 from src.core.service.service_facade import ServiceFacade
-from src.main import Main
 from src.ui.car_info_ui import CarInfoUi
-from src.ui.rental_ui import CarRentalUi
 from src.ui.listing_ui import ListingUi
 from src.ui.menu import *
+from src.ui.rental_ui import CarRentalUi
 from src.ui.user_ui import UserUi
 
 MENU = """\033[2J\033[H
@@ -21,7 +21,7 @@ class MainMenuUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = range(0, 5)
-        self.car_service = ServiceFacade.get(Main.repository_type, Main.database_type, Model.CAR)
+        self.car_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.CAR)
 
     def __str__(self):
         return self.menu

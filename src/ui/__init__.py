@@ -8,5 +8,6 @@ __all__ = [
     "listing_ui",
     "menu",
     "main_menu_ui",
-    "qt", "user_ui"
+    "qt",
+    "user_ui"
 ]

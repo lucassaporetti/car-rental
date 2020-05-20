@@ -1,6 +1,6 @@
 from src.core.enum.access_type import AccessType
-from src.core.validators import validate_string, validate_enum, validate_int, validate_float, validate_date
 from src.core.tools import prompt, print_error
+from src.core.validators import validate_string, validate_enum, validate_int, validate_float, validate_date
 from src.model.employee import Employee
 
 

@@ -4,9 +4,9 @@ from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
 from src.core.factory.sql_factory import SqlFactory
 from src.core.tools import log_init
-from src.main import Main
+from src.configs import AppConfigs
 
-LOG = log_init(Main.log_file)
+LOG = log_init(AppConfigs.log_file)
 
 
 class SqlFactoryFacade:

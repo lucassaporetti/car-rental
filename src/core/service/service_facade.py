@@ -8,9 +8,9 @@ from src.core.service.employee_service import EmployeeService
 from src.core.service.rental_service import RentalService
 from src.core.service.service import Service
 from src.core.tools import log_init
-from src.main import Main
+from src.configs import AppConfigs
 
-LOG = log_init(Main.log_file)
+LOG = log_init(AppConfigs.log_file)
 
 
 class ServiceFacade:

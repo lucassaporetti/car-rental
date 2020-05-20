@@ -8,7 +8,7 @@
    @author: <B>H</B>ugo <B>S</B>aporetti <B>J</B>unior
    @mailto: yorevs@hotmail.com
 """
-
+import os
 import pathlib
 import signal
 import sys
@@ -51,7 +51,8 @@ def exit_app(sig=None, frame=None):
 
 # Application entry point
 if __name__ == "__main__":
+    print(os.environ.get("PYTHONPATH"))
     main = CarRental()
-    signal.signal(signal.SIGINT, exit_app)
     main.run()
+    signal.signal(signal.SIGINT, exit_app)
     exit_app(0)

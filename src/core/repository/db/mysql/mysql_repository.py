@@ -9,23 +9,22 @@ from pymysql import ProgrammingError, OperationalError
 from src.core.factory.sql_factory import SqlFactory
 from src.core.repository.db.db_repository import DbRepository
 from src.core.tools import log_init, print_error
-from src.main import Main
+from src.configs import AppConfigs
 from src.model.entity import Entity
 
-LOG = log_init(Main.log_file)
+LOG = log_init(AppConfigs.log_file)
 
 
 class MySqlRepository(DbRepository):
     def __init__(self, sql_factory: SqlFactory):
         super().__init__(sql_factory)
-        self.hostname = Main.app_properties.get('db.hostname')
-        self.port = Main.app_properties.get_int('db.port')
-        self.user = Main.app_properties.get('db.user')
-        self.password = Main.app_properties.get('db.password')
-        self.database = Main.app_properties.get('db.database')
+        self.hostname = AppConfigs.app_properties.get('db.hostname')
+        self.port = AppConfigs.app_properties.get_int('db.port')
+        self.user = AppConfigs.app_properties.get('db.user')
+        self.password = AppConfigs.app_properties.get('db.password')
+        self.database = AppConfigs.app_properties.get('db.database')
         self.connector = None
         self.cursor = None
-        self.connect()
 
     def __str__(self):
         return "{}@{}:{}/{}".format(self.user, self.hostname, self.port, self.database)

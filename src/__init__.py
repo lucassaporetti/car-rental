@@ -9,5 +9,6 @@ __all__ = [
     "ui",
     "main",
     "car_rental",
-    "resources"
+    "resources",
+    "configs"
 ]
