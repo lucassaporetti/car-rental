@@ -2,4 +2,4 @@
 #
 # Package: src
 
-__all__ = ["main_menu_ui", "forms"]
+__all__ = ["main_menu_ui", "forms", "qt_view"]

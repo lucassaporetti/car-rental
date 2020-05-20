@@ -1,6 +1,6 @@
-from src.core.tools import prompt, print_error
-from src.core.validators import validate_string, validate_int
-from src.model.customer import Customer
+from src.core.tools.commons import prompt, print_error
+from src.core.tools.validators import validate_string, validate_int
+from src.models.customer import Customer
 
 
 class CustomerBuilder:

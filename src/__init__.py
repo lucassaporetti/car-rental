@@ -8,7 +8,7 @@ __all__ = [
     "sql",
     "ui",
     "main",
-    "car_rental",
+    "main_qt.py",
     "resources",
     "configs"
 ]

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from src.core.enum.menu_return import MenuReturn
-from src.core.tools import print_error, prompt
+from src.core.enums.menu_return import MenuReturn
+from src.core.tools.commons import print_error, prompt
 
 
 class Menu(ABC):

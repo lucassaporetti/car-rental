@@ -1,9 +1,9 @@
 from src.configs import AppConfigs
-from src.core.enum.menu_return import MenuReturn
-from src.core.enum.model import Model
-from src.core.service.service_facade import ServiceFacade
-from src.core.tools import print_warning, print_error, print_list, prompt, wait_enter
-from src.model.rental import Rental
+from src.core.enums.menu_return import MenuReturn
+from src.core.enums.model import Model
+from src.core.services.service_facade import ServiceFacade
+from src.core.tools.commons import *
+from src.models.rental import Rental
 from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H

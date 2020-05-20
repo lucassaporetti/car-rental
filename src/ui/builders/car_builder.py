@@ -1,8 +1,8 @@
-from src.core.enum.color import Color
-from src.core.enum.fuel import Fuel
-from src.core.tools import prompt, print_error
-from src.core.validators import validate_string, validate_enum, validate_int, validate_float
-from src.model.car import Car
+from src.core.enums.color import Color
+from src.core.enums.fuel import Fuel
+from src.core.tools.commons import prompt, print_error
+from src.core.tools.validators import validate_string, validate_enum, validate_int, validate_float
+from src.models.car import Car
 
 
 class CarBuilder:
