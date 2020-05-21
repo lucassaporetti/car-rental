@@ -1,7 +1,7 @@
 from src.core.factories.mysql.rental_factory import RentalFactory
 from src.core.repositories.db.mysql.mysql_repository import MySqlRepository
-from src.models.entity import Entity
-from src.models.rental import Rental
+from core.models.entity import Entity
+from core.models.rental import Rental
 
 
 class RentalRepository(MySqlRepository):

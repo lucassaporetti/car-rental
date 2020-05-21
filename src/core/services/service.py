@@ -4,7 +4,7 @@ from src.core.enums.database_type import DatabaseType
 from src.core.enums.model import Model
 from src.core.enums.repository_type import RepositoryType
 from src.core.repositories.repository_facade import RepositoryFacade
-from src.models.entity import Entity
+from core.models.entity import Entity
 
 
 class Service(ABC):

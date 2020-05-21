@@ -2,7 +2,7 @@ import logging as log
 import os
 from time import sleep
 
-from src.models.entity import Entity
+from core.models.entity import Entity
 
 DEFAULT_LOG_FMT = '%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s ::%(funcName)s(@line-%(lineno)d) %(message)s '
 

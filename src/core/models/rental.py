@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from src.models.employee import Employee
-from src.models.entity import Entity
+from core.models.employee import Employee
+from core.models.entity import Entity
 
 
 class Rental(Entity):

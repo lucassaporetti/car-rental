@@ -1,6 +1,6 @@
 from src.core.repositories.file.file_repository import FileRepository
 from core.config.app_configs import AppConfigs
-from src.models.employee import Employee
+from core.models.employee import Employee
 
 
 class EmployeeRepository(FileRepository):

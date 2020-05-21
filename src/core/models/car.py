@@ -3,7 +3,7 @@ import uuid
 from src.core.enums.color import Color
 from src.core.enums.fuel import Fuel
 from src.core.enums.yes_no import YesNo
-from src.models.entity import Entity
+from core.models.entity import Entity
 
 
 class Car(Entity):

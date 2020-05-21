@@ -1,7 +1,7 @@
 from src.core.factories.mysql.customer_factory import CustomerFactory
 from src.core.repositories.db.mysql.mysql_repository import MySqlRepository
-from src.models.customer import Customer
-from src.models.entity import Entity
+from core.models.customer import Customer
+from core.models.entity import Entity
 
 
 class CustomerRepository(MySqlRepository):

@@ -1,10 +1,9 @@
 from src.core.enums.database_type import DatabaseType
 from src.core.enums.model import Model
 from src.core.enums.repository_type import RepositoryType
-from src.core.repositories.repository_facade import RepositoryFacade
 from src.core.services.service import Service
 
-from src.models.customer import Customer
+from core.models.customer import Customer
 
 
 class CustomerService(Service):

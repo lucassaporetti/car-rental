@@ -6,7 +6,7 @@ from typing import Optional
 from src.core.repositories.file.file_db import LocalDB
 from src.core.repositories.repository import Repository
 from src.core.tools.commons import check_criteria
-from src.models.entity import Entity
+from core.models.entity import Entity
 
 
 class FileRepository(Repository):

@@ -3,7 +3,7 @@ from src.core.enums.menu_return import MenuReturn
 from src.core.enums.model import Model
 from src.core.services.service_facade import ServiceFacade
 from src.core.tools.commons import *
-from src.models.rental import Rental
+from core.models.rental import Rental
 from src.ui.menu import Menu
 
 MENU = """\033[2J\033[H

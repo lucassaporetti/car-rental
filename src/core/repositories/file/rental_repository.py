@@ -1,6 +1,6 @@
 from src.core.repositories.file.file_repository import FileRepository
 from core.config.app_configs import AppConfigs
-from src.models.rental import Rental
+from core.models.rental import Rental
 
 
 class RentalRepository(FileRepository):

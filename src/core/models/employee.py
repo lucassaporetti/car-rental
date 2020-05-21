@@ -1,7 +1,7 @@
 import uuid
 
 from src.core.enums.access_type import AccessType
-from src.models.user import User
+from core.models.user import User
 
 
 class Employee(User):

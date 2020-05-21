@@ -1,7 +1,7 @@
 from src.core.factories.mysql.employee_factory import EmployeeFactory
 from src.core.repositories.db.mysql.mysql_repository import MySqlRepository
-from src.models.employee import Employee
-from src.models.entity import Entity
+from core.models.employee import Employee
+from core.models.entity import Entity
 
 
 class EmployeeRepository(MySqlRepository):

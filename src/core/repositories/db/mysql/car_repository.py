@@ -1,7 +1,7 @@
 from src.core.factories.mysql.car_factory import CarFactory
 from src.core.repositories.db.mysql.mysql_repository import MySqlRepository
-from src.models.car import Car
-from src.models.entity import Entity
+from core.models.car import Car
+from core.models.entity import Entity
 
 
 class CarRepository(MySqlRepository):

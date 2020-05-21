@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from src.models.entity import Entity
+from core.models.entity import Entity
 
 
 class Repository(ABC):
