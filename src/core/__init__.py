@@ -2,4 +2,12 @@
 #
 # Package: src.core
 
-__all__ = ["enums", "factories", "repositories", "services", "tools"]
+__all__ = [
+  "config",
+  "enums",
+  "factories",
+  "models",
+  "repositories",
+  "services",
+  "tools"
+]

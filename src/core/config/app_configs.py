@@ -21,19 +21,19 @@ class AppConfigs(ABC):
 
     @staticmethod
     def get(property_name: str) -> str:
-        return AppConfigs.get(property_name)
+        return AppConfigs.__app_properties.get(property_name) if AppConfigs.__app_properties else None
 
     @staticmethod
     def get_int(property_name: str) -> int:
-        return AppConfigs.get_int(property_name)
+        return AppConfigs.__app_properties.get_int(property_name) if AppConfigs.__app_properties else None
 
     @staticmethod
     def get_float(property_name: str) -> float:
-        return AppConfigs.get_float(property_name)
+        return AppConfigs.__app_properties.get_float(property_name) if AppConfigs.__app_properties else None
 
     @staticmethod
     def get_bool(property_name: str) -> bool:
-        return AppConfigs.get_bool(property_name)
+        return AppConfigs.__app_properties.get_bool(property_name) if AppConfigs.__app_properties else None
 
     @staticmethod
     def root_dir() -> str:

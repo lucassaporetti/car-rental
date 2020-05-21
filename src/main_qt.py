@@ -8,7 +8,6 @@
    @author: <B>H</B>ugo <B>S</B>aporetti <B>J</B>unior
    @mailto: yorevs@hotmail.com
 """
-import os
 import pathlib
 import signal
 import sys

@@ -4,11 +4,10 @@
 
 __all__ = [
     "core",
-    "model",
+    "resources",
     "sql",
     "ui",
     "main",
-    "main_qt.py",
-    "resources",
-    "configs"
+    "main_qt",
+    "resources_rc"
 ]

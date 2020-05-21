@@ -1,5 +1,10 @@
 # _*_ coding: utf-8 _*_
 #
-# Package: src.core
+# Package: src.core.tools
 
-__all__ = ["properties", "commons", "validators", "qt_finder"]
+__all__ = [
+  "commons",
+  "properties",
+  "qt_finder",
+  "validators"
+]

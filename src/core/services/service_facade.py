@@ -26,3 +26,19 @@ class ServiceFacade:
         service = service_type(repository_type, database_type) if service_type else None
         LOG.info('Retrieving service: {}'.format(service))
         return service
+
+    @staticmethod
+    def get_car_service() -> Service:
+        return ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CAR)
+
+    @staticmethod
+    def get_customer_service() -> Service:
+        return ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CUSTOMER)
+
+    @staticmethod
+    def get_employee_service() -> Service:
+        return ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.EMPLOYEE)
+
+    @staticmethod
+    def get_rental_service() -> Service:
+        return ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.RENTAL)

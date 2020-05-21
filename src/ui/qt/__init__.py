@@ -1,5 +1,5 @@
 # _*_ coding: utf-8 _*_
 #
-# Package: src
+# Package: src.ui.qt
 
-__all__ = ["main_menu_ui", "forms", "qt_view"]
+__all__ = ["forms", "views", "main_menu_ui", "qt_view"]

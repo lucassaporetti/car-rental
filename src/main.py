@@ -10,30 +10,31 @@
 """
 import signal
 
-from src.ui.main_menu_ui import *
+from ui.shell.menu import Menu
+from ui.shell.menu_facade import MenuFacade
 
 
 class CarRental:
     def __init__(self):
         self.done = False
-        self.ui = MainMenuUi()
+        self.ui = MenuFacade.main_menu()
+        self.prev_ui = self.ui
+
+    def change_ui(self, ui: Menu):
+        self.prev_ui = self.ui
+        self.ui = ui
 
     def run(self):
         while not self.done:
             next_ui = self.ui.execute()
             if next_ui is None:
                 self.done = True
-            elif next_ui == MenuReturn.MAIN_MENU:
-                self.ui = MainMenuUi()
-            elif next_ui == MenuReturn.SAME_MENU:
-                continue
-            elif next_ui == MenuReturn.MENU_EXIT:
-                break
             else:
-                self.ui = next_ui
+                self.change_ui(next_ui)
 
 
 def exit_app(sig=None, frame=None):
+    print(frame)
     print('\033[2J\033[H')
     print('Bye.')
     print('')

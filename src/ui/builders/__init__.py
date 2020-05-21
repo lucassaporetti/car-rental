@@ -2,4 +2,4 @@
 #
 # Package: src.ui.builders
 
-__all__ = ["car_builder", "employee_builder", "customer_builder"]
+__all__ = ["car_builder", "customer_builder", "employee_builder"]

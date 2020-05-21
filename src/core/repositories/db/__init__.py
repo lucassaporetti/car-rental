@@ -2,4 +2,8 @@
 #
 # Package: src.core.repositories.db
 
-__all__ = ["mysql", "postgres", "db_repository"]
+__all__ = [
+  "mysql",
+  "postgres",
+  "db_repository"
+]

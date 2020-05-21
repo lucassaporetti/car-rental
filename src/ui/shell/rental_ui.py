@@ -1,10 +1,8 @@
-from core.config.app_configs import AppConfigs
-from src.core.enums.menu_return import MenuReturn
-from src.core.enums.model import Model
+from core.models.rental import Rental
 from src.core.services.service_facade import ServiceFacade
 from src.core.tools.commons import *
-from core.models.rental import Rental
-from src.ui.menu import Menu
+from ui.shell.menu import Menu
+from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Available cars
@@ -14,13 +12,13 @@ MENU = """\033[2J\033[H
 """
 
 
-class CarRentalUi(Menu):
+class RentalUi(Menu):
     def __init__(self):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C', 'D']
-        self.car_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CAR)
-        self.employee_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.EMPLOYEE)
+        self.car_service = ServiceFacade.get_car_service()
+        self.employee_service = ServiceFacade.get_employee_service()
 
     def __str__(self):
         return self.menu
@@ -34,9 +32,9 @@ class CarRentalUi(Menu):
         elif str_op == 'C':
             self.do_return()
         elif str_op == 'D':
-            return MenuReturn.MAIN_MENU
+            return MenuFacade.main_menu()
 
-        return MenuReturn.SAME_MENU
+        return MenuFacade.rental_menu()
 
     def op_in_options(self):
         return str(self.op).upper() in self.options

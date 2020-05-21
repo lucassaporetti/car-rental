@@ -46,7 +46,6 @@ class SqlFactory(ABC):
     def __init__(self, sql_template_file: str):
         self.sql_template_file = sql_template_file
         self.sql_templates = Properties(sql_template_file)
-        self.sql_templates.read()
 
     def __str__(self):
         return self.__class__.__name__

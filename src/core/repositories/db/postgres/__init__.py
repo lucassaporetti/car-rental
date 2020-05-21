@@ -1,5 +1,11 @@
 # _*_ coding: utf-8 _*_
 #
-# Package: src.core.repositories.db
+# Package: src.core.repositories.db.postgres
 
-__all__ = ["car_repository", "customer_repository", "employee_repository", "postgres_repository", "rental_repository"]
+__all__ = [
+  "car_repository",
+  "customer_repository",
+  "employee_repository",
+  "mysql_repository",
+  "rental_repository"
+]

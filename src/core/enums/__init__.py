@@ -2,4 +2,13 @@
 #
 # Package: src.core.enums
 
-__all__ = ["access_type", "color", "fuel", "yes_no", "database_type", "repository_type", "model"]
+__all__ = [
+  "access_type",
+  "color",
+  "database_type",
+  "fuel",
+  "menu_type",
+  "model",
+  "repository_type",
+  "yes_no"
+]

@@ -1,10 +1,8 @@
-from core.config.app_configs import AppConfigs
-from src.core.enums.menu_return import MenuReturn
-from src.core.enums.model import Model
 from src.core.services.service_facade import ServiceFacade
 from src.ui.builders.customer_builder import CustomerBuilder
 from src.ui.builders.employee_builder import EmployeeBuilder
-from src.ui.menu import Menu
+from ui.shell.menu import Menu
+from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Employee
@@ -18,8 +16,8 @@ class UserUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C']
-        self.employee_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.EMPLOYEE)
-        self.customer_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CUSTOMER)
+        self.employee_service = ServiceFacade.get_employee_service()
+        self.customer_service = ServiceFacade.get_customer_service()
 
     def __str__(self):
         return self.menu
@@ -33,9 +31,9 @@ class UserUi(Menu):
             customer = CustomerBuilder.build()
             self.customer_service.save(customer)
         elif str_op == 'C':
-            return MenuReturn.MAIN_MENU
+            return MenuFacade.user_menu()
 
-        return MenuReturn.SAME_MENU
+        return MenuFacade.user_menu()
 
     def op_in_options(self):
         return str(self.op).upper() in self.options
