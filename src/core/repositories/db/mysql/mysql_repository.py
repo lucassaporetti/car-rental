@@ -8,7 +8,7 @@ from pymysql.err import OperationalError, ProgrammingError
 
 from src.core.factories.sql_factory import SqlFactory
 from src.core.repositories.db.db_repository import DbRepository
-from src.configs import AppConfigs
+from src.app_configs import AppConfigs
 from src.core.tools.commons import log_init, print_error
 from src.models.entity import Entity
 

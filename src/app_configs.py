@@ -10,10 +10,10 @@ from src.core.tools.properties import Properties
 
 class AppConfigs:
     cur_dir = pathlib.Path(sys.argv[0]).parent.absolute()
-    log_file = f"{cur_dir}/../log/car-rental.log"
+    log_file = "{}/../log/car-rental.log".format(cur_dir)
     log = log_init(log_file)
     log.info('Car Rental started {}'.format(datetime.now()))
-    app_properties = Properties(f"{cur_dir}/resources/application.properties").read()
+    app_properties = Properties("{}/resources/application.properties".format(cur_dir)).read()
     log.info('Successfully read {} properties'.format(app_properties.size()))
     repository_type = RepositoryType[app_properties.get('persistence.repository.type').upper()]
     database_type = DatabaseType[app_properties.get('persistence.database.type').upper()]

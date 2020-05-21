@@ -1,4 +1,4 @@
-from src.configs import AppConfigs
+from src.app_configs import AppConfigs
 from src.core.enums.menu_return import MenuReturn
 from src.core.enums.model import Model
 from src.core.services.service_facade import ServiceFacade
