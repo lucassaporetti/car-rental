@@ -1,7 +1,7 @@
+from core.enums.menu_type import MenuType
 from src.core.services.service_facade import ServiceFacade
 from src.core.tools.commons import print_list
 from ui.shell.menu import Menu
-from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Employees
@@ -25,7 +25,7 @@ class ListingUi(Menu):
     def __str__(self):
         return self.menu
 
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
             print_list(self.employee_service.list())
@@ -36,9 +36,9 @@ class ListingUi(Menu):
         elif str_op == 'D':
             print_list(self.rentals_service.list())
         elif str_op == 'E':
-            return MenuFacade.main_menu()
+            return MenuType.MAIN
 
-        return MenuFacade.listing_menu()
+        return MenuType.LISTING
 
     def op_in_options(self):
         return str(self.op).upper() in self.options

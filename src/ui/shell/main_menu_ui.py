@@ -1,6 +1,6 @@
+from core.enums.menu_type import MenuType
 from src.core.services.service_facade import ServiceFacade
 from ui.shell.menu import Menu
-from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[0]\033[0;0;0m Exit
@@ -21,17 +21,17 @@ class MainMenuUi(Menu):
     def __str__(self):
         return self.menu
 
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         int_op = int(str(self.op).strip())
         if int_op == 0:
-            return MenuFacade.exit_menu()
+            return MenuType.EXIT_MENU
         elif int_op == 1:
-            return MenuFacade.car_info_menu()
+            return MenuType.CAR_INFO
         elif int_op == 2:
-            return MenuFacade.user_menu()
+            return MenuType.USER
         elif int_op == 3:
-            return MenuFacade.rental_menu()
+            return MenuType.RENTAL
         elif int_op == 4:
-            return MenuFacade.listing_menu()
+            return MenuType.LISTING
 
-        return MenuFacade.main_menu()
+        return MenuType.MAIN

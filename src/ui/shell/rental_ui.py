@@ -1,8 +1,8 @@
+from core.enums.menu_type import MenuType
 from core.models.rental import Rental
 from src.core.services.service_facade import ServiceFacade
 from src.core.tools.commons import *
 from ui.shell.menu import Menu
-from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Available cars
@@ -23,7 +23,7 @@ class RentalUi(Menu):
     def __str__(self):
         return self.menu
 
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
             self.search_available()
@@ -32,9 +32,9 @@ class RentalUi(Menu):
         elif str_op == 'C':
             self.do_return()
         elif str_op == 'D':
-            return MenuFacade.main_menu()
+            return MenuType.MAIN
 
-        return MenuFacade.rental_menu()
+        return MenuType.RENTAL
 
     def op_in_options(self):
         return str(self.op).upper() in self.options

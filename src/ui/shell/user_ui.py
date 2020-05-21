@@ -1,8 +1,8 @@
+from core.enums.menu_type import MenuType
 from src.core.services.service_facade import ServiceFacade
 from src.ui.builders.customer_builder import CustomerBuilder
 from src.ui.builders.employee_builder import EmployeeBuilder
 from ui.shell.menu import Menu
-from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Employee
@@ -22,7 +22,7 @@ class UserUi(Menu):
     def __str__(self):
         return self.menu
 
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
             employee = EmployeeBuilder.build()
@@ -31,9 +31,9 @@ class UserUi(Menu):
             customer = CustomerBuilder.build()
             self.customer_service.save(customer)
         elif str_op == 'C':
-            return MenuFacade.user_menu()
+            return MenuType.MAIN
 
-        return MenuFacade.user_menu()
+        return MenuType.USER
 
     def op_in_options(self):
         return str(self.op).upper() in self.options

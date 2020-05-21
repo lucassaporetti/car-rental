@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
+from core.enums.menu_type import MenuType
 from src.core.tools.commons import print_error, prompt
-from ui.shell.menu_facade import MenuFacade
 
 
 class Menu(ABC):
@@ -12,12 +12,12 @@ class Menu(ABC):
         self.menu = ''
         self.options = []
 
-    def execute(self):
+    def execute(self) -> MenuType:
         while not self.op == 0 and not self.done:
             print(self.menu)
             self.op = prompt("$ ")
             if not self.op:
-                return MenuFacade.main_menu()
+                return MenuType.MAIN
             elif self.op.isalnum() and self.op_in_options():
                 return self.trigger_menu_item()
             else:
@@ -25,7 +25,7 @@ class Menu(ABC):
                 self.op = None
 
     @abstractmethod
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         pass
 
     def op_in_options(self) -> bool:

@@ -1,10 +1,10 @@
 from pymysql.err import InternalError
 
+from core.enums.menu_type import MenuType
 from core.tools.commons import prompt, print_list, print_warning, print_error, print_one
 from src.core.services.service_facade import ServiceFacade
 from src.ui.builders.car_builder import CarBuilder
 from ui.shell.menu import Menu
-from ui.shell.menu_facade import MenuFacade
 
 MENU = """\033[2J\033[H
 \033[0;32m[A]\033[0;0;0m Search model
@@ -25,7 +25,7 @@ class CarInfoUi(Menu):
     def __str__(self):
         return self.menu
 
-    def trigger_menu_item(self):
+    def trigger_menu_item(self) -> MenuType:
         str_op = str(self.op).strip().upper()
         if str_op == 'A':
             self.search_model()
@@ -36,9 +36,9 @@ class CarInfoUi(Menu):
         elif str_op == 'D':
             self.get_information()
         elif str_op == 'E':
-            return MenuFacade.main_menu()
+            return MenuType.MAIN
 
-        return MenuFacade.car_info_menu()
+        return MenuType.CAR_INFO
 
     def op_in_options(self):
         return str(self.op).upper() in self.options
