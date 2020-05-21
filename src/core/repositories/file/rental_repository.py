@@ -5,7 +5,7 @@ from src.models.rental import Rental
 
 class RentalRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{AppConfigs.cur_dir}/../data/rentals.dat")
+        super().__init__(f"{AppConfigs.root_dir}/../data/rentals.dat")
 
     def insert(self, rental: Rental):
         super().insert(rental)

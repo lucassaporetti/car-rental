@@ -5,7 +5,7 @@ from src.models.employee import Employee
 
 class EmployeeRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{AppConfigs.cur_dir}/../data/employees.dat")
+        super().__init__(f"{AppConfigs.root_dir}/../data/employees.dat")
 
     def insert(self, employee: Employee):
         super().insert(employee)

@@ -5,7 +5,7 @@ from src.models.customer import Customer
 
 class CustomerRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{AppConfigs.cur_dir}/../data/customers.dat")
+        super().__init__(f"{AppConfigs.root_dir}/../data/customers.dat")
 
     def insert(self, customer: Customer):
         super().insert(customer)
