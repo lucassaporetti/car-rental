@@ -4,6 +4,7 @@
 
 __all__ = [
   "car_info_ui",
+  "car_rental",
   "listing_ui",
   "main_menu_ui",
   "menu",

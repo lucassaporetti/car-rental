@@ -2,4 +2,10 @@
 #
 # Package: src.ui.qt
 
-__all__ = ["forms", "views", "main_menu_ui", "qt_view"]
+__all__ = [
+  "forms",
+  "views",
+  "car_rental_qt",
+  "main_menu_ui",
+  "qt_view"
+]

@@ -9,31 +9,12 @@
    @mailto: yorevs@hotmail.com
 """
 import signal
+import sys
 
-from core.enums.menu_type import MenuType
-from ui.shell.menu_factory import MenuFactory
-
-
-class CarRental:
-    def __init__(self):
-        self.done = False
-        self.ui = MenuFactory.get(MenuType.MAIN)
-        self.prev_ui = self.ui
-
-    def change_ui(self, menu_type: MenuType):
-        self.prev_ui = self.ui
-        self.ui = MenuFactory.get(menu_type)
-
-    def run(self):
-        while not self.done:
-            if self.ui:
-                next_ui = self.ui.execute()
-                if next_ui is None or next_ui == MenuType.EXIT_MENU:
-                    self.done = True
-                else:
-                    self.change_ui(next_ui)
-            else:
-                self.done = True
+if len(sys.argv) > 1 and sys.argv[1].upper() == 'QT':
+    from ui.qt.car_rental_qt import CarRentalQt as CarRental
+else:
+    from ui.shell.car_rental import CarRental as CarRental
 
 
 def exit_app(sig=None, frame=None):
@@ -46,7 +27,6 @@ def exit_app(sig=None, frame=None):
 
 # Application entry point
 if __name__ == "__main__":
-    main = CarRental()
     signal.signal(signal.SIGINT, exit_app)
-    main.run()
+    CarRental().run()
     exit_app(0)
