@@ -5,6 +5,9 @@ from src.models.entity import Entity
 
 
 class Repository(ABC):
+    def __str__(self):
+        return self.__class__.__name__
+
     @abstractmethod
     def __init__(self, filename):
         pass

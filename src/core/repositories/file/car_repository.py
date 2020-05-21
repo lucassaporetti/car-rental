@@ -5,7 +5,7 @@ from src.models.car import Car
 
 class CarRepository(FileRepository):
     def __init__(self):
-        super().__init__(f"{AppConfigs.root_dir}/../data/cars.dat")
+        super().__init__(f"{AppConfigs.root_dir()}/../data/cars.dat")
 
     def insert(self, car: Car):
         super().insert(car)

@@ -9,7 +9,7 @@ from src.core.services.rental_service import RentalService
 from src.core.services.service import Service
 from src.core.tools.commons import log_init
 
-LOG = log_init(AppConfigs.log_file)
+LOG = log_init(AppConfigs.log_file())
 
 
 class ServiceFacade:

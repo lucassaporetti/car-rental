@@ -19,10 +19,10 @@ class ListingUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C', 'D', 'E']
-        self.employee_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.EMPLOYEE)
-        self.customer_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.CUSTOMER)
-        self.car_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.CAR)
-        self.rentals_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.RENTAL)
+        self.employee_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.EMPLOYEE)
+        self.customer_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CUSTOMER)
+        self.car_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CAR)
+        self.rentals_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.RENTAL)
 
     def __str__(self):
         return self.menu

@@ -8,7 +8,7 @@ from src.core.factories.sql_factory import SqlFactory
 from src.app_configs import AppConfigs
 from src.core.tools.commons import log_init
 
-LOG = log_init(AppConfigs.log_file)
+LOG = log_init(AppConfigs.log_file())
 
 
 class SqlFactoryFacade:

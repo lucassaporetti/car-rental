@@ -22,7 +22,7 @@ class CarInfoUi(Menu):
         super().__init__()
         self.menu = str(MENU)
         self.options = ['A', 'B', 'C', 'D', 'E']
-        self.car_service = ServiceFacade.get(AppConfigs.repository_type, AppConfigs.database_type, Model.CAR)
+        self.car_service = ServiceFacade.get(AppConfigs.repository_type(), AppConfigs.database_type(), Model.CAR)
 
     def __str__(self):
         return self.menu

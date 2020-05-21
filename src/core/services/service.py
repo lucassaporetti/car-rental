@@ -11,6 +11,9 @@ class Service(ABC):
     def __init__(self, repository_type: RepositoryType, database_type: DatabaseType, model: Model):
         self.repository = RepositoryFacade.get(repository_type, database_type, model)
 
+    def __str__(self):
+        return self.__class__.__name__
+
     def save(self, entity: Entity):
         if entity.uuid is None or self.repository.find_by_id(entity.uuid) is None:
             self.repository.insert(entity)

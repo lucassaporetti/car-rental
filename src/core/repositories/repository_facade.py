@@ -16,7 +16,7 @@ from src.core.repositories.db.mysql.customer_repository import CustomerRepositor
 from src.core.repositories.db.mysql.employee_repository import EmployeeRepository as MysqlEmployeeRepository
 from src.core.repositories.db.mysql.rental_repository import RentalRepository as MysqlRentalRepository
 
-LOG = log_init(AppConfigs.log_file)
+LOG = log_init(AppConfigs.log_file())
 
 
 class RepositoryFacade:

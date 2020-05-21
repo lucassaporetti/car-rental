@@ -48,6 +48,9 @@ class SqlFactory(ABC):
         self.sql_templates = Properties(sql_template_file)
         self.sql_templates.read()
 
+    def __str__(self):
+        return self.__class__.__name__
+
     @abstractmethod
     def count(self):
         pass
