@@ -1,5 +1,5 @@
 from src.core.repositories.file.file_repository import FileRepository
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.models.customer import Customer
 
 

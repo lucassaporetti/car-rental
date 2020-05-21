@@ -1,4 +1,4 @@
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.core.enums.database_type import DatabaseType
 from src.core.enums.model import Model
 from src.core.enums.repository_type import RepositoryType

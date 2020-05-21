@@ -1,13 +1,15 @@
 import re
-import sys
 from os import environ, path
 from typing import Optional
 
-from core.tools.commons import print_error
-
 
 class Properties:
-    def __init__(self, filename: str = None, profile: str = environ.get('ACTIVE_PROFILE'), load_dir: str = '.'):
+
+    __default_profile = 'ACTIVE_PROFILE'
+    __default_name = 'application.properties'
+    __profiled_format = 'application-{}.properties'
+
+    def __init__(self, filename: str = None, profile: str = environ.get(__default_profile), load_dir: str = '.'):
         self.filename = filename
         self.profile = profile
         self.load_dir = load_dir
@@ -21,8 +23,8 @@ class Properties:
         return str_val
 
     def load(self):
-        default_value_filename = 'application-{}.properties'.format(
-            self.profile) if self.profile else 'application.properties'
+        default_value_filename = Properties.__profiled_format.format(
+            self.profile) if self.profile else Properties.__default_name
         self.filename = self.filename if self.filename else default_value_filename
         self.__read()
 

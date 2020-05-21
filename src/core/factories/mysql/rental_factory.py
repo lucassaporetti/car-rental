@@ -1,5 +1,5 @@
 
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.core.factories.mysql.mysql_factory import MySqlFactory
 
 

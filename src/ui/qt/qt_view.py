@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from PyQt5.QtWidgets import QWidget
 
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.core.tools.commons import log_init
 from src.core.tools.qt_finder import QtFinder
 

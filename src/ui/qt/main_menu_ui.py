@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QTabWidget
 
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.ui.qt.qt_view import QtView
 from src.ui.qt.views.car.car_edit_view import CarEditView
 from src.ui.qt.views.car.car_search_view import CarSearchView

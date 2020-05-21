@@ -1,6 +1,5 @@
 from abc import abstractmethod
 
-from src.app_configs import AppConfigs
 from src.core.factories.sql_factory import SqlFactory
 from src.core.repositories.repository import Repository
 

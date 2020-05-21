@@ -1,4 +1,4 @@
-from src.app_configs import AppConfigs
+from core.config.app_configs import AppConfigs
 from src.core.enums.model import Model
 from src.core.services.service_facade import ServiceFacade
 from src.ui.car_info_ui import CarInfoUi
