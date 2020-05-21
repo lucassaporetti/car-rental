@@ -14,7 +14,7 @@ import sys
 if len(sys.argv) > 1 and sys.argv[1].upper() == 'QT':
     from ui.qt.car_rental_qt import CarRentalQt as CarRental
 else:
-    from ui.shell.car_rental import CarRental as CarRental
+    from ui.shell.views.car_rental import CarRental as CarRental
 
 
 def exit_app(sig=None, frame=None):

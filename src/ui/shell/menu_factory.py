@@ -1,11 +1,11 @@
 from abc import ABC
 
 from core.enums.menu_type import MenuType
-from ui.shell.car_info_ui import CarInfoUi
-from ui.shell.listing_ui import ListingUi
-from ui.shell.main_menu_ui import MainMenuUi
-from ui.shell.rental_ui import RentalUi
-from ui.shell.user_ui import UserUi
+from ui.shell.views.car_info_ui import CarInfoUi
+from ui.shell.views.listing_ui import ListingUi
+from ui.shell.views.main_menu_ui import MainMenuUi
+from ui.shell.views.rental_ui import RentalUi
+from ui.shell.views.user_ui import UserUi
 
 
 class MenuFactory(ABC):
