@@ -2,9 +2,9 @@ from enum import Enum
 
 
 class DatabaseType(Enum):
-    MYSQL = 'Mysql Database'
-    POSTGRES = 'Postgres Database'
-    ARCHIVE = 'Local File Database'
+    ARCHIVE = 1
+    MYSQL = 2
+    POSTGRES = 3
 
     def __str__(self):
         return "{}".format(self.name.upper())

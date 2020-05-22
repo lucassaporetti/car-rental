@@ -2,4 +2,4 @@
 #
 # Package: src.core.dto
 
-__all__ = [""]
+__all__ = ["UserDto"]
