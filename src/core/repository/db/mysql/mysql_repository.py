@@ -6,25 +6,17 @@ from typing import Optional
 import pymysql
 from pymysql.err import OperationalError, ProgrammingError
 
+from core.model.entity import Entity
 from src.core.factory.sql_factory import SqlFactory
 from src.core.repository.db.db_repository import DbRepository
-from core.config.app_configs import AppConfigs
-from src.core.tools.commons import log_init, print_error
-from core.model.entity import Entity
+from src.core.tools.commons import print_error
 
 
 class MySqlRepository(DbRepository):
+    __cache = {}
+
     def __init__(self, sql_factory: SqlFactory):
         super().__init__(sql_factory)
-        self.log = log_init(AppConfigs.log_file())
-        self.hostname = AppConfigs.get('db.hostname')
-        self.port = AppConfigs.get_int('db.port')
-        self.user = AppConfigs.get('db.user')
-        self.password = AppConfigs.get('db.password')
-        self.database = AppConfigs.get('db.database')
-        self.connector = None
-        self.cursor = None
-        self.connect()
 
     def __str__(self):
         return "{}@{}:{}/{}".format(self.user, self.hostname, self.port, self.database)
@@ -34,23 +26,28 @@ class MySqlRepository(DbRepository):
 
     def connect(self):
         if not self.is_connected():
-            try:
-                self.connector = pymysql.connect(
-                    host=self.hostname,
-                    user=self.user,
-                    port=self.port,
-                    password=self.password,
-                    database=self.database
-                )
-                assert self.is_connected(), "Not connected to the database"
+            cache_key = self.__str__()
+            if cache_key in MySqlRepository.__cache:
+                self.connector = MySqlRepository.__cache[cache_key]
                 self.cursor = self.connector.cursor()
-                self.log.info('Connected to {} established'.format(str(self)))
-            except OperationalError:
-                self.log.error('Unable to connect to {}'.format(str(self)))
-                print_error('Unable to connect to {}'.format(str(self)))
-                sys.exit(1)
-
-        return self.connector
+                assert self.is_connected(), "Not connected to the database"
+            else:
+                try:
+                    self.connector = pymysql.connect(
+                        host=self.hostname,
+                        user=self.user,
+                        port=self.port,
+                        password=self.password,
+                        database=self.database
+                    )
+                    assert self.is_connected(), "Not connected to the database"
+                    self.cursor = self.connector.cursor()
+                    self.log.info('Connected to {} established'.format(str(self)))
+                    MySqlRepository.__cache[cache_key] = self.connector
+                except OperationalError:
+                    self.log.error('Unable to connect to {}'.format(str(self)))
+                    print_error('Unable to connect to {}'.format(str(self)))
+                    sys.exit(1)
 
     def disconnect(self):
         if self.is_connected():
