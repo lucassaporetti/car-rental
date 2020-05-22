@@ -5,7 +5,7 @@ from typing import Type
 
 from core.model.entity import Entity
 
-DEFAULT_LOG_FMT = '%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s ::%(funcName)s(@line-%(lineno)d) %(message)s '
+DEFAULT_LOG_FMT = "%(asctime)s [%(threadName)-10.10s] %(levelname)-5.5s %(funcName)s(@line-%(lineno)d) %(message)s "
 
 
 def log_init(log_file: str, level: int = log.DEBUG, log_fmt: str = DEFAULT_LOG_FMT):
@@ -89,4 +89,3 @@ def class_attribute_names(clazz: Type[Entity]) -> tuple:
 
 def class_attribute_values(entity: Entity) -> tuple:
     return tuple(entity.__dict__.values()) if entity else None
-

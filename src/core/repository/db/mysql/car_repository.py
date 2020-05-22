@@ -9,7 +9,7 @@ from core.model.entity import Entity
 
 class CarRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.EMPLOYEE))
+        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.CAR))
 
     def insert(self, car: Car):
         super().insert(car)

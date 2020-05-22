@@ -9,7 +9,7 @@ from core.model.entity import Entity
 
 class CustomerRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.EMPLOYEE))
+        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.CUSTOMER))
 
     def count(self):
         pass
