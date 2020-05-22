@@ -1,12 +1,14 @@
-from src.core.factory.mysql.employee_factory import EmployeeFactory
-from src.core.repository.db.mysql.mysql_repository import MySqlRepository
+from core.enum.database_type import DatabaseType
+from core.enum.model import Model
+from core.factory.sql_factory_facade import SqlFactoryFacade
 from core.model.employee import Employee
 from core.model.entity import Entity
+from src.core.repository.db.mysql.mysql_repository import MySqlRepository
 
 
 class EmployeeRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(EmployeeFactory())
+        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.EMPLOYEE))
 
     def count(self):
         pass

@@ -9,11 +9,15 @@ from core.model.entity import Entity
 class Car(Entity):
     @staticmethod
     def of(values: list):
-        return Car(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8])
+        return Car(
+            str(values[0]), str(values[1]), str(values[2]),
+            Color[values[3]], int(values[4]), Fuel[values[5]],
+            str(values[6]), float(values[7]), values[8]
+        )
 
-    def __init__(self, entity_id: str = None, name: str = None, chassis: str = None, color: Color = None,
-                 doors: int = None, fuel: Fuel = None, plate: str = None, price: str = None,
-                 available: YesNo = YesNo.YES):
+    def __init__(self, entity_id: str = None, name: str = None, chassis: str = None, color: str = None,
+                 doors: int = None, fuel: str = None, plate: str = None, price: float = None,
+                 available: int = 1):
         super().__init__(entity_id)
         self.name = name
         self.chassis = chassis
@@ -22,7 +26,7 @@ class Car(Entity):
         self.fuel = fuel
         self.plate = plate
         self.price = price
-        self.available = YesNo(available)
+        self.available = available
 
     def __str__(self):
         return "{} | {} | {} | {} | {} | {} | {} | {} | {}".format(
@@ -35,11 +39,11 @@ class Car(Entity):
             self.name = None
             self.chassis = None
             self.color = None
-            self.doors = 3
-            self.fuel = Fuel.FLEX
+            self.doors = None
+            self.fuel = None
             self.plate = None
             self.price = None
-            self.available = YesNo.YES
+            self.available = 1
 
         def with_name(self, name: str):
             self.name = name

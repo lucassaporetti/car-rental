@@ -9,7 +9,7 @@ class Repository(ABC):
         return self.__class__.__name__
 
     @abstractmethod
-    def __init__(self, filename):
+    def __init__(self, filename: str):
         pass
 
     @abstractmethod

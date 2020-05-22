@@ -1,12 +1,14 @@
-from src.core.factory.mysql.rental_factory import RentalFactory
-from src.core.repository.db.mysql.mysql_repository import MySqlRepository
+from core.enum.database_type import DatabaseType
+from core.enum.model import Model
+from core.factory.sql_factory_facade import SqlFactoryFacade
 from core.model.entity import Entity
 from core.model.rental import Rental
+from src.core.repository.db.mysql.mysql_repository import MySqlRepository
 
 
 class RentalRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(RentalFactory())
+        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.RENTAL))
 
     def count(self):
         pass

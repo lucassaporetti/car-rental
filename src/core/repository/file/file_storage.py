@@ -1,12 +1,17 @@
 import ast
 import os
 
+from core.config.app_configs import AppConfigs
+from core.tools.commons import log_init
+
 
 class FileStorage:
     def __init__(self, filename: str):
+        self.log = log_init(AppConfigs.log_file())
         self.filename = filename
         self.data = []
         self.load()
+        self.log.info('File storage created filename={} entries={}'.format(filename, len(self.data)))
 
     def load(self):
         mode = 'r+' if os.path.exists(self.filename) else 'w+'
@@ -18,4 +23,5 @@ class FileStorage:
 
     def commit(self):
         with open(self.filename, 'w') as f_local_db:
-            f_local_db.write(str(self.data))
+            data = str(self.data)
+            f_local_db.write(data)

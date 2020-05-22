@@ -1,3 +1,4 @@
+from core.model.entity import Entity
 from src.core.repository.file.file_repository import FileRepository
 from core.config.app_configs import AppConfigs
 from core.model.rental import Rental
@@ -15,3 +16,6 @@ class RentalRepository(FileRepository):
 
     def delete(self, rental: Rental):
         super().delete(rental)
+
+    def row_to_entity(self, row: dict) -> Entity:
+        return Rental.of(list(row.values()))

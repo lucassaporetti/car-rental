@@ -1,4 +1,5 @@
 from abc import ABC
+from typing import Type
 
 from core.config.app_configs import AppConfigs
 from src.core.enum.database_type import DatabaseType
@@ -15,6 +16,7 @@ LOG = log_init(AppConfigs.log_file())
 
 
 class ServiceFacade(ABC):
+    __cache = {}
     __services = {
         Model.CAR.name: CarService,
         Model.CUSTOMER.name: CustomerService,
@@ -23,9 +25,20 @@ class ServiceFacade(ABC):
     }
 
     @staticmethod
+    def create_or_get(service_class: Type, repository_type: RepositoryType, database_type: DatabaseType):
+        cache_key = service_class.__name__
+        if cache_key in ServiceFacade.__cache:
+            LOG.info('Retrieving service {}'.format(cache_key))
+            return ServiceFacade.__cache[cache_key]
+        else:
+            LOG.info('Creating service {}'.format(cache_key))
+            ServiceFacade.__cache[cache_key] = service_class(repository_type, database_type)
+            return ServiceFacade.__cache[cache_key]
+
+    @staticmethod
     def get(repository_type: RepositoryType, database_type: DatabaseType, model: Model) -> Service:
-        service_type = ServiceFacade.__services[model.name]
-        service = service_type(repository_type, database_type) if service_type else None
+        service_class = ServiceFacade.__services[model.name]
+        service = ServiceFacade.create_or_get(service_class, repository_type, database_type)
         LOG.info('Retrieving service: {}'.format(service))
         return service
 

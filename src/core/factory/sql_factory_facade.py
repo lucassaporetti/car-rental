@@ -1,36 +1,49 @@
 from abc import ABC
-from typing import Optional
+from typing import Optional, Type
 
-import src.core.factory as factories
-
+from core.config.app_configs import AppConfigs
 from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
+from src.core.factory.mysql.car_factory import CarFactory as MysqlCarFactory
+from src.core.factory.mysql.customer_factory import CustomerFactory as MysqlCustomerFactory
+from src.core.factory.mysql.employee_factory import EmployeeFactory as MysqlEmployeeFactory
+from src.core.factory.mysql.rental_factory import RentalFactory as MysqlRentalFactory
 from src.core.factory.sql_factory import SqlFactory
-from core.config.app_configs import AppConfigs
 from src.core.tools.commons import log_init
 
 LOG = log_init(AppConfigs.log_file())
 
 
 class SqlFactoryFacade(ABC):
+    __cache = {}
     __factories = {
         DatabaseType.MYSQL.name: {
-            Model.CAR.name: factories.mysql.car_factory,
-            Model.CUSTOMER.name: factories.mysql.customer_factory,
-            Model.EMPLOYEE.name: factories.mysql.employee_factory,
-            Model.RENTAL.name: factories.mysql.rental_factory
+            Model.CAR.name: MysqlCarFactory,
+            Model.CUSTOMER.name: MysqlCustomerFactory,
+            Model.EMPLOYEE.name: MysqlEmployeeFactory,
+            Model.RENTAL.name: MysqlRentalFactory
         },
         DatabaseType.POSTGRES.name: {
-            Model.CAR.name: factories.postgres.car_factory,
-            Model.CUSTOMER.name: factories.postgres.customer_factory,
-            Model.EMPLOYEE.name: factories.postgres.employee_factory,
-            Model.RENTAL.name: factories.postgres.rental_factory
+            Model.CAR.name: None,
+            Model.CUSTOMER.name: None,
+            Model.EMPLOYEE.name: None,
+            Model.RENTAL.name: None
         },
     }
 
     @staticmethod
+    def create_or_get(factory_class: Type):
+        cache_key = factory_class.__name__
+        if cache_key in SqlFactoryFacade.__cache:
+            LOG.info('Retrieving factory {}'.format(cache_key))
+            return SqlFactoryFacade.__cache[cache_key]
+        else:
+            LOG.info('Creating factory {}'.format(cache_key))
+            SqlFactoryFacade.__cache[cache_key] = factory_class()
+            return SqlFactoryFacade.__cache[cache_key]
+
+    @staticmethod
     def get(database_type: DatabaseType, model: Model) -> Optional[SqlFactory]:
-        factory_type = SqlFactoryFacade.__factories[database_type.name][model.name]
-        factory = factory_type() if factory_type else None
-        LOG.info('Retrieving factory: {}'.format(factory))
+        factory_class = SqlFactoryFacade.__factories[database_type.name][model.name]
+        factory = SqlFactoryFacade.create_or_get(factory_class)
         return factory

@@ -15,7 +15,7 @@ class CarBuilder:
         car = name = chassis = color = doors = fuel = plate = price = None
         while not valid:
             name = prompt("Name: ", clear=True).strip() if name is None else name
-            if not validate_string(name, "[a-zA-Z0-9]+", min_len=2, max_len=30):
+            if not validate_string(name, "[a-zA-Z0-9]+", min_len=2):
                 name = None
                 print_error('Invalid name', name)
                 continue
@@ -24,7 +24,7 @@ class CarBuilder:
                 chassis = None
                 print_error('Invalid chassis', chassis)
                 continue
-            color = prompt("Color: ").strip() if color is None else color
+            color = prompt("Color: ").strip().upper() if color is None else color
             if not validate_enum(color, Color):
                 color = None
                 print_error('Invalid color', color)
@@ -34,7 +34,7 @@ class CarBuilder:
                 doors = None
                 print_error('Invalid doors', doors)
                 continue
-            fuel = prompt("Fuel: ").strip() if fuel is None else fuel
+            fuel = prompt("Fuel: ").strip().upper() if fuel is None else fuel
             if not validate_enum(fuel, Fuel):
                 fuel = None
                 print_error('Invalid fuel', fuel)

@@ -1,3 +1,6 @@
+from core.enum.database_type import DatabaseType
+from core.enum.model import Model
+from core.factory.sql_factory_facade import SqlFactoryFacade
 from src.core.factory.mysql.customer_factory import CustomerFactory
 from src.core.repository.db.mysql.mysql_repository import MySqlRepository
 from core.model.customer import Customer
@@ -6,7 +9,7 @@ from core.model.entity import Entity
 
 class CustomerRepository(MySqlRepository):
     def __init__(self):
-        super().__init__(CustomerFactory())
+        super().__init__(SqlFactoryFacade.get(DatabaseType.MYSQL, Model.EMPLOYEE))
 
     def count(self):
         pass

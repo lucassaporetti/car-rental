@@ -1,3 +1,4 @@
+from core.model.entity import Entity
 from src.core.repository.file.file_repository import FileRepository
 from core.config.app_configs import AppConfigs
 from core.model.customer import Customer
@@ -15,3 +16,6 @@ class CustomerRepository(FileRepository):
 
     def delete(self, customer: Customer):
         super().delete(customer)
+
+    def row_to_entity(self, row: dict) -> Entity:
+        return Customer.of(list(row.values()))
