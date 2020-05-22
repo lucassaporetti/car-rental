@@ -1,6 +1,7 @@
 import logging as log
 import os
 from time import sleep
+from typing import Type
 
 from core.model.entity import Entity
 
@@ -80,3 +81,12 @@ def check_criteria(partial_value, whole_value):
         return bool(partial_value) == whole_value
     else:
         return False
+
+
+def class_attribute_names(clazz: Type[Entity]) -> tuple:
+    return tuple(vars(clazz()).keys()) if clazz else None
+
+
+def class_attribute_values(entity: Entity) -> tuple:
+    return tuple(entity.__dict__.values()) if entity else None
+

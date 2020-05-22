@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QDialog
 
-from src.ui.qt.qt_view import QtView
+from ui.qt.views.qt_view import QtView
 
 
 class UserEditView(QtView):

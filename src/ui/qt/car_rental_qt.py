@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QApplication
 
-from ui.qt.main_menu_ui import MainMenuUi
+from ui.qt.views.main_menu_ui import MainMenuUi
 
 
 class CarRentalQt:

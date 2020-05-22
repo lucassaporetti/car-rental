@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QDialog, QStackedWidget
+from PyQt5.QtWidgets import QDialog
 
-from src.ui.qt.qt_view import QtView
+from ui.qt.views.qt_view import QtView
 
 
 class UserSearchView(QtView):
@@ -11,6 +11,7 @@ class UserSearchView(QtView):
         self.setup_ui()
 
     def setup_ui(self):
+        self.stackedPanelUsers.setCurrentIndex(0)
         self.btnAddUser.clicked.connect(self.btn_add_user_clicked)
 
     def btn_add_user_clicked(self):

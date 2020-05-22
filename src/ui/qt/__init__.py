@@ -5,7 +5,5 @@
 __all__ = [
   "forms",
   "views",
-  "car_rental_qt",
-  "main_menu_ui",
-  "qt_view"
+  "car_rental_qt"
 ]

@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QTabWidget
 
 from core.config.app_configs import AppConfigs
-from src.ui.qt.qt_view import QtView
+from ui.qt.views.qt_view import QtView
 from src.ui.qt.views.car.car_edit_view import CarEditView
 from src.ui.qt.views.car.car_search_view import CarSearchView
 from src.ui.qt.views.rental.rental_edit_view import RentalEditView
@@ -29,6 +29,7 @@ class MainMenuUi(QtView):
         self.setup_ui()
 
     def setup_ui(self):
+        self.tabPanel.setCurrentIndex(0)
         self.tabPanel.currentChanged.connect(self.tab_changed)
 
     def show(self):

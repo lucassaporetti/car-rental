@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QDialog
 
-from src.ui.qt.qt_view import QtView
+from ui.qt.views.qt_view import QtView
 
 
 class RentalSearchView(QtView):
@@ -11,6 +11,7 @@ class RentalSearchView(QtView):
         self.setup_ui()
 
     def setup_ui(self):
+        self.stackedPanelRentals.setCurrentIndex(0)
         self.btnRentCar.clicked.connect(self.btn_rent_car_clicked)
 
     def btn_rent_car_clicked(self):
