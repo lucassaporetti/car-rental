@@ -1,8 +1,8 @@
 from pymysql.err import InternalError
 
-from core.enums.menu_type import MenuType
+from core.enum.menu_type import MenuType
 from core.tools.commons import prompt, print_list, print_warning, print_error, print_one
-from src.core.services.service_facade import ServiceFacade
+from src.core.service.service_facade import ServiceFacade
 from src.ui.builders.car_builder import CarBuilder
 from ui.shell.menu import Menu
 

@@ -13,7 +13,7 @@ from src.ui.qt.views.user.user_search_view import UserSearchView
 
 class MainMenuUi(QtView):
     form, window = uic \
-        .loadUiType(f"{AppConfigs.root_dir()}/ui/qt/forms/car_rental.ui")
+        .loadUiType("{}/ui/qt/forms/car_rental.ui".format(AppConfigs.root_dir()))
 
     def __init__(self):
         super().__init__(MainMenuUi.window())

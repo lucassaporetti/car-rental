@@ -1,5 +1,5 @@
-from core.enums.menu_type import MenuType
-from src.core.services.service_facade import ServiceFacade
+from core.enum.menu_type import MenuType
+from src.core.service.service_facade import ServiceFacade
 from src.ui.builders.customer_builder import CustomerBuilder
 from src.ui.builders.employee_builder import EmployeeBuilder
 from ui.shell.menu import Menu

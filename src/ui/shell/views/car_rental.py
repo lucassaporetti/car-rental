@@ -1,4 +1,4 @@
-from core.enums.menu_type import MenuType
+from core.enum.menu_type import MenuType
 from ui.shell.menu_factory import MenuFactory
 
 

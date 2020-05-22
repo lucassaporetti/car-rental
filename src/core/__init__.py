@@ -4,10 +4,11 @@
 
 __all__ = [
   "config",
-  "enums",
-  "factories",
-  "models",
-  "repositories",
-  "services",
+  "enum",
+  "factory",
+  "model",
+  "dto",
+  "repository",
+  "service",
   "tools"
 ]

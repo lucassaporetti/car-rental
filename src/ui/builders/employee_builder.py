@@ -1,7 +1,7 @@
-from src.core.enums.access_type import AccessType
+from src.core.enum.access_type import AccessType
 from src.core.tools.commons import prompt, print_error
 from src.core.tools.validators import validate_string, validate_enum, validate_int, validate_float, validate_date
-from core.models.employee import Employee
+from core.model.employee import Employee
 
 
 class EmployeeBuilder:

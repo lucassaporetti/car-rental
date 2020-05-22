@@ -1,6 +1,6 @@
-from core.enums.menu_type import MenuType
-from core.models.rental import Rental
-from src.core.services.service_facade import ServiceFacade
+from core.enum.menu_type import MenuType
+from core.model.rental import Rental
+from src.core.service.service_facade import ServiceFacade
 from src.core.tools.commons import *
 from ui.shell.menu import Menu
 

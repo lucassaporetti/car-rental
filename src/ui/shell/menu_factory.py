@@ -1,6 +1,6 @@
 from abc import ABC
 
-from core.enums.menu_type import MenuType
+from core.enum.menu_type import MenuType
 from ui.shell.views.car_info_ui import CarInfoUi
 from ui.shell.views.listing_ui import ListingUi
 from ui.shell.views.main_menu_ui import MainMenuUi

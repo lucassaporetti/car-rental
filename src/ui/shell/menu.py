@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from core.enums.menu_type import MenuType
+from core.enum.menu_type import MenuType
 from src.core.tools.commons import print_error, prompt
 
 

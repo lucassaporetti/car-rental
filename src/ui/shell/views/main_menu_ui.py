@@ -1,5 +1,5 @@
-from core.enums.menu_type import MenuType
-from src.core.services.service_facade import ServiceFacade
+from core.enum.menu_type import MenuType
+from src.core.service.service_facade import ServiceFacade
 from ui.shell.menu import Menu
 
 MENU = """\033[2J\033[H
