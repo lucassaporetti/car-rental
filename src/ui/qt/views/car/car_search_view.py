@@ -43,6 +43,6 @@ class CarSearchView(QtView):
             self.log.error('Invalid criteria {}'.format(criteria))
 
     def populate_table_car_models(self, table_data: list):
-        self.log.debug('Found = {}'.format(table_data))
+        self.log.info('Found = {}'.format(table_data))
         self.tableCarModels.setModel(DefaultTableModel(Car, table_data=table_data, parent=self.window))
         self.tableCarModels.resizeColumnsToContents()

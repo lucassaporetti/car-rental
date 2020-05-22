@@ -13,11 +13,11 @@ class AppConfigs(ABC):
     __log_file = "{}/../log/car-rental.log".format(__root_dir)
     __log = log_init(__log_file)
     __app_properties = Properties(load_dir="{}/resources".format(__root_dir))
-    __log.debug('Successfully read {} properties'.format(__app_properties.size()))
+    __log.info('Successfully read {} properties'.format(__app_properties.size()))
     __repository_type = RepositoryType[__app_properties.get('persistence.repository.type').upper()]
     __database_type = DatabaseType[__app_properties.get('persistence.database.type').upper()]
-    __log.info('App configs loaded => root_dir={} repository_type={} database_type={}'.format(
-        __root_dir, __repository_type, __database_type))
+    __log.info('App configs loaded repository_type={} database_type={} root_dir={}'.format(
+        __repository_type, __database_type, __root_dir))
 
     @staticmethod
     def get(property_name: str) -> str:
