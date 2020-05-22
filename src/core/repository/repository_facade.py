@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Optional
 from core.config.app_configs import AppConfigs
 from src.core.enum.database_type import DatabaseType
@@ -19,7 +20,7 @@ from src.core.repository.db.mysql.rental_repository import RentalRepository as M
 LOG = log_init(AppConfigs.log_file())
 
 
-class RepositoryFacade:
+class RepositoryFacade(ABC):
 
     __repositories = {
         RepositoryType.FILE.name: {

@@ -1,3 +1,5 @@
+from abc import ABC
+
 from core.config.app_configs import AppConfigs
 from src.core.enum.database_type import DatabaseType
 from src.core.enum.model import Model
@@ -12,7 +14,7 @@ from src.core.tools.commons import log_init
 LOG = log_init(AppConfigs.log_file())
 
 
-class ServiceFacade:
+class ServiceFacade(ABC):
     __services = {
         Model.CAR.name: CarService,
         Model.CUSTOMER.name: CustomerService,

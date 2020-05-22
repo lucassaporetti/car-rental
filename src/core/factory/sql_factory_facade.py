@@ -1,3 +1,4 @@
+from abc import ABC
 from typing import Optional
 
 import src.core.factory as factories
@@ -11,7 +12,7 @@ from src.core.tools.commons import log_init
 LOG = log_init(AppConfigs.log_file())
 
 
-class SqlFactoryFacade:
+class SqlFactoryFacade(ABC):
     __factories = {
         DatabaseType.MYSQL.name: {
             Model.CAR.name: factories.mysql.car_factory,
