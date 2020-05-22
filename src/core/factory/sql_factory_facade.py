@@ -17,17 +17,17 @@ LOG = log_init(AppConfigs.log_file())
 class SqlFactoryFacade(ABC):
     __cache = {}
     __factories = {
-        DatabaseType.MYSQL.name: {
-            Model.CAR.name: MysqlCarFactory,
-            Model.CUSTOMER.name: MysqlCustomerFactory,
-            Model.EMPLOYEE.name: MysqlEmployeeFactory,
-            Model.RENTAL.name: MysqlRentalFactory
+        DatabaseType.MYSQL: {
+            Model.CAR: MysqlCarFactory,
+            Model.CUSTOMER: MysqlCustomerFactory,
+            Model.EMPLOYEE: MysqlEmployeeFactory,
+            Model.RENTAL: MysqlRentalFactory
         },
-        DatabaseType.POSTGRES.name: {
-            Model.CAR.name: None,
-            Model.CUSTOMER.name: None,
-            Model.EMPLOYEE.name: None,
-            Model.RENTAL.name: None
+        DatabaseType.POSTGRES: {
+            Model.CAR: None,
+            Model.CUSTOMER: None,
+            Model.EMPLOYEE: None,
+            Model.RENTAL: None
         },
     }
 
@@ -44,6 +44,6 @@ class SqlFactoryFacade(ABC):
 
     @staticmethod
     def get(database_type: DatabaseType, model: Model) -> Optional[SqlFactory]:
-        factory_class = SqlFactoryFacade.__factories[database_type.name][model.name]
+        factory_class = SqlFactoryFacade.__factories[database_type][model]
         factory = SqlFactoryFacade.create_or_get(factory_class)
         return factory

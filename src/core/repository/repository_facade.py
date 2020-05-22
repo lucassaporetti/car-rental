@@ -22,26 +22,26 @@ LOG = log_init(AppConfigs.log_file())
 class RepositoryFacade(ABC):
     __cache = {}
     __repositories = {
-        RepositoryType.FILE.name: {
-            DatabaseType.ARCHIVE.name: {
-                Model.CAR.name: FileCarRepository,
-                Model.CUSTOMER.name: FileCustomerRepository,
-                Model.EMPLOYEE.name: FileEmployeeRepository,
-                Model.RENTAL.name: FileRentalRepository,
+        RepositoryType.FILE: {
+            DatabaseType.ARCHIVE: {
+                Model.CAR: FileCarRepository,
+                Model.CUSTOMER: FileCustomerRepository,
+                Model.EMPLOYEE: FileEmployeeRepository,
+                Model.RENTAL: FileRentalRepository,
             }
         },
-        RepositoryType.DATABASE.name: {
-            DatabaseType.MYSQL.name: {
-                Model.CAR.name: MysqlCarRepository,
-                Model.CUSTOMER.name: MysqlCustomerRepository,
-                Model.EMPLOYEE.name: MysqlEmployeeRepository,
-                Model.RENTAL.name: MysqlRentalRepository,
+        RepositoryType.DATABASE: {
+            DatabaseType.MYSQL: {
+                Model.CAR: MysqlCarRepository,
+                Model.CUSTOMER: MysqlCustomerRepository,
+                Model.EMPLOYEE: MysqlEmployeeRepository,
+                Model.RENTAL: MysqlRentalRepository,
             },
-            DatabaseType.POSTGRES.name: {
-                Model.CAR.name: None,
-                Model.CUSTOMER.name: None,
-                Model.EMPLOYEE.name: None,
-                Model.RENTAL.name: None,
+            DatabaseType.POSTGRES: {
+                Model.CAR: None,
+                Model.CUSTOMER: None,
+                Model.EMPLOYEE: None,
+                Model.RENTAL: None,
             }
         }
     }
@@ -59,6 +59,6 @@ class RepositoryFacade(ABC):
 
     @staticmethod
     def get(repository_type: RepositoryType, database_type: DatabaseType, model: Model) -> Optional[Repository]:
-        repository_class = RepositoryFacade.__repositories[repository_type.name][database_type.name][model.name]
+        repository_class = RepositoryFacade.__repositories[repository_type][database_type][model]
         repository = RepositoryFacade.create_or_get(repository_class)
         return repository

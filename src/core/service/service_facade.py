@@ -18,10 +18,10 @@ LOG = log_init(AppConfigs.log_file())
 class ServiceFacade(ABC):
     __cache = {}
     __services = {
-        Model.CAR.name: CarService,
-        Model.CUSTOMER.name: CustomerService,
-        Model.EMPLOYEE.name: EmployeeService,
-        Model.RENTAL.name: RentalService,
+        Model.CAR: CarService,
+        Model.CUSTOMER: CustomerService,
+        Model.EMPLOYEE: EmployeeService,
+        Model.RENTAL: RentalService,
     }
 
     @staticmethod
@@ -37,7 +37,7 @@ class ServiceFacade(ABC):
 
     @staticmethod
     def get(repository_type: RepositoryType, database_type: DatabaseType, model: Model) -> Service:
-        service_class = ServiceFacade.__services[model.name]
+        service_class = ServiceFacade.__services[model]
         service = ServiceFacade.create_or_get(service_class, repository_type, database_type)
         LOG.info('Retrieving service: {}'.format(service))
         return service
