@@ -5,12 +5,11 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QTableView
 
 from core.config.app_configs import AppConfigs
-from core.model.entity import Entity
 from core.tools.commons import class_attribute_names, class_attribute_values, log_init
 
 
 class DefaultTableModel(QAbstractTableModel):
-    def __init__(self, clazz: Type[Entity], headers: list = None, cell_alignments: list = None, table_data: list = None,
+    def __init__(self, clazz: Type, headers: list = None, cell_alignments: list = None, table_data: list = None,
                  parent: QTableView = None):
 
         QAbstractTableModel.__init__(self, parent)
@@ -30,7 +29,7 @@ class DefaultTableModel(QAbstractTableModel):
         elif role == Qt.TextAlignmentRole:
             return self.cell_alignments[index.column()] if self.cell_alignments else Qt.AlignLeft
         elif role == Qt.BackgroundColorRole:
-            return QVariant() if entity else QColor(220, 220, 220)
+            return QVariant() if entity else QColor(230, 230, 230)
 
         return QVariant()
 
@@ -50,3 +49,6 @@ class DefaultTableModel(QAbstractTableModel):
 
     def columnCount(self, parent: QModelIndex = ...):
         return len(self.table_data[0].__dict__.keys()) if self.table_data and len(self.table_data) > 0 else 0
+
+    def row(self, index: QModelIndex):
+        return self.table_data[index.row()]

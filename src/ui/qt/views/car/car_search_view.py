@@ -1,8 +1,9 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QModelIndex
 from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea
 from pymysql.err import InternalError
 
 from core.enum.color import Color
+from core.eventbus.event_bus import EventBus
 from core.model.car import Car
 from core.service.service_facade import ServiceFacade
 from ui.qt.table_model.default_table_model import DefaultTableModel
@@ -10,6 +11,7 @@ from ui.qt.views.qt_view import QtView
 
 
 class CarSearchView(QtView):
+
     def __init__(self, window: QDialog, parent: QtView):
         super().__init__(window, parent)
         self.car_service = ServiceFacade.get_car_service()
@@ -25,6 +27,7 @@ class CarSearchView(QtView):
         self.tableCars.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.tableCars.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.tableCars.horizontalHeader().setStretchLastSection(True)
+        self.tableCars.doubleClicked.connect(self.double_clicked_row)
         self.btnSearchCars.clicked.connect(self.btn_search_model_clicked)
         self.btnAddCar.clicked.connect(self.btn_add_car_clicked)
 
@@ -53,3 +56,9 @@ class CarSearchView(QtView):
     def populate_table_cars(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))
         self.tableCars.setModel(DefaultTableModel(Car, table_data=table_data, parent=self.tableCars))
+
+    def double_clicked_row(self, index: QModelIndex):
+        car = self.tableCars.model().row(index)
+        self.log.info('Table: tableCars clicked: {}'.format(car))
+        self.stackedPanelCars.setCurrentIndex(1)
+        EventBus.get('selection-bus').emit('rowSelected', selected_item=car)

@@ -90,7 +90,7 @@ def check_criteria(partial_value, whole_value):
         return False
 
 
-def class_attribute_names(clazz: Type[Entity]) -> tuple:
+def class_attribute_names(clazz: Type) -> tuple:
     return tuple(vars(clazz()).keys()) if clazz else None
 
 

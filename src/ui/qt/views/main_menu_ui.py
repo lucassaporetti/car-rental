@@ -1,10 +1,9 @@
 from PyQt5 import uic
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QTabWidget, QLabel
 
 from core.config.app_configs import AppConfigs
 from core.enum.color import Color
+from core.model.entity import Entity
 from src.ui.qt.views.car.car_edit_view import CarEditView
 from src.ui.qt.views.car.car_search_view import CarSearchView
 from src.ui.qt.views.rental.rental_edit_view import RentalEditView

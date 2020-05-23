@@ -323,12 +323,12 @@
                        <string>Plate: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>lineEditPlate</cstring>
+                       <cstring>lePlate</cstring>
                       </property>
                      </widget>
                     </item>
                     <item row="4" column="2">
-                     <widget class="QComboBox" name="comboBoxFuel">
+                     <widget class="QComboBox" name="cmbFuel">
                       <item>
                        <property name="text">
                         <string>GASOLINE</string>
@@ -357,20 +357,14 @@
                        <string>Fuel: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>comboBoxFuel</cstring>
+                       <cstring>cmbFuel</cstring>
                       </property>
                      </widget>
-                    </item>
-                    <item row="6" column="2">
-                     <widget class="QLineEdit" name="lineEditPrice"/>
                     </item>
                     <item row="6" column="1">
                      <widget class="QLabel" name="label_7">
                       <property name="text">
                        <string>Price: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>lineEditPrice</cstring>
                       </property>
                      </widget>
                     </item>
@@ -380,7 +374,7 @@
                        <string>Chassis: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>lineEditChassis</cstring>
+                       <cstring>leChassis</cstring>
                       </property>
                      </widget>
                     </item>
@@ -390,12 +384,12 @@
                        <string>Doors: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>spinBoxDoors</cstring>
+                       <cstring>spbDoors</cstring>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="2">
-                     <widget class="QComboBox" name="comboBoxColor">
+                     <widget class="QComboBox" name="cmbColor">
                       <item>
                        <property name="text">
                         <string>BLACK</string>
@@ -454,7 +448,7 @@
                      </widget>
                     </item>
                     <item row="3" column="2">
-                     <widget class="QSpinBox" name="spinBoxDoors">
+                     <widget class="QSpinBox" name="spbDoors">
                       <property name="minimum">
                        <number>3</number>
                       </property>
@@ -464,10 +458,10 @@
                      </widget>
                     </item>
                     <item row="1" column="2">
-                     <widget class="QLineEdit" name="lineEditChassis"/>
+                     <widget class="QLineEdit" name="leChassis"/>
                     </item>
                     <item row="5" column="2">
-                     <widget class="QLineEdit" name="lineEditPlate"/>
+                     <widget class="QLineEdit" name="lePlate"/>
                     </item>
                     <item row="0" column="3">
                      <spacer name="horizontalSpacer_2">
@@ -488,7 +482,7 @@
                        <string>Name: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>lineEditCarName</cstring>
+                       <cstring>leCarName</cstring>
                       </property>
                      </widget>
                     </item>
@@ -498,12 +492,12 @@
                        <string>Color: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>comboBoxColor</cstring>
+                       <cstring>cmbColor</cstring>
                       </property>
                      </widget>
                     </item>
                     <item row="0" column="2">
-                     <widget class="QLineEdit" name="lineEditCarName"/>
+                     <widget class="QLineEdit" name="leCarName"/>
                     </item>
                     <item row="0" column="0">
                      <spacer name="horizontalSpacer_3">
@@ -518,16 +512,19 @@
                       </property>
                      </spacer>
                     </item>
+                    <item row="6" column="2">
+                     <widget class="QDoubleSpinBox" name="spbPrice"/>
+                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDialogButtonBox" name="buttonBoxAddCarModel">
+                  <widget class="QDialogButtonBox" name="bbAddCar">
                    <property name="layoutDirection">
                     <enum>Qt::LeftToRight</enum>
                    </property>
                    <property name="standardButtons">
-                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
                    </property>
                    <property name="centerButtons">
                     <bool>true</bool>
@@ -991,9 +988,9 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDialogButtonBox" name="buttonBoxAddUser">
+                  <widget class="QDialogButtonBox" name="bbAddUser">
                    <property name="standardButtons">
-                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
                    </property>
                    <property name="centerButtons">
                     <bool>true</bool>
@@ -1332,9 +1329,9 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDialogButtonBox" name="buttonBoxRentCar">
+                  <widget class="QDialogButtonBox" name="bbRentCar">
                    <property name="standardButtons">
-                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
                    </property>
                    <property name="centerButtons">
                     <bool>true</bool>
@@ -1393,13 +1390,12 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lineEditCarName</tabstop>
-  <tabstop>lineEditChassis</tabstop>
-  <tabstop>comboBoxColor</tabstop>
-  <tabstop>spinBoxDoors</tabstop>
-  <tabstop>comboBoxFuel</tabstop>
-  <tabstop>lineEditPlate</tabstop>
-  <tabstop>lineEditPrice</tabstop>
+  <tabstop>leCarName</tabstop>
+  <tabstop>leChassis</tabstop>
+  <tabstop>cmbColor</tabstop>
+  <tabstop>spbDoors</tabstop>
+  <tabstop>cmbFuel</tabstop>
+  <tabstop>lePlate</tabstop>
   <tabstop>lineEditUserName</tabstop>
   <tabstop>spinBoxAge</tabstop>
   <tabstop>lineEditAddress</tabstop>
