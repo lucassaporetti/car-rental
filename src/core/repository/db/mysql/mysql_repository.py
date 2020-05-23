@@ -93,7 +93,7 @@ class MySqlRepository(DbRepository):
 
     def find_all(self, filters: str = None) -> Optional[list]:
         if filters is not None:
-            sql_filters = filters.upper().replace(',', ', OR ').split(',')
+            sql_filters = filters.upper().split(',')
         else:
             sql_filters = None
         select_stm = self.sql_factory.select(filters=sql_filters)

@@ -15,18 +15,18 @@ class MySqlFactory(SqlFactory):
         return self.sql_templates.get('UPDATE')\
             .format(
                 SqlFactory.dict_to_field_set(values) if values is not None else '',
-                SqlFactory.list_to_filters(filters) if filters is not None else '',
+                SqlFactory.list_to_filters(filters, separator='') if filters is not None else '',
             )
 
     def delete(self, filters: list = None):
         return self.sql_templates.get('DELETE')\
             .format(
-                SqlFactory.list_to_filters(filters) if filters is not None else '',
+                SqlFactory.list_to_filters(filters, separator='') if filters is not None else '',
             )
 
     def select(self, columns: list = None, filters: list = None):
         return self.sql_templates.get('SELECT')\
             .format(
                 SqlFactory.list_to_columns(columns) if columns is not None else '*',
-                SqlFactory.list_to_filters(filters) if filters is not None else '',
+                SqlFactory.list_to_filters(filters, separator='') if filters is not None else '',
             )

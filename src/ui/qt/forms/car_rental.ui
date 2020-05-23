@@ -27,7 +27,7 @@
     <number>12</number>
    </property>
    <property name="rightMargin">
-    <number>15</number>
+    <number>12</number>
    </property>
    <property name="bottomMargin">
     <number>12</number>
@@ -37,80 +37,92 @@
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tabCarModels">
+     <widget class="QWidget" name="tabCars">
       <attribute name="title">
        <string>Car Models</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
-        <widget class="QFrame" name="frameCarModels">
+        <widget class="QFrame" name="frameCars">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Plain</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <property name="leftMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <item>
-           <widget class="QStackedWidget" name="stackedPanelCarModels">
+           <widget class="QStackedWidget" name="stackedPanelCars">
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
-            <widget class="QWidget" name="stackPanelPageSearchModels">
+            <widget class="QWidget" name="stackPanelPageSearchCars">
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <property name="leftMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <item>
-               <widget class="QFrame" name="frameSearchModels">
+               <widget class="QFrame" name="frameSearchCars">
                 <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+                 <enum>QFrame::NoFrame</enum>
                 </property>
                 <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
+                 <enum>QFrame::Plain</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
                  <property name="leftMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <item>
-                  <widget class="QFrame" name="frameSearchModelsButtonBox">
+                  <widget class="QFrame" name="frameSearchCarsButtonBox">
                    <property name="frameShape">
                     <enum>QFrame::NoFrame</enum>
                    </property>
@@ -119,19 +131,19 @@
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout">
                     <property name="leftMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="topMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="rightMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="btnSearchModel">
+                     <widget class="QToolButton" name="btnSearchCars">
                       <property name="text">
                        <string/>
                       </property>
@@ -148,17 +160,17 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="lblSearchModel">
+                     <widget class="QLabel" name="lblSearchCars">
                       <property name="text">
                        <string>Search: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>editSearchModel</cstring>
+                       <cstring>leSearchCar</cstring>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchModel">
+                     <widget class="QLineEdit" name="leSearchCar">
                       <property name="minimumSize">
                        <size>
                         <width>289</width>
@@ -166,12 +178,12 @@
                        </size>
                       </property>
                       <property name="placeholderText">
-                       <string>Please type the search criteria</string>
+                       <string> Please type the search criteria: * or criteria_1=value_1, ... criteria_N=value_N</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="btnAddCarModel">
+                     <widget class="QToolButton" name="btnAddCar">
                       <property name="text">
                        <string/>
                       </property>
@@ -194,7 +206,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="btnRemoveCarModel">
+                     <widget class="QToolButton" name="btnRemoveCar">
                       <property name="text">
                        <string/>
                       </property>
@@ -220,7 +232,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="btnUpdateCarModel">
+                     <widget class="QToolButton" name="btnUpdateCar">
                       <property name="text">
                        <string/>
                       </property>
@@ -236,24 +248,11 @@
                       </property>
                      </widget>
                     </item>
-                    <item>
-                     <spacer name="horizontalSpacer">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTableView" name="tableCarModels">
+                  <widget class="QTableView" name="tableCars">
                    <property name="verticalScrollBarPolicy">
                     <enum>Qt::ScrollBarAsNeeded</enum>
                    </property>
@@ -267,7 +266,10 @@
                     <bool>true</bool>
                    </property>
                    <property name="selectionMode">
-                    <enum>QAbstractItemView::SingleSelection</enum>
+                    <enum>QAbstractItemView::ExtendedSelection</enum>
+                   </property>
+                   <property name="selectionBehavior">
+                    <enum>QAbstractItemView::SelectRows</enum>
                    </property>
                    <property name="sortingEnabled">
                     <bool>false</bool>
@@ -562,26 +564,32 @@
        <string>Users</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QFrame" name="frameUsers">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Plain</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <property name="leftMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QStackedWidget" name="stackedPanelUsers">
@@ -591,37 +599,37 @@
             <widget class="QWidget" name="stackPanelPageSearchUsers">
              <layout class="QVBoxLayout" name="verticalLayout_12">
               <property name="leftMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <item>
                <widget class="QFrame" name="frameSearchUsers">
                 <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+                 <enum>QFrame::NoFrame</enum>
                 </property>
                 <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
+                 <enum>QFrame::Plain</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_16">
                  <property name="leftMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QFrame" name="frameSearchUsersButtonBox">
@@ -633,19 +641,19 @@
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_2">
                     <property name="leftMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="topMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="rightMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="btnSearchUser">
+                     <widget class="QToolButton" name="btnSearchUsers">
                       <property name="text">
                        <string/>
                       </property>
@@ -662,17 +670,17 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="lblSearchUser">
+                     <widget class="QLabel" name="lblSearchUsers">
                       <property name="text">
                        <string>Search: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>editSearchUser</cstring>
+                       <cstring>leSearchUser</cstring>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchUser">
+                     <widget class="QLineEdit" name="leSearchUser">
                       <property name="minimumSize">
                        <size>
                         <width>289</width>
@@ -680,7 +688,7 @@
                        </size>
                       </property>
                       <property name="placeholderText">
-                       <string>Please type the search criteria</string>
+                       <string> Please type the search criteria: * or criteria_1=value_1, ... criteria_N=value_N</string>
                       </property>
                      </widget>
                     </item>
@@ -735,24 +743,24 @@
                       </property>
                      </widget>
                     </item>
-                    <item>
-                     <spacer name="horizontalSpacer_4">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>264</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTableView" name="tableUsers"/>
+                  <widget class="QTableView" name="tableUsers">
+                   <property name="sizeAdjustPolicy">
+                    <enum>QAbstractScrollArea::AdjustToContents</enum>
+                   </property>
+                   <property name="selectionBehavior">
+                    <enum>QAbstractItemView::SelectRows</enum>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>false</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </widget>
@@ -1022,26 +1030,32 @@
        <string>Rentals</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QFrame" name="frameRentals">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Plain</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="leftMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QStackedWidget" name="stackedPanelRentals">
@@ -1051,37 +1065,37 @@
             <widget class="QWidget" name="stackPanelPageSearchRentals">
              <layout class="QVBoxLayout" name="verticalLayout_14">
               <property name="leftMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <item>
                <widget class="QFrame" name="frameSearchRentals">
                 <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+                 <enum>QFrame::NoFrame</enum>
                 </property>
                 <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
+                 <enum>QFrame::Plain</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <property name="leftMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>5</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QFrame" name="frameSearchRentalsButtonBox">
@@ -1093,19 +1107,19 @@
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_3">
                     <property name="leftMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="topMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="rightMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>5</number>
+                     <number>0</number>
                     </property>
                     <item>
-                     <widget class="QToolButton" name="btnSearchRental">
+                     <widget class="QToolButton" name="btnSearchRentals">
                       <property name="text">
                        <string/>
                       </property>
@@ -1122,17 +1136,17 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="lblSearchRental">
+                     <widget class="QLabel" name="lblSearchRentals">
                       <property name="text">
                        <string>Search: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>editSearchRental</cstring>
+                       <cstring>leSearchRental</cstring>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="editSearchRental">
+                     <widget class="QLineEdit" name="leSearchRental">
                       <property name="minimumSize">
                        <size>
                         <width>289</width>
@@ -1140,7 +1154,7 @@
                        </size>
                       </property>
                       <property name="placeholderText">
-                       <string>Please type the search criteria</string>
+                       <string> Please type the search criteria: * or criteria_1=value_1, ... criteria_N=value_N</string>
                       </property>
                      </widget>
                     </item>
@@ -1178,24 +1192,11 @@
                       </property>
                      </widget>
                     </item>
-                    <item>
-                     <spacer name="horizontalSpacer_5">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>285</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTableView" name="tableViewRentals"/>
+                  <widget class="QTableView" name="tableRentals"/>
                  </item>
                 </layout>
                </widget>
@@ -1367,6 +1368,28 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <widget class="QLabel" name="labelStatusBar">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>28</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -1393,21 +1416,21 @@
   <tabstop>comboBoxAttendant</tabstop>
   <tabstop>btnRentCar</tabstop>
   <tabstop>btnReturnCar</tabstop>
-  <tabstop>editSearchRental</tabstop>
+  <tabstop>leSearchRental</tabstop>
   <tabstop>tabPanel</tabstop>
-  <tabstop>btnSearchRental</tabstop>
-  <tabstop>editSearchModel</tabstop>
-  <tabstop>btnAddCarModel</tabstop>
-  <tabstop>btnRemoveCarModel</tabstop>
-  <tabstop>btnUpdateCarModel</tabstop>
-  <tabstop>btnSearchModel</tabstop>
+  <tabstop>btnSearchRentals</tabstop>
+  <tabstop>leSearchCar</tabstop>
+  <tabstop>btnAddCar</tabstop>
+  <tabstop>btnRemoveCar</tabstop>
+  <tabstop>btnUpdateCar</tabstop>
+  <tabstop>btnSearchCars</tabstop>
   <tabstop>tableUsers</tabstop>
-  <tabstop>tableViewRentals</tabstop>
-  <tabstop>tableCarModels</tabstop>
+  <tabstop>tableRentals</tabstop>
+  <tabstop>tableCars</tabstop>
   <tabstop>btnAddUser</tabstop>
   <tabstop>btnRemoveUser</tabstop>
-  <tabstop>btnSearchUser</tabstop>
-  <tabstop>editSearchUser</tabstop>
+  <tabstop>btnSearchUsers</tabstop>
+  <tabstop>leSearchUser</tabstop>
   <tabstop>btnUpdateUser</tabstop>
  </tabstops>
  <resources>
@@ -1415,18 +1438,50 @@
  </resources>
  <connections>
   <connection>
-   <sender>editSearchModel</sender>
+   <sender>leSearchCar</sender>
    <signal>returnPressed()</signal>
-   <receiver>btnSearchModel</receiver>
+   <receiver>btnSearchCars</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>82</y>
+     <x>308</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>67</x>
-     <y>83</y>
+     <x>68</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>leSearchUser</sender>
+   <signal>returnPressed()</signal>
+   <receiver>btnSearchUsers</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>315</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>68</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>leSearchRental</sender>
+   <signal>returnPressed()</signal>
+   <receiver>btnSearchRentals</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>57</y>
     </hint>
    </hints>
   </connection>

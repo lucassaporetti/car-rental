@@ -1,48 +1,55 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea
 from pymysql.err import InternalError
 
+from core.enum.color import Color
 from core.model.car import Car
 from core.service.service_facade import ServiceFacade
+from ui.qt.table_model.default_table_model import DefaultTableModel
 from ui.qt.views.qt_view import QtView
-from ui.shell.views.table_model.default_table_model import DefaultTableModel
 
 
 class CarSearchView(QtView):
-    def __init__(self, window: QDialog):
-        super().__init__(window)
+    def __init__(self, window: QDialog, parent: QtView):
+        super().__init__(window, parent)
         self.car_service = ServiceFacade.get_car_service()
-        self.stackedPanelCarModels = self.qt.find_stacked_widget('stackedPanelCarModels')
-        self.tableCarModels = self.qt.find_table_view('tableCarModels')
-        self.btnSearchModel = self.qt.find_tool_button('btnSearchModel')
-        self.editSearchModel = self.qt.find_line_edit('editSearchModel')
-        self.btnAddCarModel = self.qt.find_tool_button('btnAddCarModel')
+        self.stackedPanelCars = self.qt.find_stacked_widget('stackedPanelCars')
+        self.tableCars = self.qt.find_table_view('tableCars')
+        self.btnSearchCars = self.qt.find_tool_button('btnSearchCars')
+        self.leSearchCar = self.qt.find_line_edit('leSearchCar')
+        self.btnAddCar = self.qt.find_tool_button('btnAddCar')
         self.setup_ui()
 
     def setup_ui(self):
-        self.tableCarModels.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.tableCarModels.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.stackedPanelCarModels.setCurrentIndex(0)
-        self.btnSearchModel.clicked.connect(self.btn_search_model_clicked)
-        self.btnAddCarModel.clicked.connect(self.btn_add_car_clicked)
+        self.stackedPanelCars.setCurrentIndex(0)
+        self.tableCars.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.tableCars.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.tableCars.horizontalHeader().setStretchLastSection(True)
+        self.btnSearchCars.clicked.connect(self.btn_search_model_clicked)
+        self.btnAddCar.clicked.connect(self.btn_add_car_clicked)
 
     def btn_add_car_clicked(self):
-        self.log.info('Tool button: btnAddCarModel clicked')
-        self.stackedPanelCarModels.setCurrentIndex(1)
+        self.log.info('Tool button: btnAddCar clicked')
+        self.stackedPanelCars.setCurrentIndex(1)
 
     def btn_search_model_clicked(self):
-        self.log.info('Tool button: btnSearchModel clicked')
-        criteria = self.editSearchModel.text()
+        self.log.info('Tool button: btnSearchCars clicked')
+        criteria = self.leSearchCar.text() or '*'
         try:
             if criteria or criteria == '*':
                 found = self.car_service.list(filters=criteria if criteria != '*' else None)
                 if found and len(found) > 0:
-                    self.populate_table_car_models(found)
+                    self.populate_table_cars(found)
+                    self.parent.set_status('Found {} car models matching: {}'.format(len(found), criteria))
                 else:
-                    self.log.warn('No cars found for the matching criteria {}'.format(criteria))
+                    msg = 'No cars found for the matching criteria: {}'.format(criteria)
+                    self.parent.set_status(msg, Color.ORANGE)
+                    self.log.warn(msg)
         except InternalError:
-            self.log.error('Invalid criteria {}'.format(criteria))
+            msg = 'Invalid criteria {}'.format(criteria)
+            self.parent.set_status(msg, Color.RED)
+            self.log.error(msg)
 
-    def populate_table_car_models(self, table_data: list):
+    def populate_table_cars(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))
-        self.tableCarModels.setModel(DefaultTableModel(Car, table_data=table_data, parent=self.window))
-        self.tableCarModels.resizeColumnsToContents()
+        self.tableCars.setModel(DefaultTableModel(Car, table_data=table_data, parent=self.tableCars))

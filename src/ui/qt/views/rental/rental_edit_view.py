@@ -4,8 +4,8 @@ from ui.qt.views.qt_view import QtView
 
 
 class RentalEditView(QtView):
-    def __init__(self, window: QDialog):
-        super().__init__(window)
+    def __init__(self, window: QDialog, parent: QtView):
+        super().__init__(window, parent)
 
     def setup_ui(self):
         pass

@@ -1,9 +1,24 @@
 from core.enum.access_type import AccessType
+from core.model.customer import Customer
 from core.model.employee import Employee
 from core.model.user import User
 
 
 class UserDto(User):
+    @staticmethod
+    def from_customer(customer: Customer):
+        return UserDto(
+            customer.uuid, customer.name, customer.age, customer.address, customer.phone, customer.email,
+            customer.drv_license, '', '', ''
+        )
+
+    @staticmethod
+    def from_employee(employee: Employee):
+        return UserDto(
+            employee.uuid, employee.name, employee.age, employee.address, employee.phone, employee.email,
+            '', employee.access_type, employee.hired_date, employee.salary
+        )
+
     def __init__(self, entity_id: str = None, name: str = None, age: int = None, address: str = None, phone: str = None,
                  email: str = None, drv_license: str = None, access_type: str = None, hired_date: str = None,
                  salary: float = None):
@@ -19,10 +34,10 @@ class UserDto(User):
 
     class Builder(Employee.Builder):
         def __init__(self):
-            self.drv_license = None
-            self.access_type = None
-            self.hired_date = None
-            self.salary = None
+            self.drv_license = ''
+            self.access_type = ''
+            self.hired_date = ''
+            self.salary = ''
 
         def with_drv_license(self, drv_license: str):
             self.drv_license = drv_license

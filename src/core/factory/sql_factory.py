@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
 
+from core.tools.validators import validate_string
 from src.core.tools.properties import Properties
 
 
@@ -15,11 +16,15 @@ class SqlFactory(ABC):
         return str_values
 
     @staticmethod
-    def list_to_filters(filters: list) -> str:
+    def list_to_filters(filters: list, separator=',') -> str:
         str_filters = ''
         for sql_filter in filters:
-            sep = ', ' if str_filters else ''
-            str_filters += "{}AND {}".format(sep, sql_filter)
+            sep = separator if str_filters else ''
+            parts = sql_filter.split('=')
+            if len(parts) >= 2:
+                key = parts[0]
+                value = parts[1:] if validate_string(parts[1], "'.*'") else "'{}'".format(parts[1])
+                str_filters += "{} AND {}={}".format(sep, key, value)
 
         return str_filters
 

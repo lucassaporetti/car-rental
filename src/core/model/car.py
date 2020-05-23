@@ -1,9 +1,9 @@
 import uuid
 
+from core.model.entity import Entity
 from src.core.enum.color import Color
 from src.core.enum.fuel import Fuel
 from src.core.enum.yes_no import YesNo
-from core.model.entity import Entity
 
 
 class Car(Entity):
@@ -12,12 +12,12 @@ class Car(Entity):
         return Car(
             str(values[0]), str(values[1]), str(values[2]),
             Color[values[3]], int(values[4]), Fuel[values[5]],
-            str(values[6]), float(values[7]), values[8]
+            str(values[6]), float(values[7]), YesNo(values[8])
         )
 
-    def __init__(self, entity_id: str = None, name: str = None, chassis: str = None, color: str = None,
-                 doors: int = None, fuel: str = None, plate: str = None, price: float = None,
-                 available: int = 1):
+    def __init__(self, entity_id: str = None, name: str = None, chassis: str = None, color: Color = None,
+                 doors: int = None, fuel: Fuel = None, plate: str = None, price: float = None,
+                 available: YesNo = YesNo.YES):
         super().__init__(entity_id)
         self.name = name
         self.chassis = chassis
@@ -30,8 +30,9 @@ class Car(Entity):
 
     def __str__(self):
         return "{} | {} | {} | {} | {} | {} | {} | {} | {}".format(
-            super().__str__(), self.name, self.chassis, self.color, self.doors, self.fuel, self.plate, self.price,
-            self.available)
+            super().__str__(), self.name, self.chassis,
+            self.color.name, self.doors, self.fuel.name, self.plate, self.price,
+            self.available.name)
 
     class Builder:
         def __init__(self):

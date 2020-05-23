@@ -1,14 +1,17 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QTabWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QColor
+from PyQt5.QtWidgets import QTabWidget, QLabel
 
 from core.config.app_configs import AppConfigs
-from ui.qt.views.qt_view import QtView
+from core.enum.color import Color
 from src.ui.qt.views.car.car_edit_view import CarEditView
 from src.ui.qt.views.car.car_search_view import CarSearchView
 from src.ui.qt.views.rental.rental_edit_view import RentalEditView
 from src.ui.qt.views.rental.rental_search_view import RentalSearchView
 from src.ui.qt.views.user.user_edit_view import UserEditView
 from src.ui.qt.views.user.user_search_view import UserSearchView
+from ui.qt.views.qt_view import QtView
 
 
 class MainMenuUi(QtView):
@@ -20,13 +23,15 @@ class MainMenuUi(QtView):
         self.form = MainMenuUi.form()
         self.form.setupUi(self.window)
         self.tabPanel = self.qt.find_widget(self.window, QTabWidget, 'tabPanel')
-        self.car_search = CarSearchView(self.window)
-        self.car_edit = CarEditView(self.window)
-        self.user_search = UserSearchView(self.window)
-        self.user_edit = UserEditView(self.window)
-        self.rental_search = RentalSearchView(self.window)
-        self.rental_edit = RentalEditView(self.window)
+        self.labelStatusBar = self.qt.find_widget(self.window, QLabel, 'labelStatusBar')
+        self.car_search = CarSearchView(self.window, self)
+        self.car_edit = CarEditView(self.window, self)
+        self.user_search = UserSearchView(self.window, self)
+        self.user_edit = UserEditView(self.window, self)
+        self.rental_search = RentalSearchView(self.window, self)
+        self.rental_edit = RentalEditView(self.window, self)
         self.setup_ui()
+        self.set_status('Ready.')
 
     def setup_ui(self):
         self.tabPanel.setCurrentIndex(0)
@@ -36,7 +41,11 @@ class MainMenuUi(QtView):
         self.window.show()
 
     def tab_changed(self, idx: int):
-        self.car_search.stackedPanelCarModels.setCurrentIndex(0)
+        self.car_search.stackedPanelCars.setCurrentIndex(0)
         self.user_search.stackedPanelUsers.setCurrentIndex(0)
         self.rental_search.stackedPanelRentals.setCurrentIndex(0)
         self.log.info('Tab: tabPanel changed to {}'.format(idx))
+
+    def set_status(self, message, color: Color = Color.BLACK):
+        text = '<font color="{}">{}</font>'.format(str(color.name).lower(), message)
+        self.labelStatusBar.setText(text)
