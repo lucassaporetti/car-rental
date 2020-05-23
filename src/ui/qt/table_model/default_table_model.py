@@ -11,7 +11,6 @@ from core.tools.commons import class_attribute_names, class_attribute_values, lo
 class DefaultTableModel(QAbstractTableModel):
     def __init__(self, clazz: Type, headers: list = None, cell_alignments: list = None, table_data: list = None,
                  parent: QTableView = None):
-
         QAbstractTableModel.__init__(self, parent)
         self.clazz = clazz
         self.table_data = table_data or []
@@ -21,7 +20,6 @@ class DefaultTableModel(QAbstractTableModel):
         self.log.info('{} headers={}'.format(clazz.__class__.__name__, '|'.join(self.headers)))
 
     def data(self, index: QModelIndex, role: int = ...):
-
         entity = class_attribute_values(self.table_data[index.row()])[index.column()]
         str_entity = str(entity) if entity else ''
         if role == Qt.DisplayRole:
@@ -34,7 +32,6 @@ class DefaultTableModel(QAbstractTableModel):
         return QVariant()
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int = ...):
-
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
             return self.headers[section].upper() if len(self.headers) >= section else '-'
         elif orientation == Qt.Vertical and role == Qt.DisplayRole:

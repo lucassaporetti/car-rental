@@ -20,6 +20,7 @@ class CarSearchView(QtView):
         self.btnSearchCars = self.qt.find_tool_button('btnSearchCars')
         self.leSearchCar = self.qt.find_line_edit('leSearchCar')
         self.btnAddCar = self.qt.find_tool_button('btnAddCar')
+        self.btnRemoveCar = self.qt.find_tool_button('btnRemoveCar')
         self.setup_ui()
 
     def setup_ui(self):
@@ -30,10 +31,7 @@ class CarSearchView(QtView):
         self.tableCars.doubleClicked.connect(self.double_clicked_row)
         self.btnSearchCars.clicked.connect(self.btn_search_model_clicked)
         self.btnAddCar.clicked.connect(self.btn_add_car_clicked)
-
-    def btn_add_car_clicked(self):
-        self.log.info('Tool button: btnAddCar clicked')
-        self.stackedPanelCars.setCurrentIndex(1)
+        self.btnRemoveCar.clicked.connect(self.btn_remove_car_clicked)
 
     def btn_search_model_clicked(self):
         self.log.info('Tool button: btnSearchCars clicked')
@@ -52,6 +50,17 @@ class CarSearchView(QtView):
             msg = 'Invalid criteria {}'.format(criteria)
             self.parent.set_status(msg, Color.RED)
             self.log.error(msg)
+
+    def btn_add_car_clicked(self):
+        self.log.info('Tool button: btnAddCar clicked')
+        self.stackedPanelCars.setCurrentIndex(1)
+
+    def btn_remove_car_clicked(self):
+        self.log.info('Tool button: btnRemoveCar clicked')
+        indexes = self.tableCars.selectionModel().selectedRows()
+        for index in indexes:
+            car = self.tableCars.model().row(index)
+            self.car_service.remove(car)
 
     def populate_table_cars(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))

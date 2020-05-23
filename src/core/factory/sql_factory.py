@@ -20,11 +20,11 @@ class SqlFactory(ABC):
         str_filters = ''
         for sql_filter in filters:
             sep = separator if str_filters else ''
-            parts = sql_filter.split('=')
+            parts = sql_filter.strip().split('=')
             if len(parts) >= 2:
-                key = parts[0]
-                value = parts[1:] if validate_string(parts[1], "'.*'") else "'{}'".format(parts[1])
-                str_filters += "{} AND {}={}".format(sep, key, value)
+                key = parts[0].strip()
+                value = parts[1].strip().replace("'", "")
+                str_filters += "{} AND {}='{}'".format(sep, key, value)
 
         return str_filters
 

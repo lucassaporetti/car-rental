@@ -1,13 +1,18 @@
 from PyQt5.QtWidgets import QDialog, QDialogButtonBox
 
+from core.enum.color import Color
+from core.enum.fuel import Fuel
 from core.eventbus.event_bus import EventBus
+from core.model.car import Car
+from core.service.service_facade import ServiceFacade
 from ui.qt.views.qt_view import QtView
 
 
 class CarEditView(QtView):
     def __init__(self, window: QDialog, parent: QtView):
         super().__init__(window, parent)
-        self.selected_uuid = None
+        self.car_service = ServiceFacade.get_car_service()
+        self.selected_car = None
         self.leCarName = self.qt.find_line_edit('leCarName')
         self.leChassis = self.qt.find_line_edit('leChassis')
         self.cmbColor = self.qt.find_combo_box('cmbColor')
@@ -27,7 +32,7 @@ class CarEditView(QtView):
     def car_selected(self, args):
         car = args['selected_item']
         self.log.info('Car selected for update: {}'.format(car))
-        self.selected_uuid = car.uuid
+        self.selected_car = car
         self.leCarName.setText(car.name)
         self.leChassis.setText(car.chassis)
         self.cmbColor.setCurrentText(car.color.name)
@@ -38,7 +43,7 @@ class CarEditView(QtView):
 
     def on_reset(self):
         self.log.info('Car form reset')
-        self.selected_uuid = None
+        self.selected_car = None
         self.leCarName.setText(None)
         self.leChassis.setText(None)
         self.cmbColor.setCurrentIndex(0)
@@ -49,7 +54,19 @@ class CarEditView(QtView):
         self.window.repaint()
 
     def on_save(self):
-        pass
+        self.selected_car = self.selected_car if self.selected_car else Car()
+        self.selected_car.name = self.leCarName.text()
+        self.selected_car.chassis = self.leChassis.text()
+        self.selected_car.color = Color[self.cmbColor.currentText()]
+        self.selected_car.doors = self.spbDoors.value()
+        self.selected_car.fuel = Fuel[self.cmbFuel.currentText()]
+        self.selected_car.plate = self.lePlate.text()
+        self.selected_car.price = self.spbPrice.value()
+        self.selected_car.available = self.selected_car.available.value
+        self.car_service.save(self.selected_car)
+        self.on_reset()
+        self.parent.car_search.stackedPanelCars.setCurrentIndex(0)
 
     def on_cancel(self):
+        self.on_reset()
         self.parent.car_search.stackedPanelCars.setCurrentIndex(0)
