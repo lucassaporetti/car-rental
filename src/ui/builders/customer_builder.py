@@ -13,12 +13,12 @@ class CustomerBuilder:
         customer = name = age = address = phone = email = drv_license = None
         while not valid:
             name = prompt("Name: ").strip() if name is None else name
-            if not validate_string(name, "[a-zA-Z0-9]+", min_len=2, max_len=30):
+            if not validate_string(name, "[a-zA-Z0-9]+", min_len=2):
                 name = None
                 print_error('Invalid name', name)
                 continue
             age = prompt("Age: ").strip() if age is None else age
-            if not validate_int(age, min_value=18, max_value=110):
+            if not validate_int(age, min_value=18, max_value=80):
                 age = None
                 print_error('Invalid age', age)
                 continue

@@ -349,6 +349,9 @@
                       <property name="text">
                        <string>Price: </string>
                       </property>
+                      <property name="buddy">
+                       <cstring>spbPrice</cstring>
+                      </property>
                      </widget>
                     </item>
                     <item row="1" column="1">
@@ -441,10 +444,18 @@
                      </widget>
                     </item>
                     <item row="1" column="2">
-                     <widget class="QLineEdit" name="leChassis"/>
+                     <widget class="QLineEdit" name="leChassis">
+                      <property name="maxLength">
+                       <number>11</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="5" column="2">
-                     <widget class="QLineEdit" name="lePlate"/>
+                     <widget class="QLineEdit" name="lePlate">
+                      <property name="maxLength">
+                       <number>8</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3">
                      <spacer name="horizontalSpacer_2">
@@ -480,7 +491,11 @@
                      </widget>
                     </item>
                     <item row="0" column="2">
-                     <widget class="QLineEdit" name="leCarName"/>
+                     <widget class="QLineEdit" name="leCarName">
+                      <property name="maxLength">
+                       <number>30</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0">
                      <spacer name="horizontalSpacer_3">
@@ -496,7 +511,20 @@
                      </spacer>
                     </item>
                     <item row="6" column="2">
-                     <widget class="QDoubleSpinBox" name="spbPrice"/>
+                     <widget class="QDoubleSpinBox" name="spbPrice">
+                      <property name="prefix">
+                       <string>R$</string>
+                      </property>
+                      <property name="minimum">
+                       <double>50.000000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>1000.000000000000000</double>
+                      </property>
+                      <property name="singleStep">
+                       <double>5.000000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -761,7 +789,11 @@
                    </property>
                    <layout class="QGridLayout" name="gridLayout_2">
                     <item row="0" column="2">
-                     <widget class="QLineEdit" name="lineEditUserName"/>
+                     <widget class="QLineEdit" name="lineEditUserName">
+                      <property name="maxLength">
+                       <number>30</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="1">
                      <widget class="QLabel" name="label_8">
@@ -820,7 +852,11 @@
                      </widget>
                     </item>
                     <item row="3" column="2">
-                     <widget class="QLineEdit" name="lineEditPhone"/>
+                     <widget class="QLineEdit" name="lineEditPhone">
+                      <property name="maxLength">
+                       <number>15</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="7" column="2">
                      <widget class="QComboBox" name="comboBoxAccessType">
@@ -845,7 +881,11 @@
                      </widget>
                     </item>
                     <item row="2" column="2">
-                     <widget class="QLineEdit" name="lineEditAddress"/>
+                     <widget class="QLineEdit" name="lineEditAddress">
+                      <property name="maxLength">
+                       <number>120</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="7" column="1">
                      <widget class="QLabel" name="labelAccessType">
@@ -871,12 +911,19 @@
                      </widget>
                     </item>
                     <item row="4" column="2">
-                     <widget class="QLineEdit" name="lineEditEmail"/>
+                     <widget class="QLineEdit" name="lineEditEmail">
+                      <property name="maxLength">
+                       <number>128</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="6" column="2">
                      <widget class="QLineEdit" name="lineEditDriverLicense">
                       <property name="enabled">
                        <bool>false</bool>
+                      </property>
+                      <property name="maxLength">
+                       <number>8</number>
                       </property>
                      </widget>
                     </item>
@@ -905,7 +952,14 @@
                      </widget>
                     </item>
                     <item row="1" column="2">
-                     <widget class="QSpinBox" name="spinBoxAge"/>
+                     <widget class="QSpinBox" name="spinBoxAge">
+                      <property name="minimum">
+                       <number>18</number>
+                      </property>
+                      <property name="maximum">
+                       <number>80</number>
+                      </property>
+                     </widget>
                     </item>
                     <item row="3" column="1">
                      <widget class="QLabel" name="label_11">
@@ -947,6 +1001,18 @@
                      <widget class="QDoubleSpinBox" name="doubleSpinSalary">
                       <property name="enabled">
                        <bool>false</bool>
+                      </property>
+                      <property name="prefix">
+                       <string>R$</string>
+                      </property>
+                      <property name="minimum">
+                       <double>450.000000000000000</double>
+                      </property>
+                      <property name="maximum">
+                       <double>2000.000000000000000</double>
+                      </property>
+                      <property name="singleStep">
+                       <double>100.000000000000000</double>
                       </property>
                      </widget>
                     </item>
@@ -1276,7 +1342,14 @@
                      </widget>
                     </item>
                     <item row="2" column="2">
-                     <widget class="QDoubleSpinBox" name="doubleSpinBoxPrice"/>
+                     <widget class="QDoubleSpinBox" name="doubleSpinBoxPrice">
+                      <property name="prefix">
+                       <string>R$</string>
+                      </property>
+                      <property name="singleStep">
+                       <double>10.000000000000000</double>
+                      </property>
+                     </widget>
                     </item>
                     <item row="4" column="1">
                      <widget class="QLabel" name="label_18">
@@ -1362,6 +1435,7 @@
   <tabstop>spbDoors</tabstop>
   <tabstop>cmbFuel</tabstop>
   <tabstop>lePlate</tabstop>
+  <tabstop>spbPrice</tabstop>
   <tabstop>lineEditUserName</tabstop>
   <tabstop>spinBoxAge</tabstop>
   <tabstop>lineEditAddress</tabstop>
@@ -1376,7 +1450,6 @@
   <tabstop>doubleSpinBoxPrice</tabstop>
   <tabstop>checkBoxPending</tabstop>
   <tabstop>comboBoxAttendant</tabstop>
-  <tabstop>btnRentCar</tabstop>
   <tabstop>btnReturnCar</tabstop>
   <tabstop>leSearchRental</tabstop>
   <tabstop>tabPanel</tabstop>
@@ -1392,6 +1465,7 @@
   <tabstop>btnRemoveUser</tabstop>
   <tabstop>btnSearchUsers</tabstop>
   <tabstop>leSearchUser</tabstop>
+  <tabstop>btnRentCar</tabstop>
  </tabstops>
  <resources>
   <include location="../../../resources.qrc"/>

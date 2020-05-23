@@ -44,7 +44,7 @@ class Car(Entity):
             self.fuel = None
             self.plate = None
             self.price = None
-            self.available = 1
+            self.available = YesNo.YES
 
         def with_name(self, name: str):
             self.name = name

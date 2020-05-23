@@ -23,5 +23,4 @@ class FileStorage:
 
     def commit(self):
         with open(self.filename, 'w') as f_local_db:
-            data = str(self.data)
-            f_local_db.write(data)
+            f_local_db.write(str(self.data))

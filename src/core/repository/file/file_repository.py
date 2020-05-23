@@ -29,21 +29,23 @@ class FileRepository(Repository):
 
     def insert(self, entity: Entity):
         entity.uuid = entity.uuid if entity.uuid is not None else uuid.uuid4()
-        self.localDb.data.append(entity.__dict__)
+        self.localDb.data.append(entity.to_dict())
         self.localDb.commit()
         self.log.info("{} has been saved !".format(entity.__class__.__name__))
 
     def update(self, entity: Entity):
-        idx = self.localDb.data.index(entity)
-        self.localDb.data[idx] = entity
-        self.localDb.commit()
-        self.log.info("{} has been updated !".format(entity.__class__.__name__))
+        for index, next_entry in enumerate(self.localDb.data):
+            if next_entry['uuid'] == entity.uuid:
+                self.localDb.data[index] = entity.to_dict()
+                self.localDb.commit()
+                self.log.info("{} has been updated !".format(entity.__class__.__name__))
 
     def delete(self, entity: Entity):
-        idx = self.localDb.data.index(entity)
-        self.localDb.data.remove(self.localDb.data[idx])
-        self.localDb.commit()
-        self.log.info("{} has been deleted !".format(entity.__class__.__name__))
+        for index, next_entry in enumerate(self.localDb.data):
+            if next_entry['uuid'] == entity.uuid:
+                self.localDb.data.remove(self.localDb.data[index])
+                self.localDb.commit()
+                self.log.info("{} has been deleted !".format(entity.__class__.__name__))
 
     def find_all(self, filters: str = None) -> Optional[list]:
         if filters is not None:
@@ -55,6 +57,8 @@ class FileRepository(Repository):
                     found = [self.row_to_entity(c) for c in self.localDb.data if
                              check_criteria(fields[1], c[fields[0]])]
                 except KeyError:
+                    continue
+                except IndexError:
                     continue
                 filtered.extend(found)
             return filtered
