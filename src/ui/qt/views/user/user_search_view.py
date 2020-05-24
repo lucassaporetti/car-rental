@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QModelIndex
-from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea
+from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea, QDialogButtonBox
 from pymysql.err import InternalError
 
 from core.dto.UserDto import UserDto
@@ -67,6 +67,7 @@ class UserSearchView(QtView):
             self.log.error(msg)
 
     def btn_add_user_clicked(self):
+        self.parent.user_edit.bbAddUser.button(QDialogButtonBox.Save).setDefault(True)
         self.stackedPanelUsers.setCurrentIndex(1)
         self.log.info('Tool button: btnAddUser clicked')
 
@@ -89,5 +90,6 @@ class UserSearchView(QtView):
     def double_clicked_row(self, index: QModelIndex):
         user = self.tableUsers.model().row(index)
         self.log.info('Table: tableUsers clicked: {}'.format(user))
-        self.stackedPanelUsers.setCurrentIndex(1)
         EventBus.get('user-selection-bus').emit('rowSelected', selected_item=user)
+        self.parent.user_edit.bbAddUser.button(QDialogButtonBox.Save).setDefault(True)
+        self.stackedPanelUsers.setCurrentIndex(1)

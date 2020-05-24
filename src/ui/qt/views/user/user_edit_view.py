@@ -40,6 +40,7 @@ class UserEditView(QtView):
         self.bbAddUser.rejected.connect(self.on_cancel)
         self.bbAddUser.button(QDialogButtonBox.Reset).clicked.connect(self.on_reset)
         self.cmbUserType.currentIndexChanged.connect(self.user_type_changed)
+        self.bbAddUser.button(QDialogButtonBox.Save).setDefault(True)
 
     def user_selected(self, args):
         user = args['selected_item']
@@ -47,7 +48,7 @@ class UserEditView(QtView):
         self.log.info('User selected for update: {}'.format(user))
         self.selected_user = user
         self.leUserName.setText(user.name)
-        self.spbAge.setValue(user.age)
+        self.spbAge.setValue(int(user.age))
         self.leAddress.setText(user.address)
         self.lePhone.setText(user.phone)
         self.leEmail.setText(user.email)
@@ -57,7 +58,7 @@ class UserEditView(QtView):
         else:
             self.cmbAccessType.setCurrentText(user.access_type)
             self.deHiredDate.setDate(QDate.fromString(user.hired_date))
-            self.spbSalary.setValue(user.salary)
+            self.spbSalary.setValue(float(user.salary))
 
     def user_type_changed(self):
         user_type = UserType[self.cmbUserType.currentText()]

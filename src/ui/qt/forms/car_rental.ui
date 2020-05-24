@@ -44,7 +44,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabCars">
       <attribute name="title">
@@ -84,7 +84,7 @@
              <bool>false</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="stackPanelPageSearchCars">
              <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -602,7 +602,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedPanelUsers">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="stackPanelPageSearchUsers">
              <layout class="QVBoxLayout" name="verticalLayout_12">

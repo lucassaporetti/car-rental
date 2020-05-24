@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QModelIndex
-from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea
+from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea, QDialogButtonBox
 from pymysql.err import InternalError
 
 from core.enum.color import Color
@@ -29,11 +29,11 @@ class CarSearchView(QtView):
         self.tableCars.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.tableCars.horizontalHeader().setStretchLastSection(True)
         self.tableCars.doubleClicked.connect(self.double_clicked_row)
-        self.btnSearchCars.clicked.connect(self.btn_search_model_clicked)
+        self.btnSearchCars.clicked.connect(self.btn_search_car_clicked)
         self.btnAddCar.clicked.connect(self.btn_add_car_clicked)
         self.btnRemoveCar.clicked.connect(self.btn_remove_car_clicked)
 
-    def btn_search_model_clicked(self):
+    def btn_search_car_clicked(self):
         self.log.info('Tool button: btnSearchCars clicked')
         criteria = self.leSearchCar.text() or '*'
         try:
@@ -52,16 +52,17 @@ class CarSearchView(QtView):
             self.log.error(msg)
 
     def btn_add_car_clicked(self):
-        self.log.info('Tool button: btnAddCar clicked')
+        self.parent.car_edit.bbAddCar.button(QDialogButtonBox.Save).setDefault(True)
         self.stackedPanelCars.setCurrentIndex(1)
+        self.log.info('Tool button: btnAddCar clicked')
 
     def btn_remove_car_clicked(self):
-        self.log.info('Tool button: btnRemoveCar clicked')
         indexes = self.tableCars.selectionModel().selectedRows()
         for index in indexes:
             car = self.tableCars.model().row(index)
             self.car_service.remove(car)
-        self.btn_search_model_clicked()
+        self.btn_search_car_clicked()
+        self.log.info('Tool button: btnRemoveCar clicked')
 
     def populate_table_cars(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))
@@ -71,4 +72,5 @@ class CarSearchView(QtView):
         car = self.tableCars.model().row(index)
         self.log.info('Table: tableCars clicked: {}'.format(car))
         self.stackedPanelCars.setCurrentIndex(1)
+        self.parent.car_edit.bbAddCar.button(QDialogButtonBox.Save).setDefault(True)
         EventBus.get('car-selection-bus').emit('rowSelected', selected_item=car)
