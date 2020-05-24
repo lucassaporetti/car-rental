@@ -38,14 +38,14 @@ class UserDto(User):
 
     def to_customer(self):
         customer = Customer(
-            self.uuid, self.name, self.age, self.address, self.email,
-            self.access_type, self.hired_date, self.salary
+            self.uuid, self.name, self.age, self.address, self.email, self.drv_license
         )
         return customer
 
     def to_employee(self):
         employee = Employee(
-            self.uuid, self.name, self.age, self.address, self.email, self.drv_license
+            self.uuid, self.name, self.age, self.address, self.email, self.access_type,
+            self.hired_date, self.salary
         )
         return employee
 

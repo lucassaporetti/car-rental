@@ -3,7 +3,7 @@ class Entity:
         self.uuid = entity_id
 
     def __str__(self):
-        return "{:36}".format(self.uuid)
+        return "{}".format(self.uuid)
 
     def to_dict(self) -> dict:
         ret_dict = {}

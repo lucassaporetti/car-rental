@@ -64,9 +64,10 @@ class CarEditView(QtView):
         self.selected_car.price = self.spbPrice.value()
         self.selected_car.available = self.selected_car.available.value
         self.car_service.save(self.selected_car)
-        self.log.info('Car saved: {}'.format(self.selected_car))
-        self.on_reset()
+        self.parent.car_search.btn_search_user_clicked()
         self.parent.car_search.stackedPanelCars.setCurrentIndex(0)
+        self.on_reset()
+        self.log.info('Car saved: {}'.format(self.selected_car))
 
     def on_cancel(self):
         self.on_reset()

@@ -4,6 +4,7 @@ from pymysql.err import InternalError
 
 from core.dto.UserDto import UserDto
 from core.enum.color import Color
+from core.enum.user_type import UserType
 from core.eventbus.event_bus import EventBus
 from core.service.service_facade import ServiceFacade
 from ui.qt.table_model.entity_table_model import DefaultTableModel
@@ -74,7 +75,12 @@ class UserSearchView(QtView):
         indexes = self.tableUsers.selectionModel().selectedRows()
         for index in indexes:
             user = self.tableUsers.model().row(index)
-            # self.user_service.remove(user)
+            user_type = user.user_type()
+            if user_type == UserType.CUSTOMER:
+                self.customer_service.remove(user)
+            else:
+                self.employee_service.remove(user)
+        self.btn_search_user_clicked()
 
     def populate_table_users(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))

@@ -61,6 +61,7 @@ class CarSearchView(QtView):
         for index in indexes:
             car = self.tableCars.model().row(index)
             self.car_service.remove(car)
+        self.btn_search_model_clicked()
 
     def populate_table_cars(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))

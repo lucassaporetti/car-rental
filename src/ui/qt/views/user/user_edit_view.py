@@ -28,6 +28,10 @@ class UserEditView(QtView):
         self.deHiredDate = self.qt.find_date_edit('deHiredDate')
         self.spbSalary = self.qt.find_double_spin_box('spbSalary')
         self.bbAddUser = self.qt.find_button_box('bbAddUser')
+        self.lblDrvLicense = self.qt.find_label('lblDrvLicense')
+        self.lblAccessType = self.qt.find_label('lblAccessType')
+        self.lblHiredDate = self.qt.find_label('lblHiredDate')
+        self.lblSalary = self.qt.find_label('lblSalary')
         self.setup_ui()
 
     def setup_ui(self):
@@ -35,6 +39,7 @@ class UserEditView(QtView):
         self.bbAddUser.accepted.connect(self.on_save)
         self.bbAddUser.rejected.connect(self.on_cancel)
         self.bbAddUser.button(QDialogButtonBox.Reset).clicked.connect(self.on_reset)
+        self.cmbUserType.currentIndexChanged.connect(self.user_type_changed)
 
     def user_selected(self, args):
         user = args['selected_item']
@@ -53,6 +58,18 @@ class UserEditView(QtView):
             self.cmbAccessType.setCurrentText(user.access_type)
             self.deHiredDate.setDate(QDate.fromString(user.hired_date))
             self.spbSalary.setValue(user.salary)
+
+    def user_type_changed(self):
+        user_type = UserType[self.cmbUserType.currentText()]
+        self.lblDrvLicense.setEnabled(user_type == UserType.CUSTOMER)
+        self.lblAccessType.setEnabled(user_type == UserType.EMPLOYEE)
+        self.lblHiredDate.setEnabled(user_type == UserType.EMPLOYEE)
+        self.lblSalary.setEnabled(user_type == UserType.EMPLOYEE)
+        self.leDrvLicense.setEnabled(user_type == UserType.CUSTOMER)
+        self.cmbAccessType.setEnabled(user_type == UserType.EMPLOYEE)
+        self.deHiredDate.setEnabled(user_type == UserType.EMPLOYEE)
+        self.spbSalary.setEnabled(user_type == UserType.EMPLOYEE)
+        self.window.repaint()
 
     def on_reset(self):
         self.log.info('User form reset')
@@ -85,9 +102,10 @@ class UserEditView(QtView):
             self.selected_user.hired_date = self.deHiredDate.text()
             self.selected_user.salary = self.spbSalary.value()
             self.employee_service.save(self.selected_user.to_employee())
-        self.log.info('User saved: {}'.format(self.selected_user))
-        self.on_reset()
+        self.parent.user_search.btn_search_user_clicked()
         self.parent.user_search.stackedPanelUsers.setCurrentIndex(0)
+        self.on_reset()
+        self.log.info('{} saved: {}'.format(user_type, self.selected_user))
 
     def on_cancel(self):
         self.on_reset()
