@@ -6,7 +6,7 @@ from core.enum.color import Color
 from core.eventbus.event_bus import EventBus
 from core.model.car import Car
 from core.service.service_facade import ServiceFacade
-from ui.qt.table_model.default_table_model import DefaultTableModel
+from ui.qt.table_model.entity_table_model import DefaultTableModel
 from ui.qt.views.qt_view import QtView
 
 
@@ -70,4 +70,4 @@ class CarSearchView(QtView):
         car = self.tableCars.model().row(index)
         self.log.info('Table: tableCars clicked: {}'.format(car))
         self.stackedPanelCars.setCurrentIndex(1)
-        EventBus.get('selection-bus').emit('rowSelected', selected_item=car)
+        EventBus.get('car-selection-bus').emit('rowSelected', selected_item=car)

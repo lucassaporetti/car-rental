@@ -3,7 +3,7 @@ from typing import Type, Optional
 
 from PyQt5.QtCore import QObject
 from PyQt5.QtWidgets import QWidget, QToolButton, QStackedWidget, QLineEdit, QTableView, QComboBox, QSpinBox, \
-    QDialogButtonBox, QDoubleSpinBox
+    QDialogButtonBox, QDoubleSpinBox, QDateEdit
 
 from core.model.entity import Entity
 
@@ -28,6 +28,9 @@ class QtFinder(ABC):
 
     def find_line_edit(self, name: str) -> Optional[QLineEdit]:
         return QtFinder.find_widget(self.window, QLineEdit, name)
+
+    def find_date_edit(self, name: str) -> Optional[QDateEdit]:
+        return QtFinder.find_widget(self.window, QDateEdit, name)
 
     def find_combo_box(self, name: str) -> Optional[QComboBox]:
         return QtFinder.find_widget(self.window, QComboBox, name)

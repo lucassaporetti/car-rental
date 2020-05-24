@@ -24,7 +24,7 @@ class CarEditView(QtView):
         self.setup_ui()
 
     def setup_ui(self):
-        EventBus.get('selection-bus').subscribe('rowSelected', self.car_selected)
+        EventBus.get('car-selection-bus').subscribe('rowSelected', self.car_selected)
         self.bbAddCar.accepted.connect(self.on_save)
         self.bbAddCar.rejected.connect(self.on_cancel)
         self.bbAddCar.button(QDialogButtonBox.Reset).clicked.connect(self.on_reset)
@@ -64,6 +64,7 @@ class CarEditView(QtView):
         self.selected_car.price = self.spbPrice.value()
         self.selected_car.available = self.selected_car.available.value
         self.car_service.save(self.selected_car)
+        self.log.info('Car saved: {}'.format(self.selected_car))
         self.on_reset()
         self.parent.car_search.stackedPanelCars.setCurrentIndex(0)
 

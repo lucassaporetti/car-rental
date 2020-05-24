@@ -4,7 +4,7 @@ from pymysql.err import InternalError
 from core.enum.color import Color
 from core.model.rental import Rental
 from core.service.service_facade import ServiceFacade
-from ui.qt.table_model.default_table_model import DefaultTableModel
+from ui.qt.table_model.entity_table_model import DefaultTableModel
 from ui.qt.views.qt_view import QtView
 
 

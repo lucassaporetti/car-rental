@@ -1,4 +1,5 @@
 from core.enum.access_type import AccessType
+from core.enum.user_type import UserType
 from core.model.customer import Customer
 from core.model.employee import Employee
 from core.model.user import User
@@ -9,7 +10,7 @@ class UserDto(User):
     def from_customer(customer: Customer):
         return UserDto(
             customer.uuid, customer.name, customer.age, customer.address, customer.phone, customer.email,
-            customer.drv_license, '', '', ''
+            customer.drv_license, '', '', 0.0
         )
 
     @staticmethod
@@ -32,12 +33,28 @@ class UserDto(User):
         return "{} | {} | {} | {} | {}".format(
             super().__str__(), self.drv_license, self.access_type, self.hired_date, self.salary)
 
+    def user_type(self) -> UserType:
+        return UserType.CUSTOMER if self.drv_license else UserType.EMPLOYEE
+
+    def to_customer(self):
+        customer = Customer(
+            self.uuid, self.name, self.age, self.address, self.email,
+            self.access_type, self.hired_date, self.salary
+        )
+        return customer
+
+    def to_employee(self):
+        employee = Employee(
+            self.uuid, self.name, self.age, self.address, self.email, self.drv_license
+        )
+        return employee
+
     class Builder(Employee.Builder):
         def __init__(self):
             self.drv_license = ''
             self.access_type = ''
             self.hired_date = ''
-            self.salary = ''
+            self.salary = 0.0
 
         def with_drv_license(self, drv_license: str):
             self.drv_license = drv_license

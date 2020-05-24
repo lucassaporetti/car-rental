@@ -10,5 +10,6 @@ __all__ = [
   "menu_type",
   "model",
   "repository_type",
+  "user_type",
   "yes_no"
 ]

@@ -1,10 +1,12 @@
+from PyQt5.QtCore import QModelIndex
 from PyQt5.QtWidgets import QDialog, QHeaderView, QAbstractScrollArea
 from pymysql.err import InternalError
 
 from core.dto.UserDto import UserDto
 from core.enum.color import Color
+from core.eventbus.event_bus import EventBus
 from core.service.service_facade import ServiceFacade
-from ui.qt.table_model.default_table_model import DefaultTableModel
+from ui.qt.table_model.entity_table_model import DefaultTableModel
 from ui.qt.views.qt_view import QtView
 
 
@@ -26,6 +28,7 @@ class UserSearchView(QtView):
         self.btnSearchUsers = self.qt.find_tool_button('btnSearchUsers')
         self.leSearchUser = self.qt.find_line_edit('leSearchUser')
         self.btnAddUser = self.qt.find_tool_button('btnAddUser')
+        self.btnRemoveUser = self.qt.find_tool_button('btnRemoveUser')
         self.setup_ui()
 
     def setup_ui(self):
@@ -33,12 +36,10 @@ class UserSearchView(QtView):
         self.tableUsers.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.tableUsers.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.tableUsers.horizontalHeader().setStretchLastSection(True)
+        self.tableUsers.doubleClicked.connect(self.double_clicked_row)
         self.btnSearchUsers.clicked.connect(self.btn_search_user_clicked)
         self.btnAddUser.clicked.connect(self.btn_add_user_clicked)
-
-    def btn_add_user_clicked(self):
-        self.stackedPanelUsers.setCurrentIndex(1)
-        self.log.info('Tool button: btnAddUser clicked')
+        self.btnRemoveUser.clicked.connect(self.btn_remove_user_clicked)
 
     def btn_search_user_clicked(self):
         self.log.info('Tool button: btnSearchUsers clicked')
@@ -64,6 +65,23 @@ class UserSearchView(QtView):
             self.parent.set_status(msg, Color.RED)
             self.log.error(msg)
 
+    def btn_add_user_clicked(self):
+        self.stackedPanelUsers.setCurrentIndex(1)
+        self.log.info('Tool button: btnAddUser clicked')
+
+    def btn_remove_user_clicked(self):
+        self.log.info('Tool button: btnRemoveCar clicked')
+        indexes = self.tableUsers.selectionModel().selectedRows()
+        for index in indexes:
+            user = self.tableUsers.model().row(index)
+            # self.user_service.remove(user)
+
     def populate_table_users(self, table_data: list):
         self.log.info('Found = {}'.format(table_data))
         self.tableUsers.setModel(DefaultTableModel(UserDto, table_data=table_data, parent=self.tableUsers))
+
+    def double_clicked_row(self, index: QModelIndex):
+        user = self.tableUsers.model().row(index)
+        self.log.info('Table: tableUsers clicked: {}'.format(user))
+        self.stackedPanelUsers.setCurrentIndex(1)
+        EventBus.get('user-selection-bus').emit('rowSelected', selected_item=user)

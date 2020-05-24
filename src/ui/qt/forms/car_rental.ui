@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>858</width>
-    <height>513</height>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabCars">
       <attribute name="title">
@@ -602,7 +602,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedPanelUsers">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="stackPanelPageSearchUsers">
              <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -788,10 +788,109 @@
                     <string>New User</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_2">
-                    <item row="0" column="2">
-                     <widget class="QLineEdit" name="lineEditUserName">
+                    <item row="2" column="2">
+                     <widget class="QLineEdit" name="leAddress">
                       <property name="maxLength">
-                       <number>30</number>
+                       <number>120</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="2">
+                     <widget class="QLineEdit" name="leDrvLicense">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="maxLength">
+                       <number>8</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="1">
+                     <widget class="QLabel" name="label_13">
+                      <property name="text">
+                       <string>Type: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>cmbUserType</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLabel" name="label_12">
+                      <property name="text">
+                       <string>Email: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>leEmail</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="7" column="1">
+                     <widget class="QLabel" name="lblAccessType">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Access Type: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>cmbAccessType</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="label_9">
+                      <property name="text">
+                       <string>Age: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>spbAge</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLabel" name="label_10">
+                      <property name="text">
+                       <string>Address:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>leAddress</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="7" column="2">
+                     <widget class="QComboBox" name="cmbAccessType">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>ADMIN</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>MANAGER</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>ATTENDANT</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="4" column="2">
+                     <widget class="QLineEdit" name="leEmail">
+                      <property name="maxLength">
+                       <number>128</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="2">
+                     <widget class="QLineEdit" name="lePhone">
+                      <property name="maxLength">
+                       <number>15</number>
                       </property>
                      </widget>
                     </item>
@@ -801,7 +900,7 @@
                        <string>Name: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>lineEditUserName</cstring>
+                       <cstring>leUserName</cstring>
                       </property>
                      </widget>
                     </item>
@@ -831,114 +930,25 @@
                       </property>
                      </spacer>
                     </item>
-                    <item row="5" column="1">
-                     <widget class="QLabel" name="label_13">
-                      <property name="text">
-                       <string>Type: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>comboBoxUserType</cstring>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLabel" name="label_10">
-                      <property name="text">
-                       <string>Address:</string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>lineEditAddress</cstring>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="2">
-                     <widget class="QLineEdit" name="lineEditPhone">
+                    <item row="0" column="2">
+                     <widget class="QLineEdit" name="leUserName">
                       <property name="maxLength">
-                       <number>15</number>
+                       <number>30</number>
                       </property>
                      </widget>
                     </item>
-                    <item row="7" column="2">
-                     <widget class="QComboBox" name="comboBoxAccessType">
-                      <property name="enabled">
-                       <bool>false</bool>
+                    <item row="1" column="2">
+                     <widget class="QSpinBox" name="spbAge">
+                      <property name="minimum">
+                       <number>18</number>
                       </property>
-                      <item>
-                       <property name="text">
-                        <string>ADMIN</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>MANAGER</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>ATTENDANT</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                    <item row="2" column="2">
-                     <widget class="QLineEdit" name="lineEditAddress">
-                      <property name="maxLength">
-                       <number>120</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="7" column="1">
-                     <widget class="QLabel" name="labelAccessType">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
-                      <property name="text">
-                       <string>Access Type: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>comboBoxAccessType</cstring>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLabel" name="label_9">
-                      <property name="text">
-                       <string>Age: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>spinBoxAge</cstring>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="2">
-                     <widget class="QLineEdit" name="lineEditEmail">
-                      <property name="maxLength">
-                       <number>128</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="6" column="2">
-                     <widget class="QLineEdit" name="lineEditDriverLicense">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
-                      <property name="maxLength">
-                       <number>8</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="1">
-                     <widget class="QLabel" name="label_12">
-                      <property name="text">
-                       <string>Email: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>lineEditEmail</cstring>
+                      <property name="maximum">
+                       <number>80</number>
                       </property>
                      </widget>
                     </item>
                     <item row="5" column="2">
-                     <widget class="QComboBox" name="comboBoxUserType">
+                     <widget class="QComboBox" name="cmbUserType">
                       <item>
                        <property name="text">
                         <string>CUSTOMER</string>
@@ -951,41 +961,18 @@
                       </item>
                      </widget>
                     </item>
-                    <item row="1" column="2">
-                     <widget class="QSpinBox" name="spinBoxAge">
-                      <property name="minimum">
-                       <number>18</number>
-                      </property>
-                      <property name="maximum">
-                       <number>80</number>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="3" column="1">
                      <widget class="QLabel" name="label_11">
                       <property name="text">
                        <string>Phone: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>lineEditPhone</cstring>
+                       <cstring>lePhone</cstring>
                       </property>
                      </widget>
                     </item>
-                    <item row="6" column="1">
-                     <widget class="QLabel" name="labelDriverLicense">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
-                      <property name="text">
-                       <string>Driver License: </string>
-                      </property>
-                      <property name="buddy">
-                       <cstring>lineEditDriverLicense</cstring>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="8" column="1">
-                     <widget class="QLabel" name="labelSalary">
+                    <item row="9" column="1">
+                     <widget class="QLabel" name="lblSalary">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -993,12 +980,12 @@
                        <string>Salary: </string>
                       </property>
                       <property name="buddy">
-                       <cstring>doubleSpinSalary</cstring>
+                       <cstring>spbSalary</cstring>
                       </property>
                      </widget>
                     </item>
-                    <item row="8" column="2">
-                     <widget class="QDoubleSpinBox" name="doubleSpinSalary">
+                    <item row="9" column="2">
+                     <widget class="QDoubleSpinBox" name="spbSalary">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -1013,6 +1000,55 @@
                       </property>
                       <property name="singleStep">
                        <double>100.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="1">
+                     <widget class="QLabel" name="lblDrvLicense">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="text">
+                       <string>Driver License: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>leDrvLicense</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="8" column="1">
+                     <widget class="QLabel" name="lblHiredDate">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Hired Date: </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>deHiredDate</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="8" column="2">
+                     <widget class="QDateEdit" name="deHiredDate">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="dateTime">
+                       <datetime>
+                        <hour>0</hour>
+                        <minute>0</minute>
+                        <second>0</second>
+                        <year>2020</year>
+                        <month>5</month>
+                        <day>23</day>
+                       </datetime>
+                      </property>
+                      <property name="displayFormat">
+                       <string>dd/MM/yyyy</string>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -1436,21 +1472,21 @@
   <tabstop>cmbFuel</tabstop>
   <tabstop>lePlate</tabstop>
   <tabstop>spbPrice</tabstop>
-  <tabstop>lineEditUserName</tabstop>
-  <tabstop>spinBoxAge</tabstop>
-  <tabstop>lineEditAddress</tabstop>
-  <tabstop>lineEditPhone</tabstop>
-  <tabstop>lineEditEmail</tabstop>
-  <tabstop>comboBoxUserType</tabstop>
-  <tabstop>lineEditDriverLicense</tabstop>
-  <tabstop>comboBoxAccessType</tabstop>
-  <tabstop>doubleSpinSalary</tabstop>
+  <tabstop>leUserName</tabstop>
+  <tabstop>spbAge</tabstop>
+  <tabstop>leAddress</tabstop>
+  <tabstop>lePhone</tabstop>
+  <tabstop>leEmail</tabstop>
+  <tabstop>cmbUserType</tabstop>
+  <tabstop>leDrvLicense</tabstop>
+  <tabstop>cmbAccessType</tabstop>
+  <tabstop>deHiredDate</tabstop>
+  <tabstop>spbSalary</tabstop>
   <tabstop>dateTimeEditRentDate</tabstop>
   <tabstop>dateTimeEditReturnDate</tabstop>
   <tabstop>doubleSpinBoxPrice</tabstop>
   <tabstop>checkBoxPending</tabstop>
   <tabstop>comboBoxAttendant</tabstop>
-  <tabstop>btnReturnCar</tabstop>
   <tabstop>leSearchRental</tabstop>
   <tabstop>tabPanel</tabstop>
   <tabstop>btnSearchRentals</tabstop>
@@ -1466,6 +1502,7 @@
   <tabstop>btnSearchUsers</tabstop>
   <tabstop>leSearchUser</tabstop>
   <tabstop>btnRentCar</tabstop>
+  <tabstop>btnReturnCar</tabstop>
  </tabstops>
  <resources>
   <include location="../../../resources.qrc"/>
